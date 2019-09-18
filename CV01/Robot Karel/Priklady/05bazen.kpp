@@ -1,0 +1,52 @@
+prikaz celomvzad
+   vlavo
+   vlavo
+*prikaz
+
+opakuj 4 krat
+{*********** postavim bazen ***********}
+ opakuj 12 krat
+   kym nie je stena rob
+     poloz
+     krok
+   *kym
+   vlavo
+ *opakuj
+
+{prejdem do stredu}
+ vlavo opakuj 2 krat krok *opakuj vpravo
+
+{preplavaj}
+ opakuj 3 krat poloz *opakuj
+ krok
+ kym nie je tehla rob
+   opakuj 3 krat poloz *opakuj
+   krok
+   vlavo vlavo
+   opakuj 3 krat zober *opakuj
+   vlavo vlavo
+ *kym
+ krok
+ vlavo vlavo
+ opakuj 3 krat zober *opakuj
+ vlavo vlavo
+ 
+ {pridem do rohu}
+ vpravo
+ opakuj 2 krat krok *opakuj
+ vpravo
+ 
+ opakuj 12 krat
+   kym nie je stena rob
+     zober
+     krok
+   *kym
+   vpravo
+ *opakuj
+
+ {vratim sa na povodnu poziciu}
+ kym je volno rob krok; *kym
+ {natocenie v povodnom smere}
+ vlavo; vlavo;
+ 
+ *opakuj

@@ -1,0 +1,85 @@
+{
+program spocita cisla
+Karol na zaciatku stoji pri najnizsej cifre a
+je natoceny k jednemu z cisel (k tomu viac vpravo).
+(natoci sa tam sam pomocou podmienky VYCHOD)
+
+program ukazuje pouzitie
+   vlastnych prikazov
+   vlastnych podmienok
+   prikazov pomaly a rychlo
+   parametrov (napriklad podmienka ak je tehla(10) tak...)
+   podmienok na urcenie natocenia Karla (sever, juh, zapad, vychod)
+}
+//   a = 0026355439
+//   b = 0000470389
+//       ----------
+// a+b = 0026825828
+prikaz celomvzad;
+  rychlo
+  vlavo
+  vlavo
+  pomaly
+*prikaz
+
+prikaz skontroluj_pretecenie
+     ak je tehla(10) tak
+       opakuj 10 krat zober *opakuj;
+       oznac
+     *ak
+*prikaz
+
+{prelozi jeden stlpcek na druhy.
+ ak sa objavilo "pretecenie", nastavi "flag" - znacku}
+prikaz preloz
+   kym je tehla rob
+     zober
+     celomvzad
+     poloz
+
+     skontroluj_pretecenie;
+     
+     celomvzad
+   *kym
+*prikaz
+
+{pravdiva, ak ma karol po pravej ruke stenu}
+podmienka vpravo_stena
+//  rychlo
+  vpravo
+  ak je stena tak
+    pravda
+  inak
+    nepravda
+  *ak
+  vlavo
+//  pomaly
+*podmienka
+
+prikaz scitaj_cisla
+  //opakuj 9 krat
+  kym nie je vpravo_stena rob
+    preloz
+    vpravo
+
+    ak je znacka tak
+      odznac
+      krok
+      vpravo
+      poloz
+  
+      skontroluj_pretecenie
+  
+      celomvzad
+    inak
+      krok
+      vlavo
+    *ak
+  *kym
+*prikaz
+
+// ZACIATOK PROGRAMU
+{otocim karla na dobru stranu}
+kym nie je vychod rob vlavo *kym
+{scitam cisla}
+scitaj_cisla

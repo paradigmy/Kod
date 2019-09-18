@@ -1,0 +1,95 @@
+{
+V tomto priklade su pouzivane
+vlastne prikazy a vnorene prikazy
+  (prikaz preplavaj_bazen ma este
+  prikaz celomvzad)
+}
+
+// prikaz postav bazen
+prikaz postav_bazen;
+   {*********** postavim bazen ***********}
+   rychlo
+   opakuj 12 krat
+     kym nie je stena rob
+       poloz
+       krok
+     *kym
+     vlavo
+     rychlo
+   *opakuj
+   pomaly
+*prikaz
+
+// prikaz zburaj bazen
+prikaz zburaj_bazen;
+   {zburam bazen}
+   rychlo
+   opakuj 12 krat
+     kym nie je stena rob
+       zober;
+       krok;
+     *kym
+     vpravo;
+     rychlo;
+   *opakuj
+   pomaly;
+*prikaz
+
+// prikaz preplavaj bazen
+prikaz preplavaj_bazen;
+
+    // lokalne prikazy
+    prikaz celomvzad;
+       vlavo;
+       vlavo;
+    *prikaz
+  
+  // telo prikazu
+   opakuj 3 krat poloz *opakuj
+   krok
+   kym nie je tehla rob
+     opakuj 3 krat poloz *opakuj
+     krok
+     celomvzad
+     opakuj 3 krat zober *opakuj
+     celomvzad
+   *kym
+   krok
+   vlavo vlavo
+   opakuj 3 krat zober *opakuj
+   vlavo vlavo
+*prikaz
+
+// definicia hlavneho prikazu
+prikaz hlavny_prikaz;
+
+   postav_bazen;
+
+   {prejdem do stredu}
+    vlavo opakuj 2 krat krok *opakuj vpravo
+
+   {preplavaj}
+   preplavaj_bazen;
+
+   {pridem do rohu}
+   vpravo
+   opakuj 2 krat krok *opakuj
+   vpravo
+
+   zburaj_bazen;
+
+   {vratim sa na povodnu poziciu}
+   kym je volno rob krok; *kym
+   {natocenie v povodnom smere}
+   vlavo; vlavo;
+*prikaz
+
+{ ********************************************* }
+{ *************** ZACIATOK PROGRAMU *********** }
+{ ********************************************* }
+opakuj 4 krat
+
+   hlavny_prikaz;
+   
+*opakuj
+{ *********** KONIEC PROGRAMU *********** }

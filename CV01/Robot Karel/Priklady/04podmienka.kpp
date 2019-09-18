@@ -1,0 +1,29 @@
+{
+uloha:
+napis podmienku, ktora zisti, ci su prave dve
+tehly pred Karolom.
+
+(tento priklad by sa dal riesit aj pomocou ak je tehla(2) tak...)
+}
+podmienka dvetehly
+  rychlo
+  nepravda
+  ak je tehla tak
+     zober
+     ak je tehla tak
+        zober
+        pravda
+        ak je tehla tak nepravda *ak
+        poloz
+     *ak
+     poloz
+  *ak
+  pomaly
+*podmienka
+
+ak je dvetehly tak
+  vlavo
+inak
+  vpravo
+*ak
+

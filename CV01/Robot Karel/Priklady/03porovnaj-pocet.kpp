@@ -1,0 +1,19 @@
+{
+uloha: Karol stoji medzi stlpcekmi z tehiel.
+Napiste program, ktory vsetky tehly zoberie
+a necha Karola natoceneho k najnizsiemu
+stlpceku
+}
+
+kym je tehla rob
+  zober
+  vlavo
+*kym
+
+opakuj 3 krat
+  vlavo
+  kym je tehla rob
+    zober
+  *kym
+*opakuj
+vlavo

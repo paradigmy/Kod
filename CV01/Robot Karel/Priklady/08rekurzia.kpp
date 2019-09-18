@@ -1,0 +1,21 @@
+{
+uloha: Karol stoji pred stlpcekom z tehiel. Napiste program,
+ktory nauci Karla tento stlpcek prelozit za seba.
+}
+
+prikaz stlpcek
+  ak je tehla tak
+     zober
+     stlpcek
+  inak
+     vlavo
+     vlavo
+  *ak
+  poloz
+*prikaz
+
+stlpcek
+zober
+
+{program by sa dal urobit samozrejme aj nerekurzivne,
+dokonca aj jednoduchsie, toto je vsak priklad na rekurziu}
