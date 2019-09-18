@@ -1,11 +1,19 @@
+{ Robot Karel stoji rohu v miestnosti tak, ze
+pred sebou a po pravej ruke ma volno. Vydlazdi miestnost
+jednou vrstvou tehal a zostane stat tak, ze akciu
+mozno opakovat }
+
+prikaz celomVzad
+  vlavo
+  vlavo
+*prikaz
+
 prikaz riadok
   krok
-  vpravo
-  vpravo
+  celomVzad
   poloz
   krok
-  vpravo
-  vpravo
+  celomVzad
   kym je volno rob
     poloz
     krok
@@ -29,3 +37,4 @@ prikaz riadky
 *prikaz
   
 riadky
+celomVzad

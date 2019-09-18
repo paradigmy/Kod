@@ -1,4 +1,4 @@
-Použite niektorú z implementácii:
+Použite niektorú z implementácii, v nasich prikladoch je pouzita prva z nich:
 
 https://www.sac.sk/download/sk_made/karol.exe
 https://vybo.gjh.sk/?page=karel

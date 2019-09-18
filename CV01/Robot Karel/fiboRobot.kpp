@@ -1,0 +1,47 @@
+{ scita kopu pred sebou a v pravo a ulozi za seba }
+
+prikaz celomVzad
+  vlavo
+  vlavo
+*prikaz
+
+prikaz jedenKrok
+  celomVzad
+  kym je tehla rob zober *kym {vycisti miesto za}
+  celomVzad
+  skopirujZaseba
+  celomVzad
+  vpravo
+  skopirujVpravoOdSeba
+  vlavo
+*prikaz
+  
+  
+  
+prikaz skopirujZaseba
+  ak je tehla tak
+    zober
+    skopirujZaseba
+    poloz
+    celomVzad
+    poloz
+    celomVzad
+  inak
+    celomVzad
+  *ak
+*prikaz
+
+prikaz skopirujVpravoOdSeba
+  ak je tehla tak
+    zober
+    skopirujVpravoOdSeba
+    poloz
+    vlavo
+    poloz
+    vpravo
+  inak
+    vpravo
+  *ak
+*prikaz
+
+jedenKrok
