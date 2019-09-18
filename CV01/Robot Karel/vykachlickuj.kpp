@@ -1,0 +1,31 @@
+prikaz riadok
+  krok
+  vpravo
+  vpravo
+  poloz
+  krok
+  vpravo
+  vpravo
+  kym je volno rob
+    poloz
+    krok
+  *kym
+*prikaz
+
+prikaz riadky
+  riadok
+  vpravo
+  ak je volno tak
+    krok
+    vpravo
+    riadok
+  *ak
+  vlavo
+  ak je volno tak
+       krok
+       vlavo
+       riadky
+  *ak
+*prikaz
+  
+riadky

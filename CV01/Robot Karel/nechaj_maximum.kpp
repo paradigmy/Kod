@@ -1,0 +1,18 @@
+prikaz maximum
+  ak je tehla tak
+    vpravo
+    ak je tehla tak
+      zober
+      vlavo
+      zober
+      maximum
+      poloz
+    inak
+      vlavo
+    *ak
+  inak
+    vpravo
+  *ak
+*prikaz
+
+maximum
