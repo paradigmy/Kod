@@ -1,0 +1,25 @@
+{ je to delenie dvomi, ale horna, ci dolna cela cast ? }
+prikaz Div2
+  ak je tehla tak
+    zober
+    zober
+    Div2
+    poloz
+  *ak
+*prikaz
+
+
+{ je to delenie dvomi, ale horna, ci dolna cela cast ? }
+prikaz Div2Floor
+  ak je tehla tak
+    zober
+    ak je tehla tak
+      zober
+      Div2Floor
+      poloz
+    *ak
+  *ak
+*prikaz
+
+//Div2
+Div2Floor

@@ -1,0 +1,14 @@
+- prelozi za seba
+- prekopiruje za seba
+- vydeli dvomi, 
+- dojde do polcesty k stene
+- scita dve kopy na tretiu
+- fibonacci
++ vynasobi dve kopy
+- otoci sa k maximalnej kope
+- Alcatraz
+- Theseus a Minotaurus
+
+- ohranicena miestnost
+- neohranicena miestnost
+- ohranicena miestnost s neohranicenou vyskou
