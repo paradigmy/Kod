@@ -1,0 +1,78 @@
+// robili sme na cviku
+
+prikaz prenes
+  kym je tehla rob
+    zober
+    celomVzad
+    poloz
+    celomVzad
+  *kym
+  celomVzad
+*prikaz
+
+prikaz celomVzad
+  vlavo
+  vlavo
+*prikaz
+
+prikaz skopiruj
+  ak je tehla tak
+      zober
+      skopiruj
+      poloz
+      celomVzad
+      poloz
+      celomVzad
+  *ak
+*prikaz
+
+prikaz vydel2
+  ak je tehla tak
+    zober
+    ak je tehla tak
+      zober
+      vydel2
+      poloz
+    *ak
+  *ak
+*prikaz
+
+prikaz doStredu
+  ak nie je stena tak
+    krok
+    krok
+    doStredu
+    krok
+  inak
+    celomVzad
+  *ak
+*prikaz
+
+
+
+//doStredu
+
+prikaz maximum
+  ak je tehla tak
+    zober
+    celomVzad
+    ak je tehla tak
+      zober
+      maximum
+      poloz
+      celomVzad
+      poloz
+      celomVzad
+    inak
+      celomVzad
+    *ak
+  inak
+    celomVzad
+    poloz
+  *ak
+*prikaz
+
+maximum
+
+
+
