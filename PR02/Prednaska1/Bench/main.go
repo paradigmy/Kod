@@ -26,6 +26,7 @@ func main() {
 	// return
 
 	var n int
+	fmt.Print("zadaj N:")
 	_, _ = fmt.Scanf("%d", &n)
 
 	FiboCyklus(n)

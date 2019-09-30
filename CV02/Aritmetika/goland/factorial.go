@@ -10,8 +10,8 @@ import (
 func Factorial(n int) *big.Int {
 	a := big.NewInt(1)
 	for n > 0 { // pascal-like while
-	    if ( n % 100000 == 0) {
-	    	fmt.Println(n)
+		if ( n % 100000 == 0) {
+			fmt.Println(n)
 		}
 		b := big.NewInt(int64(n))
 		a.Mul(a, b) // a = a*b
@@ -29,12 +29,12 @@ func FaktorialMulRange(n int) *big.Int {
 }
 
 // definujte funkciu sucin - tato funkcia pocita a.(a+1)....(b)
-func sucin(a int64, b int64) *big.Int {
+func sucinn(a int64, b int64) *big.Int {
 	if a == b {
 		return big.NewInt(a)
 	} else {
 		x := big.NewInt(a)
-		return x.Mul(x, sucin(a+1, b))
+		return x.Mul(x, sucinn(a+1, b))
 	}
 }
 
@@ -78,7 +78,7 @@ func main() {
 	startTime := time.Now()
 	// res :=Factorial(n)
 	// res := FaktorialMulRange(n)
-	// res := sucin(2, int64(n))
+	// res := sucinn(2, int64(n))
 	// res := sucinDivide(2, int64(n))
 	res := sucinDivideGranula(2, int64(n))
 	fmt.Printf("compute time=%v\n",time.Since(startTime))
@@ -139,4 +139,4 @@ prvych 10 cifier je: 1202423400
 dlzka: 65657060
 formating time=4h38m24.1669635s
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- */
+*/
