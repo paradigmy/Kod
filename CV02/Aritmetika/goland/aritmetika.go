@@ -5,7 +5,8 @@ import (
 	"strconv"
 )
 func main() {
-	sum2Int()
+	maximum()
+	//sum2Int()
 	//compare2Nat()
 }
 
@@ -248,4 +249,50 @@ func compare2Nat() {
 		a = 1
 	}
 	fmt.Printf("ich compare je: %d\n", a)
+}
+
+
+func dveNaNtu() {
+	if (a == 0) {
+		input("zadaj druhe cislo:")
+		triNaNtu()
+	} else {
+		a--
+		dveNaNtu()
+		a=a+a
+	}
+}
+
+func triNaNtu() {
+	if (a == 0) {
+		a = 1
+	} else {
+		a--
+		triNaNtu()
+		a=a+a+a
+	}
+}
+
+func logaritmus6() {
+	if (a % 6 == 0) {
+		a = a / 6
+		logaritmus6()
+		a++
+	} else if (a % 3 == 0) {
+		a = a / 3
+		logaritmus6()
+		a++
+	} else if (a % 2 == 0) {
+		a = a / 2
+		logaritmus6()
+		a++
+	} else {
+		a = 0
+	}
+}
+func maximum() {
+	input("zadaj prve cislo:")
+	dveNaNtu()
+	logaritmus6()
+	fmt.Printf("ich maximum je: %d\n", a)
 }
