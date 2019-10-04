@@ -14,7 +14,7 @@ func timer2(d time.Duration, ch chan int) {
 		if goroutinesCount2 > goroutinesMax2 {
 			goroutinesMax2 = goroutinesCount2
 		}
-		time.Sleep(d)
+		time.Sleep( d)   // 0
 		ch <- 1
 		goroutinesCount2--;
 	}()
@@ -26,6 +26,6 @@ func main() {
 		timer2(time.Duration(i) * time.Second, ch)
 	}
 	for x := range ch {
-		fmt.Println(x, goroutinesMax2)
+		fmt.Println(x,  ", maxGoroutines=", goroutinesMax2)
 	}
 }

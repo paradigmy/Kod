@@ -26,6 +26,6 @@ func timer(d time.Duration) (ch chan int) {
 func main() {
 	for i := 0; i < 24; i++ {
 		c := timer(1 * time.Second)
-		fmt.Println(<-c, goroutinesMax)
+		fmt.Println(<-c, ", maxGoroutines=", goroutinesMax)
 	}
 }
