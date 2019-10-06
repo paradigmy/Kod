@@ -9,7 +9,7 @@ import (
 
 var (
 	size        = 50000000
-	granularity = 50000
+	granularity = 50000000
 )
 
 func pivot(pole []int) int {
