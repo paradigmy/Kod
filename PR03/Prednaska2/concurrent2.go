@@ -18,14 +18,14 @@ func main() {
 	go loopAndSend("prvy", ch)
 	go loopAndSend("druhy", ch)
 
-	//for {
-	//	//msg :=
-	//	fmt.Print(<-ch)
-	//}
-
-	for msg := range ch {
-		fmt.Print(msg)
+	for {
+		//msg := <-ch
+		fmt.Print(<-ch)
 	}
+
+	//for msg := range ch {
+	//	fmt.Print(msg)
+	//}
 
 	fmt.Println("main stop")
 }

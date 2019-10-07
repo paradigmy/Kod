@@ -5,33 +5,42 @@ import (
 	"time"
 )
 
-var limit = 15000
+var limit = 1500
 
 func main() {
 	start := time.Now()
 	prev := make(chan int)
+	primes := make(chan int, limit)
 	first := prev
 	go func() {
 		for i := 2; ; i++ {
 			first <- i
 		}
 	}()
-	for i := 0; i < limit; i++ {
-		prime := <-prev
-		////////////
-		fmt.Printf("%d, ", prime)
-		next := make(chan int)
-		go func(prime int, from, to chan int) {
-			for {
-				val := <-from
-				if val%prime > 0 {
-					to <- val
+	//go func() {
+		for i := 0; i < limit; i++ {
+			prime := <-prev
+			//fmt.Printf("%d, ", prime)
+			////////////
+			primes <- prime
+			next := make(chan int)
+			go func(prime int, from, to chan int) {
+				for {
+					val := <-from
+					if val%prime > 0 {
+						to <- val
+					}
 				}
-			}
-		}(prime, prev, next)
-		prev = next
+			}(prime, prev, next)
+			prev = next
+		}
+	//}()
+	//for res := range prev {
+	//	fmt.Print(res)
+	//}
+	for res := range primes {
+		fmt.Printf("%d, ", res)
 	}
-	// for res := range prev { fmt.Println(res)	}
 
 	fmt.Println(time.Since(start))
 }

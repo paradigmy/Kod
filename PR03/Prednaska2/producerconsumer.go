@@ -6,7 +6,7 @@ import (
 )
 
 func producer(id int, cs chan int, delay time.Duration) {
-	for i := 1; i <= 30; i++ {
+	for i := 1; i <= 3; i++ {
 		cs <- i
 		fmt.Printf("producer %d item %d: \n", id, i)
 		time.Sleep(delay)
@@ -21,8 +21,8 @@ func consumer(cs chan int) {
 }
 
 func main() {
-	//cs := make(chan int)
-	cs := make(chan int, 5)
+	cs := make(chan int)
+	//cs := make(chan int, 5)
 	go producer(1, cs, 100*time.Microsecond)
 	go producer(2, cs, 250*time.Microsecond)
 	go consumer(cs)

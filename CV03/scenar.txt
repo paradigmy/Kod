@@ -1,0 +1,15 @@
+- faktorial z predosleho cvicenia
+  ako pocitat sucin 1. ... .n, resp. sucin cisel intevalu [a,b]
+  aka je zlozitost nasobenia dvoch cisel a*b
+  dobry odhad je |a| + |b|, || je pocet bitov
+  vysvetli funkcionalne "spusti"
+  
+- agenti 
+  
+- quicksort, dostihy z prednasky
+
+- urob concurrent merge cez kanaly
+
+- urob concurrent merge s mutexom
+
+- klobuky, zopakovanie temy

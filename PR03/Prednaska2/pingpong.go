@@ -11,10 +11,10 @@ func main() {
 	table := make(chan int)
 	go player(1, table)
 	go player(2, table)
-	//go player(3, table)
+	go player(3, table)
 
 	table <- Ball
-	time.Sleep(1 * time.Second)
+	time.Sleep(2 * time.Second)
 	finito := <-table
 	fmt.Printf("main chytil %d\n", finito)
 }
