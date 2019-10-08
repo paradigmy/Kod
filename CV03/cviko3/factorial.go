@@ -44,10 +44,10 @@ func sucinnAux(a int64, b int64) *big.Int {
 	} else {
 		x := big.NewInt(a)
 		medzivysledok := sucinnAux(a+1, b)
-		totalBits += cenaNasobenia(x.BitLen(), medzivysledok.BitLen())
-		return x.Mul(x, medzivysledok)
-		//totalBits += cenaNasobenia(medzivysledok.BitLen(),x.BitLen())
-		//return medzivysledok.Mul(medzivysledok, x)
+		//totalBits += cenaNasobenia(x.BitLen(), medzivysledok.BitLen())
+		//return x.Mul(x, medzivysledok)
+		totalBits += cenaNasobenia(medzivysledok.BitLen(),x.BitLen())
+		return medzivysledok.Mul(medzivysledok, x)
 	}
 }
 func sucinn(b int64) *big.Int {
