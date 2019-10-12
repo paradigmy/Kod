@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"time"
+
 	//"time"
 )
 
@@ -52,7 +54,5 @@ func main() {
 			grid[0][j].col <- 1
 		}(j)
 	}
-	//time.Sleep(10000000000000)
-	for {
-	}
+	time.Sleep(10000000000000)
 }
