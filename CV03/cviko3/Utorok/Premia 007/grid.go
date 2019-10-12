@@ -3,8 +3,11 @@ package main
 import (
 	"fmt"
 	"time"
+<<<<<<< HEAD
 
 	//"time"
+=======
+>>>>>>> 090be149f0637ba0ded856aec2ad9c090f91fde0
 )
 
 type Agent007 struct {
