@@ -20,18 +20,7 @@ func (wp *WorkerPool) addTask(t *Task) {
 }
 
 func (wp *WorkerPool) mainLoop(chainRes chan Result) {
-	for len(wp.tasks) > 0 {
-		for _, w := range wp.workers {
-			if w.busy == false && w.conn != nil {
-				w.busy = true
-				t := wp.tasks[0]
-				wp.tasks = wp.tasks[1:]
-				go w.doit(t, chainRes)
-				break
-			}
-		}
-		//time.Sleep(0 * time.Millisecond)
-	}
+	// nejaku filozofiu pre spracovanie taskov vo worker poole
 }
 
 
