@@ -6,14 +6,14 @@ import (
 	"math/big"
 )
 
-var memoB [][] *big.Int
+var b [][] *big.Int
 
 func pBig(n int, m int) *big.Int {
 	if (n <= m + 1) {
 		return big.NewInt(1)
 	}
-	if (memoB[n - 2][m - 2].Cmp(big.NewInt(0)) != 0){
-		return memoB[n - 2][m - 2]
+	if (b[n - 2][m - 2].Cmp(big.NewInt(0)) != 0){
+		return b[n - 2][m - 2]
 	}
 	var max int64 = int64(math.Floor(float64(n) / float64(m)));
 	if (m == 2){
@@ -22,8 +22,8 @@ func pBig(n int, m int) *big.Int {
 	var count = big.NewInt(0)
 	for ; max > 0; n -= m {
 		max--
-		memoB[n - 3][m - 3] = pBig(n - 1, m - 1)
-		count.Add(count,memoB[n - 3][m - 3]);
+		b[n - 3][m - 3] = pBig(n - 1, m - 1)
+		count.Add(count,b[n - 3][m - 3]);
 	}
 	return count;
 }
@@ -35,11 +35,11 @@ func partitionBig(n int, m int) *big.Int {
 	if (n < m) {
 		return big.NewInt(0);
 	}
-	memoB = make([][]*big.Int, n)
+	b = make([][]*big.Int, n)
 	for i := 0; i < n-1; i++ {
-		memoB[i] = make([]*big.Int, m)
+		b[i] = make([]*big.Int, m)
 		for j := 0; j < m-1; j++ {
-			memoB[i][j] = big.NewInt(0)
+			b[i][j] = big.NewInt(0)
 		}
 	}
 	return pBig(n, m);
@@ -54,11 +54,11 @@ func partBig(n int) *big.Int {
 }
 
 func part2Big(n int) *big.Int {
-	memoB = make([][]*big.Int, n)
+	b = make([][]*big.Int, n)
 	for i := 0; i < n-1; i++ {
-		memoB[i] = make([]*big.Int, n)
+		b[i] = make([]*big.Int, n)
 		for j := 0; j < n-1; j++ {
-			memoB[i][j] = big.NewInt(0)
+			b[i][j] = big.NewInt(0)
 		}
 	}
 	var sum *big.Int = big.NewInt(1)
@@ -73,9 +73,10 @@ func main() {
 	for i:=1; i < 20; i++ {
 		fmt.Println(partBig( i))
 	}
-	fmt.Println(part2Big( 100))
-	fmt.Println(part2Big( 1000))
-	fmt.Println(part2Big( 10000))
+	//fmt.Println(part2Big( 100))
+	//fmt.Println(part2Big( 1000))
+	//fmt.Println(part2Big( 10000))
+	fmt.Println(part2Big( 100000))
 	//fmt.Println(partitionBig(9, 3))
 	//fmt.Println(partitionBig(150, 23))
 	//fmt.Println(partitionBig(1000, 81))

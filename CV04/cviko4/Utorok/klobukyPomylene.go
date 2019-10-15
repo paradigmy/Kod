@@ -49,7 +49,7 @@ func xorPola(pole []bool) bool {   // pomocny stuff, xor prvkov pola, resp. poce
 //-------------------------------------------------------------------------------
 // zivot agenta
 func (agent Agent)run()  {
-	// doprogramujte
+	// doprogramuje
 }
 //----------------------------------------------------------------------------------------------------
 func main() {
@@ -66,3 +66,51 @@ func main() {
 	//time.Sleep(3000)
 	<-finito
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// toto je riesenie
+//go func() {		// agent je gorutina
+//	coVidim := agent.vidim()
+//	res := xorPola(coVidim)
+//	if (agent.id == 0) {  // prvy v rade
+//		// spocitam odpoved a poslem vsetkym nasledujucim agentom
+//	} else {
+//		coSomPocul := make([]bool,0)  // musim pocet najprv id predoslych agentov
+//		for i := 0; i<agent.id; i++ {
+//			msg := <- agent.ch
+//			coSomPocul = append(coSomPocul, msg)
+//		}
+//		res = xor(res, xorPola(coSomPocul))
+//	}
+//	fmt.Printf("agent %v ma klobuk %v a ma pravdu %v\n", agent.id, res, agent.maPravdu(res))
+//	for i:=agent.id+1; i < len(agenti); i++ {
+//		agenti[i].ch <- res
+//	}
+//	if (agent.id+1 == len(agenti)) { // som posledny, tak zakricim finish
+//		finito <- true
+//	}
+//} ()
