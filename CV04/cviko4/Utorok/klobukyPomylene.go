@@ -48,8 +48,27 @@ func xorPola(pole []bool) bool {   // pomocny stuff, xor prvkov pola, resp. poce
 }
 //-------------------------------------------------------------------------------
 // zivot agenta
-func (agent Agent)run()  {
-	// doprogramuje
+func (agent Agent) run()  {
+	go func() {
+		pole := agent.vidim()  // Lukasova verzia, pozri si pripravu, trochu refaktorovany kod ...
+		if agent.id == 0 {
+			res := xorPola(pole)
+			fmt.Printf("id: %d, farba: %v mam pravdu: %v \n", agent.id, agent.klobuk, agent.maPravdu(res))
+			for i:= agent.id + 1; i < len(agenti); i++ {
+				agenti[i].ch <- res
+			}
+		} else {
+			res := xorPola(pole)
+			for i:= 0; i < agent.id; i++ {
+				res = xor(<- agent.ch, res)
+			}
+			fmt.Printf("id: %d, farba: %v mam pravdu: %v \n", agent.id, agent.klobuk, agent.maPravdu(res))
+			for i:= agent.id + 1; i < len(agenti); i++ {
+				agenti[i].ch <- res
+			}
+		}
+
+	}()
 }
 //----------------------------------------------------------------------------------------------------
 func main() {
@@ -63,8 +82,8 @@ func main() {
 	for i := 0; i<N; i++ {
 		agenti[i].run()
 	}
-	//time.Sleep(3000)
-	<-finito
+	time.Sleep(3000)
+	//<-finito
 }
 
 

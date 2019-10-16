@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 //type Cislo float64 // toto si nechame na realne testovanie, zataz
@@ -43,7 +44,7 @@ func sucin(a Vektor, b Vektor) (s Cislo) {
 // transponuj maticu - najdi chybu
 func (m Matica)transponujMaticu() Matica {
 	r := make(Matica, len(m[0]))	// vytvor maticu, ktora ma tolko riadkov, ako povodna stlpcov
-	for i := range m {				// vytvor podpolia vyslednej matice
+	for i := range m[0] {				// vytvor podpolia vyslednej matice
 		r[i] = make(Vektor, len(m))	// ich riadkov novej matice bude rovnaka, ako pocet stlpcov povodnej matice
 	}
 	for i := range m {				// preloz to tam, cyklus cez riadky povodnej
@@ -55,18 +56,18 @@ func (m Matica)transponujMaticu() Matica {
 }
 // podmatica, neobsahuje i ty riadok a jty stlpec - doprogramuj
 func (m Matica)podMatica(i int, j int) Matica {
-	return m
-
+	r := append(m[0:i], m[i+1:len(m)]...).transponujMaticu()
+	return append(r[0:j], r[j+1:len(r)]...).transponujMaticu()
 }
 
 func main() {
-	//rand.Seed(time.Now().UTC().UnixNano())  // inicializacia randomu
+	rand.Seed(time.Now().UTC().UnixNano())  // inicializacia randomu
 	m1 := generujMaticu(3)
 	m1.Print("m1")
 	m2 := generujMaticu(3)
 	m2.Print("m2")
-	fmt.Print(sucin(m1[0], m2[0]))
-	m2.transponujMaticu().Print("trans-m2")
+//	fmt.Print(sucin(m1[0], m2[0]))
+//	m2.transponujMaticu().Print("trans-m2")
 	m2.podMatica(1,1).Print("podmatica")
 }
 
@@ -104,5 +105,3 @@ func main() {
 
 
 
-//r := append(m[0:i], m[i+1:len(m)]...).transponujMaticu()
-//return append(r[0:j], r[j+1:len(r)]...).transponujMaticu()
