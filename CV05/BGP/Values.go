@@ -7,6 +7,7 @@ const (
 	ZA Value = 1
 	PROTI Value = 0
 	KLAMAR = -1
+	UNKNOWN = 99
 )
 func (v Value) toString() string {
 	return strconv.Itoa(int(v))

@@ -20,11 +20,12 @@ import (
 
 const difficulty =
 	// 1
-	 2
-	// 3
+	// 2
+	 3
 	// 4
 	// 5
 	//6
+	// 7 // toto je tvoja voľba !
 
 type Block struct {
 	Index     int    // poradové číslo bloku v reťazci, začína 0
@@ -97,7 +98,7 @@ func handlePOST(w http.ResponseWriter, r *http.Request) {
 
 	//ensure atomicity when creating new block
 	mutex.Lock()
-	newBlock := generateBlock(Blockchain[len(Blockchain)-1], m.Data)
+	newBlock := generateNewBlock(Blockchain[len(Blockchain)-1], m.Data)
 	mutex.Unlock()
 
 	if isBlockValid(newBlock, Blockchain[len(Blockchain)-1]) {
@@ -123,7 +124,7 @@ func calculateHash(block Block) string {
 }
 
 // vygeneruje novy blok s hodnotou Data, ale musíme poznat haš predošlého bloku
-func generateBlock(oldBlock Block, Data int) (Block) {
+func generateNewBlock(oldBlock Block, Data int) (Block) {
 	newBlock := Block{oldBlock.Index + 1, time.Now().String(), Data, "", oldBlock.Hash, difficulty, ""}
 	newBlock.Hash = calculateHash(newBlock)
 

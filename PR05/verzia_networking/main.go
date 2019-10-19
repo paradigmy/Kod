@@ -147,4 +147,3 @@ func handleConn(conn net.Conn) {	// handler pre každého, čo urobí connect na
 		spew.Dump(Blockchain)
 	}
 }
-

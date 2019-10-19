@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"                   // Mashall UnMashall
 	"github.com/davecgh/go-spew/spew" // pretty printer
-	"github.com/gorilla/mux"          // webserver
+	"github.com/gorilla/mux"          // webserver, pre obsluhu HTTP GET a POST
 	"github.com/joho/godotenv"        // ini file reader
 	"io"
 	"log"
@@ -129,8 +129,7 @@ func main() {
 		log.Fatal(err)
 	}
 	go func() {
-		t := time.Now()
-		genesisBlock := Block{0, t.String(), 0, "", ""} // pociatocny blok
+		genesisBlock := Block{0, time.Now().String(), 0, "", ""} // pociatocny blok
 		genesisBlock.Hash = calculateHash(genesisBlock)
 		spew.Dump(genesisBlock) //	fmt.Println(genesisBlock)
 		Blockchain = append(Blockchain, genesisBlock)
