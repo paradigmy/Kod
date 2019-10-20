@@ -21,11 +21,12 @@ import (
 const difficulty =
 	// 1
 	// 2
-	 3
+	// 3
 	// 4
 	// 5
 	//6
 	// 7 // toto je tvoja voľba !
+    8
 
 type Block struct {
 	Index     int    // poradové číslo bloku v reťazci, začína 0
@@ -134,7 +135,7 @@ func generateNewBlock(oldBlock Block, Data int) (Block) {
 		newBlock.Nonce = fmt.Sprintf("%x", nonce)
 		// if !isHashValid(calculateHash(newBlock), newBlock.Difficulty) {
 		if !strings.HasPrefix(calculateHash(newBlock), strings.Repeat("0", difficulty)) {
-			fmt.Println(calculateHash(newBlock), " do more work!")
+//			fmt.Println(calculateHash(newBlock), " do more work!")
 			// toto hodne pomoze, ked zakomentujete...
 			time.Sleep(time.Second)
 			continue
