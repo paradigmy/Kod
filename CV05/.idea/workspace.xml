@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29eaf377-1535-4cef-8e6a-2220cf8421ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BGPPublished/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/CV05.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGP/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGPFORWARDBACK/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGPRef1/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGPRef2/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGPRef3/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGPRef4-NEJDE_STRING/.idea/BGP.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BGPRef5/.idea/BGP.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/BGPRef6/.idea/BGP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PR05/verzia_PoW/go_build_main_go__2_.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../PR05/verzia_PoW/go_build_main_go__2_.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PR05/verzia_PoW/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR05/verzia_PoW/main.go" afterDir="false" />
     </list>
@@ -12,6 +20,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="C:/Program Files (x86)/Go" />
   <component name="Git.Settings">
@@ -27,6 +42,7 @@
   <component name="ProjectId" id="1SHcP6EIoW8xg9U3TVA3wTRww93" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -51,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build main.go (5)">
+  <component name="RunManager" selected="Go Build.go build main.go (2)">
     <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="CV05" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -102,8 +118,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build main.go (5)" />
         <item itemvalue="Go Build.go build main.go (2)" />
+        <item itemvalue="Go Build.go build main.go (5)" />
         <item itemvalue="Go Build.go build main.go (3)" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build main.go (6)" />
