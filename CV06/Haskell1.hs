@@ -1,5 +1,7 @@
 module Haskell1 where
 
+import Data.List -- vzdy sikovne nieco je v nom
+
 -- rekurzia na cislach
 
 -- fibonacci klasicky, pozor na zatvorkovanie !!!
@@ -32,6 +34,65 @@ fibi n a b   = fibi (n-1) (a+b) a
 fibi'  :: (Int, Int, Int) -> Int
 fibi'(0,a,b)  = b
 fibi'(n,a,b)   = fibi'(n-1,a+b,a)
+
+
+fyb :: Int -> Int
+fyb n | n < 2 = 1
+      | otherwise = fyb (n-2) + fyb (n-1)
+
+fyb' :: Int -> Int
+fyb' n = fybLoop n 1 1
+         where fybLoop 0 a b = a
+               fybLoop n a b = fybLoop (n-1) b (a+b)
+
+-- Dijkstrova logaritmicka formula
+-- F(2j)   = F(j)^2 + F(j+1)^2
+-- F(2j+1) = (2 * F(j) + F(j+1)) * F(j+1) 
+
+step :: (Integer, Integer) -> (Integer, Integer)
+step (fj, fj1) = (fj*fj + fj1*fj1, (2*fj + fj1)*fj1)
+
+fyb'' :: Int -> (Integer, Integer)
+fyb'' n | n < 2  = (0,1)
+        | even n = let (fj, fj1) = fyb'' (n `div` 2) in step (fj, fj1)
+        | otherwise = (fj1, fj+fj1)
+                      where (fj, fj1) = fyb'' (n - 1)
+                    
+-- ako zistit dlzku cisla, toString a length
+-- length $ show $ snd $ fyb'' 1000000           
+
+{-
+*Haskell1> length $ show $ snd $ fyb'' 1000000
+208988
+*Haskell1> length $ show $ snd $ fyb'' 10000000
+2089877
+*Haskell1> length $ show $ snd $ fyb'' 100000000
+20898764
+*Haskell1> length $ show $ snd $ fyb'' (10^9)
+208987640
+-}         
+---------------------------------
+-- scitajte kladne prvky zoznamu okolo, ktorych stoja nuly
+
+nulyOkolo :: [Int] -> Int
+nulyOkolo [] = 0
+nulyOkolo [_] = 0
+nulyOkolo [_,_] = 0
+nulyOkolo (0:y:0:zs) = (if y > 0 then y else 0) + nulyOkolo (0:zs)
+nulyOkolo (x:xs)  = nulyOkolo xs
+
+{-
+nulyOkolo [0,1,0] = 1
+nulyOkolo [0,1,0,2,0] = 3
+nulyOkolo [0,1,2,0] = 0
+nulyOkolo [0,1,0,-2,0] = 1
+-}
+
+kazdyDruhy :: [t] -> [t]
+kazdyDruhy [] = []
+kazdyDruhy [x] = [x]
+kazdyDruhy (x:y:xs) = x:(kazdyDruhy xs)
+                    
 
 ------ booleovske funkcie
 
@@ -218,3 +279,10 @@ okremPrvehoStlpca((x:r):rs)  = r:okremPrvehoStlpca rs
 transponuj           :: Matica -> Matica
 transponuj  []        = []
 transponuj  rs        = (prvyStlpec rs):(transponuj (okremPrvehoStlpca rs))
+
+----- 
+parNepar :: [Int] -> Int
+parNepar xs = (sum (filter even xs)) - (sum (filter odd xs))
+
+sudeLiche :: [Int] -> Int
+sudeLiche xs = sum [ xs!!i * (-1)^i | i <- [0..length xs-1] ]

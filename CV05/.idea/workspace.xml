@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29eaf377-1535-4cef-8e6a-2220cf8421ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/CV05.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGP/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPFORWARDBACK/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPRef1/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPRef2/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPRef3/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPRef4-NEJDE_STRING/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPRef5/.idea/BGP.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BGPRef6/.idea/BGP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PR05/verzia_PoW/go_build_main_go__2_.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../PR05/verzia_PoW/go_build_main_go__2_.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PR05/verzia_PoW/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR05/verzia_PoW/main.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +36,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/XXX" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
