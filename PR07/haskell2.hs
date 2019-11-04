@@ -1,3 +1,40 @@
+
+app :: [t] -> [t] -> [t]
+app [] ys = ys
+app (x:xs) ys = x:(app xs ys)
+
+rev1 :: [t] -> [t]
+rev1 [] = []
+rev1 (x:xs) = rev1 xs ++ [x]
+{-
+*Main> length $ rev1 [1..10000]
+10000
+
+ (iterate rev1 [1..1000])!!100
+ (5.22 secs, 4,788,077,608 bytes)
+-}
+rev2 :: [t] -> [t]
+rev2 xs = rev2Loop xs []
+rev2Loop [] acc = acc
+rev2Loop (x:xs) acc = rev2Loop xs (x:acc)
+
+{-
+(0.01 secs, 2,065,208 bytes)
+*Main> length $ rev2 [1..10000]
+10000
+(0.01 secs, 2,065,072 bytes)
+*Main> length $ rev2 [1..100000]
+100000
+(0.19 secs, 20,066,912 bytes)
+*Main> length $ rev2 [1..1000000]
+1000000
+(1.23 secs, 200,067,008 bytes)
+-}
+
+----------------------- 
+
+
+
 zopakuj_prvy_prvok s@(x:xs) = x:s
  
 -- head (x:_)  = x
