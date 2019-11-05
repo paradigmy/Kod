@@ -47,8 +47,8 @@ toto su jedine dve spravne kocky
 -- definujte vsetky natocenia spravnej kocky, niektorej
 
 import Data.List
-import Rozcvicka
-
+import Haskell2 
+------------------------------------------------------------------
 type Kocka = [Int]
 
 moznosti :: [Kocka]
@@ -71,53 +71,56 @@ moznosti' = [ [a,b,c,7-b,7-c,7-a]    | a<-[1..6], b<-[1..6]\\[a,7-a], c<-[1..6]\
 
 -- kocky stoja na sebe, tak ze bocne steny su rozne, v nasom modeli bocne steny maju indexy 1,2,3,4
 kockySuOK :: [Kocka] -> Bool
-kockySuOK ks = and [allDifferent (map (!!i) ks) | i <- [1..4]]
+kockySuOK ks = and [allDifferent [k!!i | k <- ks  ] | i <- [1..4]]
+ 
 
 naSebeBF :: Int -> [Kocka] -> [[Kocka]]
---naSebeBF k polohy = filter kockySuOK (vso polohy k)
---naSebeBF k polohy = filter kockySuOK (kso polohy k)
-naSebeBF k polohy = filter kockySuOK (kbo polohy k)
+naSebeBF k polohy = kbo polohy k 
 
 -- toto su vlastne tri vnorene for cykly, na konci ktorych sa otestuje korektnost farieb postavenych kociek
 -- ak length polohy == 24, tak test kockyOk sa vykona 24*24*24 krat, nie je to ziaden naznak backracku, len brutte force
 triNaSebe :: [Kocka] -> [[Kocka]]
-triNaSebe polohy = [ [k1,k2,k3] | k1 <- polohy, k2 <- polohy, k3 <- polohy, kockySuOK [k1,k2,k3] ]
+triNaSebe polohy = undefined 
 {-
 Main> :set +s
 *Main> length $ triNaSebe allRightHanded
+*Main> length $ naSebeBF 3 allRightHanded
 4512
 (0.06 secs, 38,842,392 bytes)
 -}
 
 -- 24^4 == 331776
 styriNaSebe :: [Kocka] -> [[Kocka]]
-styriNaSebe polohy = [ [k1,k2,k3,k4] | k1 <- polohy, k2 <- polohy, k3 <- polohy, k4 <- polohy, kockySuOK [k1,k2,k3,k4] ]
+styriNaSebe polohy = undefined 
 {-
 *Main> length $ styriNaSebe allRightHanded
+*Main> length $ naSebeBF 4 allRightHanded
 28512
 (1.14 secs, 728,194,224 bytes)
 -}
 
 -- 24^5 == 7962624
 patNaSebe :: [Kocka] -> [[Kocka]]
-patNaSebe polohy = [ [k1,k2,k3,k4,k5] | k1 <- polohy, k2 <- polohy, k3 <- polohy, k4 <- polohy, k5 <- polohy, kockySuOK [k1,k2,k3,k4,k5] ]
+patNaSebe polohy = undefined 
 {-
 *Main> length $ patNaSebe allRightHanded
+*Main> length $ naSebeBF 5 allRightHanded
 80640
 (29.33 secs, 15,495,767,864 bytes)
 -}
 
 -- 24^6 == 191102976 .. uz fakt dost... skoro 200M
 sestNaSebe :: [Kocka] -> [[Kocka]]
-sestNaSebe polohy = [ [k1,k2,k3,k4,k5,k6] | k1 <- polohy, k2 <- polohy, k3 <- polohy, k4 <- polohy, k5 <- polohy, k6 <- polohy, kockySuOK [k1,k2,k3,k4,k5,k6] ]
+sestNaSebe polohy = undefined 
 {-
 *Main> length $ sestNaSebe allRightHanded
+*Main> length $ naSebeBF 5 allRightHanded
 57600
 (639.81 secs, 376,944,910,136 bytes)
 -}
 
 sedemNaSebe :: [Kocka] -> [[Kocka]]
-sedemNaSebe polohy = [ [k1,k2,k3,k4,k5,k6,k7] | k1 <- polohy, k2 <- polohy, k3 <- polohy, k4 <- polohy, k5 <- polohy, k6 <- polohy, k7 <- polohy, kockySuOK [k1,k2,k3,k4,k5,k6,k7] ]
+sedemNaSebe polohy = undefined 
 {-
 *Main> length $ sedemNaSebe allRightHanded
 0
@@ -127,7 +130,8 @@ sedemNaSebe polohy = [ [k1,k2,k3,k4,k5,k6,k7] | k1 <- polohy, k2 <- polohy, k3 <
 ---------------------------------------------------- skusme rozmyslat, ved sme poculi o backtrackingu...
 naSebe :: Int -> [Kocka] -> [[Kocka]]
 naSebe 0 _ = [[]]
-naSebe  n polohy = [ (k:m) | m <- naSebe  (n-1) polohy, k <- polohy, kockySuOK (k:m) ]
+-- pomale naSebe  k polohy = [ (p:m)| p <- polohy, m <- naSebe(k-1) polohy,  kockySuOK(p:m)]
+naSebe  k polohy = [ (p:m)| m <- naSebe(k-1) polohy,  p <- polohy, kockySuOK(p:m)]
 
 {-
 *Main> :set +s
@@ -233,4 +237,6 @@ farbenie xs fb = [ fb!!(i-1) | i <-xs]
      55
      55
      -}
+
+
 
