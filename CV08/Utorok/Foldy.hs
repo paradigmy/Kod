@@ -34,7 +34,13 @@ myFilter p = undefined
 
 -- toto bolo na prednaske...
 priemer :: [Float] -> Float
-priemer  xs = undefined
+priemer  xs = uncurry (/) $ foldr (\x -> \(sum, count) -> (sum + x, count + 1))                                 (0, 0) xs
+priemer' :: [Float] -> Float
+priemer'  xs = uncurry (/) $ foldl (\(sum, count) -> \x -> (sum + x, count + 1))                                  (0, 0) xs
+
+jerastuca' :: [Int] -> Bool
+jerastuca' (x:xs) = snd $ foldl (\(pred, b) -> \x -> (x, (x > pred) && b))  (x, True) xs
+
 
 {-
 fold na matici
