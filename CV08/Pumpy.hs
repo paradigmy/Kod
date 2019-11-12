@@ -1,7 +1,5 @@
 module Auto where
 
--- trochu modifikovane riesenie - vrati jednu pumpu, nie vsetky...
-
 whereToStart :: [Float] -> [Float] -> [Int]
 whereToStart dist lit = [ i | i<-[0..length zoz-1], zoz!!i == minimum zoz]
             where

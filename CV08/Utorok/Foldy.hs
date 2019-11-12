@@ -51,3 +51,13 @@ maxminRozdiel xs = undefined
 jeRastuca :: [Int] -> Bool
 jeRastuca xs = undefined
 
+
+-- Premia Autologia1 alias PUMPY
+whereToStart :: [Float] -> [Float] -> [Int]
+whereToStart dist lit = undefined
+
+{-
+whereToStart [9,1] [1,9] = [1]
+whereToStart [1,2,3,4] [2,2,2,4] = [0,3]
+whereToStart [1,2,5,3,2,3,4,5,6] [1,1,2,2,3,3,4,4,11] = [4,8] -- vid priložený obrá
+-}
