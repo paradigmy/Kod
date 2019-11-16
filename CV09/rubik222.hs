@@ -101,6 +101,7 @@ order = undefined               -- [1 bod]
 order "R"  == 1
 order "R U R’ U’" == 6
 order "R U R’ U R U2 R’" == 6
+-}
 
 -- 3
 maxOrder :: String
