@@ -1,7 +1,6 @@
 module Rubik222 where
 
 import Data.List
-import Data.Set
 import Data.Bits
 import Data.Char
 
@@ -13,9 +12,9 @@ type RCube = ((Int,Int,Int,Int),(Int,Int,Int,Int),(Int,Int,Int,Int),(Int,Int,Int
                  +-------+
                  |b00 b01|
                  |b10 b11|
-         +-------+-------+-------+-------+
-         |l00 l01|t00 t01|r00 r01|d00 d01|
-         |l10 l11|t10 t11|r10 r11|d10 d11|
+         +-------+-------+-------+-------+ 
+         |l00 l01|t00 t01|r00 r01|d01 d00|      <- kodovanie spodnej steny D je opacne
+         |l10 l11|t10 t11|r10 r11|d11 d10|      <- kodovanie spodnej steny D je opacne
          +-------+-------+-------+-------+
                  |f00 f01|
                  |f10 f11|
@@ -93,19 +92,32 @@ allMoves = [(r,"r"), (r2,"r2"), (r',"r'"), (b,"b"), (b2,"b2"),(b',"b'"), (d,"d")
 perform :: String -> RCube -> RCube
 perform = undefined
 
+{- trivial benchmarks
+*Rubik222> perform "R" initC
+((1,5,1,5),(2,6,2,6),(3,3,3,3),(4,4,4,4),(5,2,5,2),(6,1,6,1))
+*Rubik222> perform "R U R' U'" initC
+((1,4,4,1),(2,6,2,2),(3,3,3,1),(2,4,5,4),(5,3,5,5),(6,1,6,6))
+*Rubik222> perform "R U R' U R U2 R'" initC
+((1,3,4,6),(2,2,2,2),(3,4,3,6),(5,4,1,4),(1,3,5,5),(6,6,5,1))
+-}
+
 -- 2
 order :: String -> Int
 order = undefined               -- [1 bod]
 
-{-
-order "R"  == 1
-order "R U R’ U’" == 6
-order "R U R’ U R U2 R’" == 6
+{- trivial benchmarks
+*Rubik222> order "R"
+4
+*Rubik222> order "R U R' U'"
+6
+*Rubik222> order "R U R' U R U2 R'"
+6
 -}
 
 -- 3
 maxOrder :: String
 maxOrder = undefined            -- [ 1-4 body podla order najdenej permutacie ]
+
 
 -- 4
 solve :: RCube -> String
@@ -118,3 +130,103 @@ optimal = undefined             -- [ 5 bodov ]
 -- 6
 worst :: RCube
 worst = undefined               -- [ 5 bodov ]
+{----------------------------------------------------------------------------------
+Nizsie mate niekolko prikladov RK a VZDY vidite
+- permutaciu, ktora kocku vyriesi
+- pouziva len tri steny, B (otocenia B,B',B2), R (otocenia R,R',R2) a D (otocenia D, D', D2).
+  Dovod som spominal na cviceni, ak si jeden rok kocky zafixujete, napriklad lavy-horny-predny, a teda nedovolite otocenia F, U, L, tak nemusite testovat vsety symetrie kocky, 
+  lebo jeden roh mate furt na rovnakom mieste...
+- vsetky uvedene permutacie nizsie su najkratsie mozne, teda optimal.
+-}                
+                
+{-             top side          down side         left side         right side        front side        back side
+               t01,t01,t10,t11   d01,d01,d10,d11   l01,l01,l10,l11   r01,r01,r10,r11   f01,f01,f10,f11   b01,b01,b10,b11 -}
+rk1 :: RCube
+rk1 =        ( (1,5,1,5),        (2,6,2,6),        (3,3,3,3),        (4,4,4,4),        (5,2,5,2),       (6,1,6,1))
+{-
+       6, 1 
+       6, 1 
+ 3, 3  1, 5  4, 4  6, 2
+ 3, 3  1, 5  4, 4  6, 2
+       5, 2 
+       5, 2 
+*Rubik222> perform "R'" rk1
+((1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6))
+---------------------------------------------------------------------------------------- -}
+
+{-             top side          down side         left side         right side        front side        back side
+               t01,t01,t10,t11   d01,d01,d10,d11   l01,l01,l10,l11   r01,r01,r10,r11   f01,f01,f10,f11   b01,b01,b10,b11 -}
+rk2 :: RCube
+rk2 =        ( (1,5,1,5),        (6,6,2,2),        (1,3,6,3),        (4,2,4,5),        (5,2,3,3),        (4,4,6,1))
+{-
+       4, 4 
+       6, 1 
+ 1, 3  1, 5  4, 2  6, 6
+ 6, 3  1, 5  4, 5  2, 2
+       5, 2 
+       3, 3 
+
+*Rubik222> perform "R' D'" rk2
+((1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6))
+---------------------------------------------------------------------------------------- -}
+
+{-             top side          down side         left side         right side        front side        back side
+               t01,t01,t10,t11   d01,d01,d10,d11   l01,l01,l10,l11   r01,r01,r10,r11   f01,f01,f10,f11   b01,b01,b10,b11 -}
+rk3 :: RCube 
+rk3 =        ( (1,5,1,3),         (6,1,2,4),       (1,3,6,3),        (4,4,5,2),        (5,2,3,6),        (4,5,6,5))
+{-
+       4, 5 
+       6, 5 
+ 1, 3  1, 2  4, 4  1, 6
+ 6, 3  1, 3  5, 2  4, 2
+       5, 2 
+       3, 6 
+*Rubik222> perform "R' D' R'" rk3
+((1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6))
+---------------------------------------------------------------------------------------- -}
+
+{-             top side          down side         left side         right side        front side        back side
+               t01,t01,t10,t11   d01,d01,d10,d11   l01,l01,l10,l11   r01,r01,r10,r11   f01,f01,f10,f11   b01,b01,b10,b11 -}
+rk4 :: RCube
+rk4 =        ( (1,2,1,6),        (1,5,6,2),        (5,3,4,3),        (4,5,3,6),        (5,2,1,4),        (4,2,6,3))
+{-
+       4, 2 
+       6, 3 
+ 5, 3  1, 2  5, 4  5, 1
+ 4, 3  1, 6  3, 6  2, 6
+       5, 2 
+       1, 4 
+*Rubik222> perform "R' D' R' D' R'" rk4
+((1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6))
+---------------------------------------------------------------------------------------- -}
+
+{-             top side          down side         left side         right side        front side        back side
+               t01,t01,t10,t11   d01,d01,d10,d11   l01,l01,l10,l11   r01,r01,r10,r11   f01,f01,f10,f11   b01,b01,b10,b11 -}
+rk5  :: RCube
+rk5  =        ( (5,4,1,6),       (3,1,2,5),        (1,2,6,3),       (5,6,2,4),         (5,4,3,1),        (6,4,3,2))
+{-
+       6, 4 
+       3, 2 
+ 1, 2  5, 4  5, 6  1, 3
+ 6, 3  1, 6  2, 4  5, 2
+       5, 4 
+       3, 1 
+
+*Rubik222> perform "R' D' R2 B'" rk5
+((1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6))
+----------------------------------------------------------------------------------------- -}
+
+{-             top side          down side         left side         right side        front side        back side
+               t01,t01,t10,t11   d01,d01,d10,d11   l01,l01,l10,l11   r01,r01,r10,r11   f01,f01,f10,f11   b01,b01,b10,b11 -}
+rk6  :: RCube
+rk6  =        ( (5,4,1,6),       (5,2,3,6),        (4,2,6,3),        (5,4,3,1),        (5,2,1,4),        (1,6,3,2))
+{-
+       1, 6 
+       3, 2 
+ 4, 2  5, 4  5, 4  2, 5
+ 6, 3  1, 6  3, 1  6, 3
+       5, 2 
+       1, 4 
+*Rubik222> perform "R' D' R' D' R' B' D'" rk6
+((1,1,1,1),(2,2,2,2),(3,3,3,3),(4,4,4,4),(5,5,5,5),(6,6,6,6))
+----------------------------------------------------------------------------------------- -}
