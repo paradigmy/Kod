@@ -8,10 +8,10 @@ nahrdelniky n koralky = [ kor:nah | nah <- nahrdelniky (n-1) koralky, kor<-koral
 
 rovnake :: [String] -> [String] -> Bool
 rovnake n1 n2 = (n1 == n2) || (n1 == reverse n2) ||
-	or [ ((drop i n1) ++ (take i n1)) == n2 | i<-[1..length n1] ] ||
-	or [ ((drop i n1) ++ (take i n1)) == reverse n2 | i<-[1..length n1] ] 
-	
-	
+                or [ ((drop i n1) ++ (take i n1)) == n2 | i<-[1..length n1] ] ||
+                or [ ((drop i n1) ++ (take i n1)) == reverse n2 | i<-[1..length n1] ] 
+    
+    
 lenRozne :: [[String]] -> [[String]]
 lenRozne xss = nubBy rovnake xss
 
@@ -26,11 +26,11 @@ Analogicky definujte nekoneènı zoznam dveNaNtuPlusJedna obsahujúci 2^n+1, t.j. [
 Sèítajte porade oba zoznamy, prvok po prvku, vıslednı nekoneènı zoznam musí by [4,8,16,32,...].
 -}
 
-dveNaNtu			= map (2^) [1..]
-dveNaNtuMinusJedna	= map (+(-1)) dveNaNtu
+dveNaNtu            = map (2^) [1..]
+dveNaNtuMinusJedna    = map (+(-1)) dveNaNtu
 dveNaNtuMinusJedna' = 1:[2*x+1 | x <- dveNaNtuMinusJedna']
 
-dveNaNtuPlusJedna 	= map (+2) dveNaNtuMinusJedna
+dveNaNtuPlusJedna     = map (+2) dveNaNtuMinusJedna
 
 dveNaNtuMinusPlusJedna = map2 (+) dveNaNtuMinusJedna dveNaNtuPlusJedna
 
@@ -53,14 +53,14 @@ fib8 = 1 : 1 : (map2 (+) fib8 (tail fib8))
 foo 0 x = 0
 foo n x = 1+x
 
-goo 0 _	= 0
+goo 0 _    = 0
 goo n x = length x
 
 fibonacci :: Integer -> Integer -> [Integer]
 --fibonacci 0 _ = []
 fibonacci a b = a : (fibonacci b (a+b))
 
-						
+                        
 ones                    = 1 : ones
 
 numsFrom n         = n : numsFrom (n+1)
@@ -75,15 +75,15 @@ mocniny5 = 1:[ 5*x | x <- mocniny5 ]
 mp = tail (merge mocniny2 mocniny3)
 mp235 = tail (tail (merge mocniny2 (merge mocniny3 mocniny5)))
 
-merge [] x 	= x  
-merge x [] 	= x
+merge [] x     = x  
+merge x []     = x
 merge l1@(a:b) l2@(c:d) = if a < c then a:(merge b l2)
-				  	      else c:(merge l1 d)
+                            else c:(merge l1 d)
 
 
-fib             	  = 1 : 1 : [ a+b | (a,b) <- zip fib (tail fib) ]
+fib                   = 1 : 1 : [ a+b | (a,b) <- zip fib (tail fib) ]
 
-fibo@(1:tfib)    	  = 1 : 1 : [ a+b | (a,b) <- zip fibo tfib ]
+fibo@(1:tfib)          = 1 : 1 : [ a+b | (a,b) <- zip fibo tfib ]
 
 ---------------------------------------------------
 
@@ -117,36 +117,36 @@ Main> take 20 dvojice''
 
 -------------------------
 
-primes 		= sieve [ 2.. ] 	where
-			sieve (p:x) = p : sieve [ n | n<-x, n `mod` p > 0 ]
+primes         = sieve [ 2.. ]     where
+            sieve (p:x) = p : sieve [ n | n<-x, n `mod` p > 0 ]
 
 
-primes' 		:: [Int]
-primes' 		= map head (iterate sieve [2 ..])
-sieve 		:: [Int] -> [Int]
-sieve (p:ps) 	= [x | x <- ps, (x `mod` p) /= 0]
---iterate f x 	= x : iterate f (f x) 
+primes'         :: [Int]
+primes'         = map head (iterate sieve [2 ..])
+sieve         :: [Int] -> [Int]
+sieve (p:ps)     = [x | x <- ps, (x `mod` p) /= 0]
+--iterate f x     = x : iterate f (f x) 
 
 hamming     :: [Integer]
-hamming      = 1 : (	map (2*) hamming ||
-		map (3*) hamming || 
-		map (5*) hamming)
+hamming      = 1 : (    map (2*) hamming ||
+        map (3*) hamming || 
+        map (5*) hamming)
                where (x:xs) || (y:ys)  
-				| x==y  =  x : (xs || ys)
-                                       	| x<y   =  x : (xs || (y:ys))
-                                       	| y<x   =  y : (ys || (x:xs))
+                                           | x==y  =  x : (xs || ys)
+                                           | x<y   =  x : (xs || (y:ys))
+                                           | y<x   =  y : (ys || (x:xs))
 
 hamming2357     :: [Integer]
-hamming2357      = 1 : (	map (2*) hamming2357 ||
-		map (3*) hamming2357 || 
-		map (5*) hamming2357 ||
-		map (7*) hamming2357 )
+hamming2357      = 1 : (    map (2*) hamming2357 ||
+        map (3*) hamming2357 || 
+        map (5*) hamming2357 ||
+        map (7*) hamming2357 )
                where (x:xs) || (y:ys)  
-			| x==y  =  x : (xs || ys)
-                                       	| x<y   =  x : (xs || (y:ys))
-                                       	| y<x   =  y : (ys || (x:xs))
-                                       	
-                                       	
+                                           | x==y  =  x : (xs || ys)
+                                           | x<y   =  x : (xs || (y:ys))
+                                           | y<x   =  y : (ys || (x:xs))
+                                           
+                                           
 ----------------------------------------------
 kolko2 0=0
 kolko2 1=1
@@ -168,9 +168,9 @@ findh x y| kolko2357 y< x = findh x (y*10)
 findb x min max | abs(min-max)<2 = (min,max)
                 |   kd<x = findb x d max
                 |   kd>x = findb x min d
-		|   kd==x = findb x min d 
-		 where d=(min+max)`div` 2
-                       kd=kolko2357 d
+                |   kd==x = findb x min d 
+         where d  = (min+max)`div` 2
+               kd = kolko2357 d
 
 --1000. prvok   385875
 --10000. prvok  63221760000
@@ -184,8 +184,8 @@ findb x min max | abs(min-max)<2 = (min,max)
 --[(123093144973968749999,99999),(123093144973968750000,100000)]
 --
 
-----------------------------------------------                                       	
-                                       	
+----------------------------------------------                                           
+                                           
 pascal :: [[Int]]
 pascal = [1] : [[x+y | (x,y) <- zip ([0]++r) (r++[0])] | r <- pascal]
 

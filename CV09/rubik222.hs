@@ -89,20 +89,31 @@ allMoves = [(r,"r"), (r2,"r2"), (r',"r'"), (b,"b"), (b2,"b2"),(b',"b'"), (d,"d")
 
 ----------------------------------------- tu niekte zacina vas kod
 
+-- 1
 perform :: String -> RCube -> RCube
 perform = undefined
 
-order :: (RCube -> RCube) -> Int
+-- 2
+order :: String -> Int
 order = undefined               -- [1 bod]
 
-maxOrder :: RCube-> RCube
+{-
+order "R"  == 1
+order "R U R’ U’" == 6
+order "R U R’ U R U2 R’" == 6
+
+-- 3
+maxOrder :: String
 maxOrder = undefined            -- [ 1-4 body podla order najdenej permutacie ]
 
+-- 4
 solve :: RCube -> String
 solve = undefined               -- [ 3 body ] 
 
+-- 5
 optimal :: RCube-> String
 optimal = undefined             -- [ 5 bodov ]
 
+-- 6
 worst :: RCube
 worst = undefined               -- [ 5 bodov ]
