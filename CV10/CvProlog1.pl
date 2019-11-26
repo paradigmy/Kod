@@ -40,6 +40,8 @@ cifSum(N, S) :- N > 0, NDiv10 is N//10, NMod10 is N mod 10, cifSum(NDiv10,SDiv10
 %- v desiatkovej sústave. Vedúce nuly samozrejme zaniknú. 
 %- Príklad, otoc(123,321), otoc(120,21),otoc(0,0)
 
+
+
 otoc(X, Y):-otoc(X,0,Y).
 otoc(0, A, A).
 otoc(X, A,Y):- X>0, Xd10 is X//10, AA is 10*A+(X mod 10), otoc(Xd10,AA,Y).
@@ -55,6 +57,10 @@ kontrapriklad(X):-between(1,1000000,X), not(lema(X)).
 %false.
 %  ... kontrapriklad sa do miliona nenasiel, povazujte za dokazane :)
 
+%------------------------
+% Definujte vasu verziu between, nazvyte ju medzi
+medzi(From, To, From):-From=<To.
+medzi(From, To, X):-From<To,From1 is From+1,medzi(From1,To,X).
 %----------------------------------------
 
 %- neprázdny zoznam

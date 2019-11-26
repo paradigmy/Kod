@@ -5,6 +5,9 @@
 :- use_module(library(lists)).   % toto je import library(lists)
 
 %-------------------------------------------------- ciselne funckie
+len([], 0).
+len([_| Xs], N) :- len(Xs, N1), N is N1 + 1.
+
 
 %- Definujte predikat cifSum(X,Y), ktory plati, ak Y je ciferny sucet cisla X, X >= 0
 %cifSum(X, Y):-fail.
@@ -16,6 +19,31 @@
 %?- cifSum(1234567,X).
 %X = 28 ;
 %false. 
+
+cifSum(0, 0).
+cifSum(X, Y) :- X > 0, X1 is (X // 10), cifSum(X1, Y1), Y is Y1 + (X mod 10).
+
+otoc(X,R) :- otoc(X,0,R).
+
+otoc(0, Acc, Acc). 
+otoc(X, Acc, Res) :- X > 0, X1 is X//10, Acc1 is ((Acc * 10) + (X mod 10)), otoc(X1, Acc1,Res).
+
+lema(X) :- otoc(X,N), 0 is ((X - N) mod 9).
+
+medzi(From,To,From):-From =< To.
+medzi(From, To, X) :- From < To, From1 is From + 1 ,medzi(From1, To, X). 
+
+acka([]).
+acka([a|Xs]) :- acka(Xs).
+
+bcka([]).
+bcka([b|Xs]) :- bcka(Xs).
+
+aNbN(Xs) :- append(As,Bs,Xs),acka(As), bcka(Bs), length(As,N), length(Bs,N).
+
+aNbM([]).
+aNbM([b|Xs]) :- bcka(Xs).
+aNbM([a|Xs]) :- aNbM(Xs).
 
 %-------------------------------------------------- cisla, div, mod
 
