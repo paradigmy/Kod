@@ -136,6 +136,9 @@ true.
 %false.
 
 %-----------------------------
+% Definute jazyk a^prime, pocet acok je prvocislo
+
+%-----------------------------
 
 % Definujte predikat, ktory plati, ak zoznam je akekolvek slovo nad abecedou {a,b} dlzky N.
 %slovoAB(N, Ws):-fail.

@@ -4,6 +4,22 @@
 % https://www.swi-prolog.org/pldoc/man?section=lists
 :- use_module(library(lists)).   % toto je import library(lists)
 
+len([],0).
+len([_|Xs],N+1):-len(Xs,N).
+
+/*
+?- len([1,2,3],N),N = 3.
+false.
+?- len([1,2,3],N),N == 3.
+false.
+?- len([1,2,3],N),N =:= 3.
+N = 0+1+1+1.
+?- len([1,2,3],N),N > 2, N < 4.
+N = 0+1+1+1.
+?- len([1,2,3],N),3 is N.
+N = 0+1+1+1.
+*/
+
 %-------------------------------------------------- ciselne funckie
 
 %- Definujte predikat cifSum(X,Y), ktory plati, ak Y je ciferny sucet cisla X, X >= 0
@@ -172,6 +188,42 @@ aNbN([a|Xs]):-reverse(Xs,[b|XrR]),reverse(XrR,Ys),aNbN(Ys).
 %false.
 %?- aNbN([a,a,b]).
 %false.
+
+%-----------------------------
+% Definute jazyk a^prime, pocet acok je prvocislo
+
+aPrime(Xs):-length(Xs,L),isPrime(L).
+
+isPrime(N):-not(isNotPrime(N)).
+isNotPrime(N):-N>2,N2 is N//2,between(2,N2,D),0 is N mod D.
+/*
+?- between(2,100,N),isPrime(N),write(N),nl,fail.
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+31
+37
+41
+43
+47
+53
+59
+61
+67
+71
+73
+79
+83
+89
+97
+*/
 
 %-----------------------------
 
