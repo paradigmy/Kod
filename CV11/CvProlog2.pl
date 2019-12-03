@@ -1,19 +1,227 @@
+%---- maly navrat k minulej rozcvicke
+%- boli taketo riesenia
+pocetA([],0).
+pocetA([a|Xs],N) :- N1 is N-1, pocetA(Xs,N1).
+
+%% aj taketo boli, ale tam uz je logicka chyba, zamyslite sa...
+%% pocetA([a|Xs],N) :- N1 is N+1, pocetA(Xs,N1).
+
+% jediny problem, ze volanie skonci takto
+%?- pocetA([a,a,a],X).
+% ERROR: Arguments are not sufficiently instantiated
+
+/*
+dovod: napriek tomu, ze hovorite, ze existuje X, tak on si prirodzene cisla nevie vyenumerovat
+ 
+takty khack ide, ale tak sa neprogramuje !!!!!!!!!!!
+
+
+?- between(0,1000000,X),pocetA([a,a,a],X).
+X = 3 ;
+false.  <- kym vam vypise tento false, tak naozaj vyskusa milion moznosti
+
+*/
+
+% takto to malo/mohlo byt - toto je REKUZIA
+
+count([], 0).
+count([a|Xs], N):-count(Xs,N1), N is N1+1.
+ 
+/*
+?- count([a,a,a],X).
+X = 3.
+*/ 
+
+% takto to malo/mohlo byt - toto je ITERACIA, ALIAS CYKLUS
+
+loop([], Acc, Acc).
+%zaciatocnik napise: 
+%loop([], Acc, Res) :- Res = Acc.
+loop([a|Xs], Acc, Res):-Acc1 is Acc+1, loop(Xs,Acc1,Res).
+% a chyba hlavne volanie, to nezabudnite, lebo neviem, co je inicialna hodnota Acc
+loop(Xs, Res) :- loop(Xs,0,Res).
+
+/*
+?- loop([a,a,a],X).
+X = 3.
+*/
+
+% geralizacia, countX rata pismenka X
+countX(_,[], 0).
+%countX(X,[X|Xs], N):-countX(X,Xs,N1), N is N1+1.
+%countX(X,[Y|Xs], N):-not(X=Y),countX(X,Xs,N).
+% takto sa pise if-then-else
+countX(X,[Y|Xs], N):-X==Y->(countX(X,Xs,N1), N is N1+1);countX(X,Xs,N).
+
+/*
+?- countX(a,[a,b,b,a],X).
+X = 2 ;
+false.
+*/
+
+% potom zle riesenia rozcviky mohli vyzerat
+
+aNbNPomiesane(Xs) :- countX(a,Xs,Pa), countX(b,Xs,Pb), Pa = Pb.
+/* :( :(
+?- aNbNPomiesane([a,b,b,a]).
+true ;
+*/
+
+matejM(Xs):-pomaNbM(Xs,0,0), aNbM(Xs).
+pomaNbM([a|Xs],P1,P2):-P3 is P1+1, pomaNbM(Xs,P3,P2).
+pomaNbM([b|Xs],P1,P2):-P3 is P2+1, pomaNbM(Xs,P1,P3).
+pomaNbM([],P1,P2):-P1=:=P2.
+
+% Definujte predikat, ktory plati, ak zoznam je tvaru a^n b^m
+aNbM([a|Xs]):-aNbM(Xs).
+aNbM([b|Xs]):-bM(Xs).
+bM([b|Xs]):-bM(Xs).
+bM([]).
+
+
+% spravne riesenie
+aNbNPocitadlove(Xs):-pocitajA(Xs,0,0).
+pocitajA([a|Xs],A,B):-A1 is A+1,pocitajA(Xs,A1,B).
+pocitajA([b|Xs],A,B):-B1 is B+1,pocitajB(Xs,A,B1).
+pocitajB([b|Xs],A,B):-B1 is B+1,pocitajB(Xs,A,B1).
+pocitajB([],A,A).
+%pocitajB([],A,B):-A=B.
+
+/*
+?- aNbNPocitadlove([a,a,b,b]).
+true.
+
+?- aNbNPocitadlove([a,b,b,a]).
+false.
+*/
+
+% Definujte predikat, ktory plati, ak zoznam je tvaru a^n b^n
+aNbN([]).
+aNbN([a|Xs]):-reverse(Xs,[b|XrR]),reverse(XrR,Ys),aNbN(Ys).
+
+/*
+|    aNbN([a,a,b,b]).
+true.
+
+?- aNbN([a,b,b,a]).
+false.
+*/
+
+% posledne riesenie je pecka do hlavy, pochopenim zazijete Paradigm shift...
+
+aNbNPecka(Xs):-append(Acka,Bcka,Xs),length(Acka,N),length(Bcka,N),xN(a,Acka),xN(b,Bcka).
+
+% x^N
+xN(X,[X|Xs]):-xN(X,Xs).
+xN(_,[]).
+
+/*
+?- aNbNPecka([a,a,b,b]).
+true ;
+
+?- aNbNPecka([a,b,b,a]).
+false.
+
+?- aNbNPecka([a,b,b]).
+false.
+*/
+
+
+%-------------------------------------- HLADANIE CEST V CYKLICKOM GRAFE
+
+% - bude na prednaske
+% cesta(X,Y,[],Path) plati, ak v grafe urcenom relaciou next existuje cesta z X do Y a Path je tato cesta od konca, urob reverz a mas cestu
+
+cesta(X,X,P,P).
+cesta(X,Y,Visited,P):- 
+    next(X,Z), 
+    not(member(Z,Visited)), 
+    cesta(Z,Y,[Z|Visited],P).
+
+/*------------------------------------------------------------------------------------------------
+na siedmych kamenoch sedi 6 ziab, 3 otocene vpravo, 3 vlavo, stredny kamen volny.
+Zaby sa nikdy neotocia do protismeru, a zaba moze skocit v svojom smere
+na susedny volny kamen, alebo preskocit jednu (!) zabu
+
+prave zabky chcu ist na vlavo a lave napravo, ako ?
+
+idea
+konfiguracia ziab je kodovana ako 7-prvkovy zoznam
+[z1,z2,z3,z4,z5,z6,z7], kde zi = -1, 0, 1,
+0 je medzera
+*/
+init([-1,-1,-1,0,1,1,1]).
+final(Xs):-init(Ys),reverse(Ys,Xs).
+
+next(C1, C2) :- append(X,[0,1|Y],C1), append(X,[1,0|Y],C2).
+next(C1, C2) :- append(X,[-1,0|Y],C1), append(X,[0,-1|Y],C2).
+
+next(C1, C2) :- append(X,[0,-1,1|Y],C1), append(X,[1,-1,0|Y],C2).
+next(C1, C2) :- append(X,[-1,1,0|Y],C1), append(X,[0,1,-1|Y],C2).
+
+
+zabky :- init(I), final(F), cesta(I,F,[],P), writeZabky(P).
+
+writeZabky([]):-nl.
+writeZabky([Z|Zs]):-write(Z), nl, writeZabky(Zs).
+
+/*
+riesenie:
+
+?- zabky.
+[1, 1, 1, 0, -1, -1, -1]
+[1, 1, 0, 1, -1, -1, -1]
+[1, 1, -1, 1, 0, -1, -1]
+[1, 1, -1, 1, -1, 0, -1]
+[1, 1, -1, 0, -1, 1, -1]
+[1, 0, -1, 1, -1, 1, -1]
+[0, 1, -1, 1, -1, 1, -1]
+[-1, 1, 0, 1, -1, 1, -1]
+[-1, 1, -1, 1, 0, 1, -1]
+[-1, 1, -1, 1, -1, 1, 0]
+[-1, 1, -1, 1, -1, 0, 1]
+[-1, 1, -1, 0, -1, 1, 1]
+[-1, 0, -1, 1, -1, 1, 1]
+[-1, -1, 0, 1, -1, 1, 1]
+[-1, -1, -1, 1, 0, 1, 1]
+*/
+
+%-----------------------------------------------------------------------------------------
+% co tak 4+4 zabky
+
+init8([-1-1,-1,-1,0,1,1,1,1]).
+final8(Xs):-init8(Ys),reverse(Ys,Xs).
+zabky8:- init8(I), final8(F), cesta(I,F,[],P), writeZabky(P).
+
+%-----------------------------------------------------------------------------------------
+
+% existuje predikat is_list(X) ktory plati, ak X je zoznam, teda [] alebo [H|T]
+% atom je predikat, ktory plati pre konstanty, a, b, jozo, ...
+% atomic je predikat, ktory plati pre atom alebo integer
+
 % z prednasky
 % stromova rekuzia a append
 flat([X|Xs],Ys) :- flat(X,Ys1), flat(Xs,Ys2), append(Ys1, Ys2, Ys).
-flat(X, [X]) :- atomic(X), X\=[].
+%flat(X, [X]) :- atomic(X), X\=[].
+flat(X, [X]) :- 
 flat([],[]).
+
+%?- flat([[a],b,[],[[[c],d,[e]]]],F).
+%F = [a, b, c, d, e] ;
 
 % stromova rekuzia bez appendu 
 flat1(X,Y) :- flat1(X, [], Y).
 flat1([X|Xs], Ys1, Ys) :- flat1(X, Ys1, Ys2), flat1(Xs, Ys2, Ys).
-flat1(X,Ys,[X|Ys]) :- atomic(X), X\=[].
+%flat1(X,Ys,[X|Ys]) :- atomic(X), X\=[].
+flat1(X,Ys,[X|Ys]) :- not(is_list(X)).
 flat1([], Ys, Ys).
 
 % skuste bez stromovej rekuzie a appendu
 flat2([[Y|Ys]|Xs], List) :- flat2([Y|[Ys|Xs]], List).  % trik
-flat2([X|Xs], [X|List]) :- atomic(X), X\=[], flat(Xs,List).
+%flat2([X|Xs], [X|List]) :- atomic(X), X\=[], flat2(Xs,List).
+flat2([X|Xs], [X|List]) :- not(is_list(X)), flat2(Xs,List).
 flat2([[]|Xs], Ys) :- flat2(Xs, Ys).
+flat2([], []).
 
 /*
 ?- flat2([[],a,[[b]],[c]],Ls).
@@ -21,6 +229,9 @@ Ls = [a, b, c] ;
 
 ?- flat2([[],a,[[b,c],d],[e,[f]]],Ls).
 Ls = [a, b, c, d, e, f] ;
+
+?- flat2([[a],b,[],[[[c],d,[e]]]],Ls).
+Ls = [a, b, c, d, e] ;
 */
 %------------------------------------------------- HLBKOVY REVERZ ZOZNAMU
 
@@ -28,7 +239,7 @@ deepReverse([X|Xs],Z) :-deepReverse(X,Y), deepReverse(Xs,Ys), append(Ys,[Y],Z).
 deepReverse([],[]).
 deepReverse(X,X):-atomic(X), X\=[].
 
-%31 ?- deepReverse([a,[[b,d],[c,e]]],X).
+% ?- deepReverse([a,[[b,d],[c,e]]],X).
 %X = [[[e, c], [d, b]], a] ;
 
 %--- bez appendu s akumulatorom
