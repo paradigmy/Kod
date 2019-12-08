@@ -59,7 +59,7 @@ X = 2 ;
 false.
 */
 
-% potom zle riesenia rozcviky mohli vyzerat
+% potom zle riesenia rozcvicky mohli vyzerat
 
 aNbNPomiesane(Xs) :- countX(a,Xs,Pa), countX(b,Xs,Pb), Pa = Pb.
 /* :( :(
