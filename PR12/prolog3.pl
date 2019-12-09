@@ -207,6 +207,57 @@ cifra(8).
 cifra(9).
 
 
+%----------------
+% VINGT + CINQ + CINQ = TRENTE
+
+cifra(X):-between(1,9,X).
+cifra0(X):-between(0,9,X).
+
+%- vsetky rozne
+alldiff([]).
+alldiff([X|Xs]):- not(member(X,Xs)),alldiff(Xs).
+
+%- scitovanie po stlpcoch
+sumCol(Prenos,Cifra1,Cifra2,Cifra3,Cifra,NovyPrenos):-
+				NovyPrenos is (Cifra1+Cifra2+Cifra3+Prenos)//10,
+				Cifra is (Cifra1+Cifra2+Cifra3+Prenos) mod 10.
+
+
+
+%---------------------------------------------------------- VINGT+CINQ+CINQ=TRENTE
+puzzle([V,I,N,G,T,C,Q,R,E]):-
+  cifra(T),cifra(Q),alldiff([T,Q]),
+  sumCol(0,T,Q,Q,E,Pr1),alldiff([E,T,Q]),
+  
+  cifra(G),cifra(N),alldiff([G,N,E,T,Q]),
+  sumCol(Pr1,G,N,N,T,Pr2),
+
+  cifra(I),alldiff([I,G,N,E,T,Q]),
+  sumCol(Pr2,N,I,I,N,Pr3),
+
+  cifra(C),alldiff([C,I,G,N,E,T,Q]),
+  sumCol(Pr3,I,C,C,E,Pr4),
+
+  cifra(V),alldiff([V,C,I,G,N,E,T,Q]),
+  sumCol(Pr4,V,0,0,R,T),
+
+  write(' '),write(V),write(I),write(N),write(G),write(T),nl,
+  write('  '),        write(C),write(I),write(N),write(Q),nl,
+  write('  '),        write(C),write(I),write(N),write(Q),nl,
+  write(T),write(R),write(E),write(N),write(T),write(E),nl.
+
+/*
+?- puzzle([V,I,N,G,T,C,Q,R,E]).
+ 94851
+  6483
+  6483
+------
+107817
+*/
+
+
+
+
 	
 %--- Missionari a kanibali
 
