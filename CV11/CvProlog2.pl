@@ -68,7 +68,7 @@ true ;
 */
 
 matejM(Xs):-pomaNbM(Xs,0,0), aNbM(Xs).
-pomaNbM([a|Xs],P1,P2):-P3 is P1+1, pomaNbM(Xs,P3,P2).
+pomaNbM([a|Xs],P1,0):-P3 is P1+1, P2 =0, pomaNbM(Xs,P3,P2).
 pomaNbM([b|Xs],P1,P2):-P3 is P2+1, pomaNbM(Xs,P1,P3).
 pomaNbM([],P1,P2):-P1=:=P2.
 
@@ -83,6 +83,7 @@ bM([]).
 aNbNPocitadlove(Xs):-pocitajA(Xs,0,0).
 pocitajA([a|Xs],A,B):-A1 is A+1,pocitajA(Xs,A1,B).
 pocitajA([b|Xs],A,B):-B1 is B+1,pocitajB(Xs,A,B1).
+
 pocitajB([b|Xs],A,B):-B1 is B+1,pocitajB(Xs,A,B1).
 pocitajB([],A,A).
 %pocitajB([],A,B):-A=B.
