@@ -33,7 +33,13 @@ count(_,[],0).
 count(X,[Y|Xs],N1):-X=Y->count(X,Xs,N),N1 is N+1;count(X,Xs,N1).
 
 % doprogramujte check, ktory overi, ci z toho este moze byt riesenie
-%check(L):-...
+check(L):-check2(L,0,0).
+
+check1([], _).
+check1([H|T],C):-CC is C+H, CC=<10, check1(T, CC).
+
+check2([], _, _).
+check2([H|T],C,I):-I1 is I+1,CC is C+I*H,CC=<10,check2(T,CC,I1).
 
 /*
 vymyslite lepsi algoritmus, ktory najde riesenie...
