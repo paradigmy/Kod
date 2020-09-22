@@ -1,0 +1,73 @@
+prikaz celomVzad
+       vlavo
+       vlavo
+*prikaz
+
+{na kopu -> na kopu}
+prikaz zaseba
+       kym je tehla rob
+            zober
+            celomVzad
+            poloz
+            celomVzad
+       *kym
+*prikaz
+
+{na kopu -> na kopu}
+prikaz copy
+       kym je tehla rob
+           zober
+           vpravo
+           poloz
+           vpravo
+           poloz
+           celomVzad
+       *kym
+*prikaz
+
+{vlavo -> vlavo}
+prikaz vedlaSeba
+       vpravo
+       kym je tehla rob
+            zober
+            vlavo
+            poloz
+            vpravo
+       *kym
+*prikaz
+
+{na kopu -> na kopu}
+prikaz copy1
+       ak je tehla tak
+             zober
+             copy1
+             poloz
+             celomVzad
+             poloz
+             celomVzad
+       *ak
+*prikaz
+
+{na kopu -> na kopu}
+prikaz del2
+       ak je tehla tak
+             zober
+             zober
+             del2
+             poloz
+       *ak
+*prikaz
+
+{ku stene -> naopak}
+prikaz dopolky
+       ak je stena tak
+           celomVzad
+       inak
+           krok
+           krok
+           dopolky
+           krok
+       *ak
+*prikaz
+
+
