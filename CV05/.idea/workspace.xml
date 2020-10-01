@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29eaf377-1535-4cef-8e6a-2220cf8421ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Concurrency/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Concurrency/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/PartitionsBig.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/PartitionsBig.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/fibPara.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/fibPara.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Hello/hello.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Hello/hello.go" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,40 +23,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="D:\borovan\PARA\PrednaskyPARA\Kod\CV05\.idea" />
-      </set>
-    </option>
-  </component>
   <component name="ProjectId" id="1SHcP6EIoW8xg9U3TVA3wTRww93" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="D:/XXX" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CV02" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\borovan\PARA\PrednaskyPARA\Kod\CV05" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Go Build.go build main.go (2)">
     <configuration name="go build main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
@@ -115,20 +102,26 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1601381227412">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1680.1020/-1920.0.1920.1050@0.0.1920.1050" timestamp="1601381227412" />
   </component>
 </project>

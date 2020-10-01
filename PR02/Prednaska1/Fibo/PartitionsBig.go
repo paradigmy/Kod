@@ -75,8 +75,8 @@ func main() {
 	}
 	//fmt.Println(part2Big( 100))
 	//fmt.Println(part2Big( 1000))
-	//fmt.Println(part2Big( 10000))
-	fmt.Println(part2Big( 100000))
+	fmt.Println(part2Big( 10000))
+	//fmt.Println(part2Big( 100000))
 	//fmt.Println(partitionBig(9, 3))
 	//fmt.Println(partitionBig(150, 23))
 	//fmt.Println(partitionBig(1000, 81))

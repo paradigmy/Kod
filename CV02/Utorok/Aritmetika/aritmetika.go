@@ -53,6 +53,25 @@ func sum2Nat() {
 	input("zadaj prve cislo:")
 	fmt.Printf("ich sucet je: %d\n", a)
 }
+
+// súčet dvoch celych čísel s jednou globalnou premennou
+func sum2Int() {
+	input("zadaj prve cislo:")
+	fmt.Printf("ich sucet je: %d\n", a)
+}
+
+// súčet troch celych čísel s jednou globalnou premennou
+func sum3Int() {
+	input("zadaj prve cislo:")
+	fmt.Printf("ich sucet je: %d\n", a)
+}
+
+// maximum dvoch prirodzenych čísel s jednou globalnou premennou
+func max2Int() {
+	input("zadaj prve cislo:")
+	fmt.Printf("ich sucet je: %d\n", a)
+}
+
 func main() {
   sum2Nat()
 }
