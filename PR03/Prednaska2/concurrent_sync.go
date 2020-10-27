@@ -12,13 +12,13 @@ func loopForever1(task string, goGroup *sync.WaitGroup) {
 		fmt.Printf("%s:%d\n", task, i)
 		time.Sleep(time.Duration(rand.Intn(500)) * time.Millisecond)
 	}
-	goGroup.Done()
+	goGroup.Done()		// mutex--
 }
 
 func main() {
-	goGroup := new(sync.WaitGroup)
-	goGroup.Add(2)
+	goGroup := new(sync.WaitGroup)  // Mutex
+	goGroup.Add(2)		// inicialna hodnota Mutexu
 	go loopForever1("prvy", goGroup)
 	go loopForever1("druhy", goGroup)
-	goGroup.Wait()
+	goGroup.Wait()	// pockaj, kym mutex > 0
 }

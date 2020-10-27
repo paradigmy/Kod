@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-var limit = 1500
+var limit = 15000
 
 func main() {
 	start := time.Now()

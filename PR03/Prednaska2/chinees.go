@@ -21,9 +21,10 @@ func main() {
 		prev = next
 	}
 	//go func() {
-	first <- 0
 	//}()
+	//elapsed := time.Since(start)
 	elapsed := time.Since(start)
+	first <- 0
 	fmt.Println(<-prev)
 	fmt.Println(elapsed)
 }

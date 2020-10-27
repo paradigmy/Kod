@@ -3,22 +3,25 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
 var goroutinesCount = 0;
 var goroutinesMax = 0;
+var mutex = &sync.Mutex{}
 
 func timer(d time.Duration) (ch chan int) {
 	ch = make(chan int)
 	go func() {
-		goroutinesCount++;
+		mutex.Lock(); goroutinesCount++
 		if goroutinesCount > goroutinesMax {
 			goroutinesMax = goroutinesCount
 		}
+		mutex.Unlock()
 		time.Sleep(d)
 		ch <- 1
-		goroutinesCount--;
+		mutex.Lock(); goroutinesCount--; mutex.Unlock()
 	}()
 	return
 }

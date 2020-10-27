@@ -113,7 +113,7 @@ func main() {
 	fmt.Println(runtime.NumCPU())
 	rand.Seed(time.Now().UnixNano())
 
-	N := 10000000 // velkost triedeneho pola
+	N := 50000000 // velkost triedeneho pola
 
 	for granularity = N; granularity > 0; granularity = granularity / 2 {
 		ss := make(Pole, N)

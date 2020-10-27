@@ -110,12 +110,12 @@ func Crawl(url string, depth int) {
 }
 
 func main() {
-	fetcher = fakefetcher // tento ide do vlastnej pidi datovej struktury
-	//fetcher = realfetcher // tento ide na web
+	//fetcher = fakefetcher // tento ide do vlastnej pidi datovej struktury
+	fetcher = realfetcher // tento ide na web
 
 	//url := "http://dai.fmph.uniba.sk/courses/JAVA"
-	//url := "http://dai.fmph.uniba.sk/courses/PARA"
-	url := "http://golang.org/"
+	url := "http://dai.fmph.uniba.sk/courses/PARA"
+	//url := "http://golang.org/"
 	//url := "http://dai.fmph.uniba.sk/"
 	depth := 2
 	//------------------------------------------------

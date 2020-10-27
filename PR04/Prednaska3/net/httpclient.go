@@ -11,8 +11,8 @@ import (
 )
 
 func main() {
-	//url := "http://google.com"
-	url := "http://dai.fmph.uniba.sk/courses/PARA/"
+	url := "http://google.com"
+	//url := "http://dai.fmph.uniba.sk/courses/PARA/"
 	response, err := http.Head(url)
 	if err != nil {
 		fmt.Println(err.Error())

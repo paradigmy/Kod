@@ -42,7 +42,7 @@ func multiplexorSelect(ch1, ch2 chan string) chan string {
 			go func(seconds int) {
 				time.Sleep(time.Duration(seconds) * time.Second)
 				gameOver <- true
-			}(2)
+			}(5)
 
 		for {
 			select {

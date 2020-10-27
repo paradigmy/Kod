@@ -16,6 +16,7 @@ func loopForever(task string) {
 func main() {
 	go loopForever("prvy")
 	go loopForever("druhy")
+	//---
 	var input string   // toto čaká na input, v opačnom
 	fmt.Scanln(&input) // prípade, keď umrie hlavné
 	fmt.Println("main stop")

@@ -21,10 +21,11 @@ func consumer(cs chan int) {
 }
 
 func main() {
-	cs := make(chan int)
-	//cs := make(chan int, 5)
+	//cs := make(chan int)
+	cs := make(chan int, 5)
 	go producer(1, cs, 100*time.Microsecond)
 	go producer(2, cs, 250*time.Microsecond)
+	go producer(3, cs, 350*time.Microsecond)
 	go consumer(cs)
 	time.Sleep(100000000000)
 }

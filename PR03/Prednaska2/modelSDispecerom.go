@@ -52,10 +52,11 @@ func runAgentCommunicatingWithDispatcher(agent int, dispch chan Message, input c
 				case msg := <- input:		// ak prisla sprava agentovi, tak tlacime
 					fmt.Printf("agentovi %d: prisla sprava:\"%s\"\n", agent, msg.toString())
 				case <-timeout:
+					i++
 					msg := Message{who:agent, what:i}	// po timeout, vytvorime spravu
 					fmt.Println(msg.toString())			// vypiseme na konzolu
 					dispch <- msg						// posleme dispecerovi
-					i++									// agent si zvysi lokalny counter
+					//i++									// agent si zvysi lokalny counter
 			}
 		}
 	}()
