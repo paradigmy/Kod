@@ -154,7 +154,7 @@ transponuj'  ((x:xs):xss)= (x:(map head xss)):(transponuj' $ xs:(map tail xss))
 
 pyth n = [(a,b,c)|a<-[1..n],b <- [1..n],c<-[1..n],a+b+c<= n,a^2+b^2==c^2]
 
-kombinacie 0    = [] -- [[]]
+kombinacie 0    = [[]]
 kombinacie n  = [ 0:k | k <- kombinacie (n-1)] ++ [ 1:k | k <- kombinacie (n-1)]
 
 -- prermutacie
@@ -204,10 +204,12 @@ res = [ ((a, b), (x `div` b, 10^digits + 1 - a)) |
 data BTree a     = Branch (BTree a) (BTree a) | Leaf a
             deriving (Show)
 
-data TreeInt     = Vrchol TreeInt TreeInt | List Int
+data TreeInt     = Vrchol TreeInt TreeInt | List Int deriving(Show)
+{-
 instance Show TreeInt where        -- vlastná implementácia show pre TreeInt
   show (List i)    = show i
   show (Vrchol left right) = "(" ++ show left ++ "," ++ show right ++ ")"
+-}
 
 maxTree         :: TreeInt -> Int
 maxTree (List x)     = x
