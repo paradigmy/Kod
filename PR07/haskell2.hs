@@ -1,3 +1,15 @@
+--ack 0 n         = n+1
+--ack (m+1) 0     = ack m 1
+--ack (m+1) (n+1) = ack m (ack (m+1) n)
+
+--ack 0 n         = n+1
+--ack m 0         = ack (m-1) 1
+--ack m n         = ack (m-1) (ack m (n-1))
+
+ack' m n | m==0         = n+1
+         | n == 0       = ack' (m-1) 1
+         | otherwise    = ack' (m-1) (ack' m (n-1))
+
 
 app :: [t] -> [t] -> [t]
 app [] ys = ys
@@ -169,6 +181,24 @@ rozdel x (y:ys)  | y < x  = (y:mini,midi,maxi)
     where (mini,midi,maxi) = rozdel x ys
 
 -------------------
+--Vampire Matrix
+digits = 3
+--for a in range(10^(digits-1), 10^digits - 10^(digits - 1) + 2):
+--     x = (10^digits + 1)*a - a^2
+--     for b in divisors(x):
+--        if 10^(digits - 1) <= b < 10^digits and 10^(digits - 1) <= x//b < 10^digits:
+--            print(a, b, "|", x//b, 10^digits + 1 - a)
+
+res = [ ((a, b), (x `div` b, 10^digits + 1 - a)) |
+          a <- [10^(digits-1)..10^digits - 10^(digits - 1) + 2],
+          let x = (10^digits + 1)*a - a^2,
+          b <- divisors x,
+          10^(digits - 1) <= b, b < 10^digits,
+          10^(digits - 1) <= x `div` b, x `div` b < 10^digits
+      ]      where
+      divisors x = [d | d <- [1..x-1], x `mod` d == 0]
+
+----
 
 
 data BTree a     = Branch (BTree a) (BTree a) | Leaf a
