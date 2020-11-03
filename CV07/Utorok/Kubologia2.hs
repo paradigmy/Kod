@@ -47,7 +47,6 @@ toto su jedine dve spravne kocky
 -- definujte vsetky natocenia spravnej kocky, niektorej
 
 import Data.List
-import Haskell2 
 ------------------------------------------------------------------
 type Kocka = [Int]
 
@@ -237,6 +236,12 @@ farbenie xs fb = [ fb!!(i-1) | i <-xs]
      55
      55
      -}
+
+--  kombinacie  bez  opakovania  (n  nad  k)
+kbo :: [t] -> Int -> [[t]]
+kbo  _  0       =  [[]]
+kbo  []  _      =  []
+kbo  (x:xs)  k  =  [x:y  |  y  <-kbo  xs  (k-1)]  ++  kbo  xs  k
 
 
 

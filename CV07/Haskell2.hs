@@ -57,9 +57,7 @@ Haskell2> qs $ powerSet' [1..4]
 
 --  kombinacie  s  opakovanim  (n+k-1  nad  k)
 kso :: [t] -> Int -> [[t]]
-kso  _  0    =  [[]]
-kso  []  _  =  []
-kso  (x:xs)  k  =  [x:y  |  y  <-kso  (x:xs)  (k-1)]  ++  kso  xs  k
+kso = undefined
 {-
 Main>  length(kso  [1..8]  4)
 330
@@ -80,10 +78,7 @@ Main>  length(kbo  [1..8]  4)
 --  variacie,  ak  zalezi  na  poradi
 --  variacie  s  opakovanim  -  n^k
 vso :: [t] -> Int -> [[t]]
-vso  _  0    =  [[]]
-vso  []  _  =  []
-vso  xs  k  =    [  x:y  |  x  <-  xs,  y  <-  vso  xs  (k-1)]
-
+vso = undefined 
 {-
 Main>  length(vso  [1..8]  4)
 4096

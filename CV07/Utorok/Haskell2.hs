@@ -1,101 +1,138 @@
-module Haskell2 where
-import Data.List
+import  Data.List
 
--- definujte mnozinu pozmnozin nejakej mnoziny, je ich 2^N
+-- definujme vsetky podmnoziny danej mnoziny, ale predpokladame, ze na vstup je fakt mnozina, prvky sa neopakuju...
 
 powerSet :: [t] -> [[t]]
-powerSet [] = [[]]
-powerSet (x:xs) =   [x:p | p <- pom]++pom
-                    where pom = powerSet xs
+powerSet = undefined
+                    
+-- powerSet [1,2,3]
 
-{-
-Haskell2> powerSet [1,2,3]
-[[],[3],[2],[2,3],[1],[1,3],[1,2],[1,2,3]]
-*Haskell2> length $ powerSet [1..10]
-1024
--}
+-- zamyslime sa, ci vieme porovnat (Eq, Ord)
+-- dvojice (1,2) < (1,3)
+-- n-tice  (1,1,2) < (1,1,3)
+-- zoznamy [1,1,2] < [1,1,2]
+-- mnoziny
 
---  podmnoziny  mnoziny  a
-data  SubSet  a  =  Set  [a]  deriving  (Show)
+----------------------------------------------------------- APLIKOVANA KOMBINATORIKA
+-- Na partii sa stretlo 5 chalanov a 5 bab
 
---  toto  nejde...    
---  type  SubSet  a  =    [a]
+type Party = [String]
+party = ["Adam", "Andrej", "Daniel", "Cyril", "Fero",
+         "Zuzana", "Romana", "Xenia", "Nada", "Tatiana"]
 
--- definujeme rovnost pre takyto typ
-instance  Eq  a => Eq  (SubSet  a)  where
-     Set  x  ==  Set  y            =  (x  ==  y)
-     Set  x  /=  Set  y            =  (x  /=  y)
+-- kazdy si strngol s kazdym
+type Dvojica = (String, String)
 
--- definujeme mensi ako pre takyto typ
-instance  Eq  a  => Ord  (SubSet  a)    where
-     Set  x  <=  Set  y  =    and [elem  a y | a <- x]    --  ?????????????????
-     a  >=  b    =  b  <=  a
-     a  <  b    =  a  <=  b  &&  a  /=  b
-     a  >  b    =  b  <  a
-     max  (Set  x)  (Set  y)  =  Set (nub (x ++ y)) -- ???????????????????????
-     min  (Set  x)  (Set  y)  =  Set [a | a <- x, elem a y] -- ???????????????????????
+pripitok :: Party -> [Dvojica]
+pripitok p = undefined
 
--- toto bolo na prednaske
-qs    ::  (Ord  a)  =>  [a]  ->  [a]
-qs  []    =  []
-qs  (b:bs)    =  qs  [x  |  x  <-  bs,  x  <=  b]  
-                 ++  [b]  ++  
-                 qs  [x  |  x  <-  bs,  not(x  <=  b)]
+-- pripitok party
+-- length$ pripitok party 
 
-powerSet'  ::  [a]  ->  [ SubSet  a ]
-powerSet'  []        =  [ Set  []]
-powerSet'  (x:xs)    =  [ Set (x:s) | Set s <- pom]  ++  pom where pom = powerSet' xs
+------------------------------------------------------------
+
+-- k=traja maju zostavit projektovy tim na TISko
+-- niekedy je lepsie abstrahovat a riesit pre vseobecny pripad k = 0..10
+
+type Team = [String]
+tisko :: Party -> Int -> [ Team ]
+tisko p k  = undefined
+
+-- length $ tisko party 2 
+
+-- co z toho, co poznate to je, kombinacie/variacie s/bez opakovania
 
 
-{-
-Haskell2> qs $ powerSet' [1..4]
-[Set [],Set [1],Set [2],Set [1,2],Set [3],Set [1,3],Set [2,3],Set [1,2,3],Set [4],Set [1,4],Set [2,4],Set [1,2,4],Set [3,4],Set [1,3,4],Set [2,3,4],Set [1,2,3,4]]
--}
 
 
---  kombinacie  su,  ak  nezalezi  na  poradi
 
---  kombinacie  s  opakovanim  (n+k-1  nad  k)
-kso :: [t] -> Int -> [[t]]
-kso  _  0    =  [[]]
-kso  []  _  =  []
-kso  (x:xs)  k  =  [x:y  |  y  <-kso  (x:xs)  (k-1)]  ++  kso  xs  k
-{-
-Main>  length(kso  [1..8]  4)
-330
--}
+
 
 
 --  kombinacie  bez  opakovania  (n  nad  k)
 kbo :: [t] -> Int -> [[t]]
-kbo  _  0    =  [[]]
-kbo  []  _  =  []
+kbo  _  0       =  [[]]
+kbo  []  _      =  []
 kbo  (x:xs)  k  =  [x:y  |  y  <-kbo  xs  (k-1)]  ++  kbo  xs  k
 
+---------------------------------------------------------------------------
+
+-- po party vznikli dvojice, (chalan,baba), kolatimi sposobmi sa mohli sparovat
+-- party = ["Adam", "Andrej", "Daniel", "Cyril", "Fero",
+--          "Zuzana", "Romana", "Xenia", "Nada", "Tatiana"]
+
+
+boyz :: Party -> Party
+boyz = undefined
+girlz :: Party -> Party
+girlz = undefined
+
+type Dvojice = [ Dvojica ]
+type Moznosti = [ Dvojice ]
+
+-- sparuj boys girls = ... a predpokladame, ze |boys| = |girls|
+sparuj :: Party -> Party -> [ Dvojice ]  -- Moznosti
+sparuj = undefined
+
+
+
+
+-- co to bolo, kombinacie, variacie, ... ?
+
+
+
+
+
+
+-- z prednasky, permutacie bez opakovania
+pbo [] = [ [] ]
+pbo xs = [ x:p | x <- xs, p <- pbo (xs \\ [x])   ]
+
+-- sparuj ["a","b"] ["c","d"]
+
+dvojice :: Party -> Moznosti
+dvojice p = undefined
+
+-- length $ dvojice party
+
+-- na party vzniko k dvojic, zvysni zostali nesparovani, kolkatimi sposobni to mohlo nastat
+kdvojic :: [String] -> Int -> Moznosti
+kdvojic p k = undefined
+
+-- length $ kdvojic party 2      
+-- length $ kdvojic party 3   
+
+
+-- postavili sa do rady tak, ze chalan a baba sa striedaju
+dorady p = undefined
+
+--length $ dorady party
+
+
+-- postavili sa do rady tak, ze vsetky baby su pokope, vedla seba
+pokope p = undefined
+                 
+-- length $ pokope party                 
+
+-----------------------------------------------
+
+-- chalani a baby hrali spoloc.hry, a vznikla vysledkova listina, na ktorej su prve tri miesta/
+-- ako mohol dopadnut nocny turnaj, relativne na 3prvkovu vysledkovku
+
 {-
-Main>  length(kbo  [1..8]  4)
-70
+length $ vbo party 3
+length $ vbo party 4
+length $ vbo party 5
+length $ vbo party 10
 -}
 
---  variacie,  ak  zalezi  na  poradi
---  variacie  s  opakovanim  -  n^k
-vso :: [t] -> Int -> [[t]]
-vso  _  0    =  [[]]
-vso  []  _  =  []
-vso  xs  k  =    [  x:y  |  x  <-  xs,  y  <-  vso  xs  (k-1)]
+-- chalani a baby si zahrali niekolko 14krat spolocensku hru, pricom baby vyhrali 7:4 a 3x nastala remiza
+-- ake su moznosti, ako sa mohli hry vyvijat
 
-{-
-Main>  length(vso  [1..8]  4)
-4096
--}
+e = (take 7 (repeat "baby")) ++ (take 4 (repeat "chalani")) ++ (take 3 (repeat "remiza"))
 
---  variacie  bez  opakovania  -  n.(n-1)....(n-k+1)
-vbo :: Eq(t) => [t] -> Int -> [[t]]
-vbo  _  0    =  [[]]
-vbo  []  _  =  []
-vbo  xs  k  =    [  x:y  |  x  <-  xs,  y  <-  vbo  (xs  \\  [x])  (k-1)]
+      
+-- length $ pso e
+-- fact 14/(fact 7*fact 4 * fact 3)
 
-{-
-Main>  length(vbo  [1..8]  4)
-1680
--}
+fact n = product [1..n]      
