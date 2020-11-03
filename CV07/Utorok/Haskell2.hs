@@ -2,9 +2,12 @@ import  Data.List
 
 -- definujme vsetky podmnoziny danej mnoziny, ale predpokladame, ze na vstup je fakt mnozina, prvky sa neopakuju...
 
-powerSet :: [t] -> [[t]]
-powerSet = undefined
-                    
+-- 2^N
+powerSet :: [t] -> [ [t] ]
+powerSet []       = [ [] ]
+powerSet (x:xs)   = let pom = powerSet xs       -- 2^(N-1)
+                    in [ x:p | p <- pom ] ++ pom   --2^(N-1)+2^(N-1) = 2^N
+                       -- map (\p -> x:p) pom
 -- powerSet [1,2,3]
 
 -- zamyslime sa, ci vieme porovnat (Eq, Ord)
@@ -12,6 +15,20 @@ powerSet = undefined
 -- n-tice  (1,1,2) < (1,1,3)
 -- zoznamy [1,1,2] < [1,1,2]
 -- mnoziny
+
+data SubSet a = Set [a]   deriving (Show)
+
+instance (Eq a) => Eq (SubSet a) where
+  Set xs == Set ys       = (xs \\ ys == []) && (ys \\ xs == [])
+  Set xs /= Set ys       = (xs \\ ys /= []) || (ys \\ xs /= [])
+
+instance (Eq a) => Ord (SubSet a) where
+    Set xs < Set ys      =  xs \\ ys == []   -- xs je podmnozina ys
+    a <= b              = a < b || a == b
+    a > b               = b < a
+    a >= b              = a > b || a == b
+    min (Set xs) (Set ys)  = Set (intersect xs ys)                 -- [1,2] [1,3]
+    max (Set xs) (Set ys)  = Set ( nub(xs ++ ys) )
 
 ----------------------------------------------------------- APLIKOVANA KOMBINATORIKA
 -- Na partii sa stretlo 5 chalanov a 5 bab
@@ -24,7 +41,12 @@ party = ["Adam", "Andrej", "Daniel", "Cyril", "Fero",
 type Dvojica = (String, String)
 
 pripitok :: Party -> [Dvojica]
-pripitok p = undefined
+-- pripitok p = [ (o1,o2) | o1 <- p, o2 <- p, o1 /= o2]
+
+--pripitok p = nubBy (\(a,b) -> \(c,d) -> (a,b)==(c,d) || (a,b)==(d,c)) [ (o1,o2) | o1 <- p, o2 <- p\\[o1]]
+
+pripitok p = [  (p!!i1, p!!i2) | i1 <-[0..length p-1], i2 <-[i1+1..length p-1] ]
+
 
 -- pripitok party
 -- length$ pripitok party 
@@ -36,7 +58,12 @@ pripitok p = undefined
 
 type Team = [String]
 tisko :: Party -> Int -> [ Team ]
-tisko p k  = undefined
+tisko p k  = kbo p k
+
+kbo :: [t] -> Int -> [[t]]   -- n nad k
+kbo _ 0      = [ [] ]                     -- n nad 0 = 1
+kbo [] k     = []
+kbo (x:xs) k = kbo xs k   ++ [x:t | t <- kbo xs (k-1) ]  -- n+1 nad k = n nad k + n nad (k-1)
 
 -- length $ tisko party 2 
 
@@ -49,12 +76,6 @@ tisko p k  = undefined
 
 
 
---  kombinacie  bez  opakovania  (n  nad  k)
-kbo :: [t] -> Int -> [[t]]
-kbo  _  0       =  [[]]
-kbo  []  _      =  []
-kbo  (x:xs)  k  =  [x:y  |  y  <-kbo  xs  (k-1)]  ++  kbo  xs  k
-
 ---------------------------------------------------------------------------
 
 -- po party vznikli dvojice, (chalan,baba), kolatimi sposobmi sa mohli sparovat
@@ -63,24 +84,26 @@ kbo  (x:xs)  k  =  [x:y  |  y  <-kbo  xs  (k-1)]  ++  kbo  xs  k
 
 
 boyz :: Party -> Party
-boyz = undefined
+boyz p = filter (\x -> x!!0 < 'M') p
 girlz :: Party -> Party
-girlz = undefined
+girlz p = filter (\x -> x!!0 >= 'M') p
 
 type Dvojice = [ Dvojica ]
 type Moznosti = [ Dvojice ]
 
 -- sparuj boys girls = ... a predpokladame, ze |boys| = |girls|
-sparuj :: Party -> Party -> [ Dvojice ]  -- Moznosti
-sparuj = undefined
+--sparuj :: Party -> Party -> [ Dvojice ]  -- Moznosti
+sparuj :: Party -> Party -> Moznosti
+sparuj [] [] =  [ [] ]     -- []
+sparuj (b:bs) gs = [ (b,g):dv   | g <- gs, dv <- sparuj bs (gs \\ [g]) ]
 
-
+dvojice :: Party -> Moznosti
+dvojice p = let bs = boyz p
+                gs = girlz p
+            in sparuj bs gs
 
 
 -- co to bolo, kombinacie, variacie, ... ?
-
-
-
 
 
 
@@ -90,14 +113,16 @@ pbo xs = [ x:p | x <- xs, p <- pbo (xs \\ [x])   ]
 
 -- sparuj ["a","b"] ["c","d"]
 
-dvojice :: Party -> Moznosti
-dvojice p = undefined
-
 -- length $ dvojice party
 
 -- na party vzniko k dvojic, zvysni zostali nesparovani, kolkatimi sposobni to mohlo nastat
 kdvojic :: [String] -> Int -> Moznosti
-kdvojic p k = undefined
+kdvojic p k = let bs = boyz p
+                  gs = girlz p
+              in  concat [ sparuj hb hg | hb <- kbo bs k, hg <- kbo gs k ] 
+
+
+--concat :: [[a]] -> [a]
 
 -- length $ kdvojic party 2      
 -- length $ kdvojic party 3   
