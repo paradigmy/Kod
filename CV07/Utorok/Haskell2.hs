@@ -120,7 +120,7 @@ kdvojic :: [String] -> Int -> Moznosti
 kdvojic p k = let bs = boyz p
                   gs = girlz p
               in  concat [ sparuj hb hg | hb <- kbo bs k, hg <- kbo gs k ] 
-
+-- (5 nad k)*(5 nad k)* k!
 
 --concat :: [[a]] -> [a]
 
