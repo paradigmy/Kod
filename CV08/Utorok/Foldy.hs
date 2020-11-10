@@ -5,7 +5,10 @@ napríklad mirror [1,2,3,4,5] = [1,2,3,4,5,5,4,3,2,1].
 Nesmiete pritom definova/pomenova žiadnu inú funkciu okrem mirror.
 -}
 
-mirror xs = undefined
+--mirror xs = foldr (\x -> \rec  -> rec ++ [x] ) xs xs
+mirror xs = 
+        let xsR = reverse xs in
+        foldl  (\acc -> \x -> x:acc) xsR xsR
 
 {- ---------------------------------------------------------------------
 Na pripomenutie, funkcia map aplikuje funkciu na prvky zoznamu, 
@@ -19,13 +22,14 @@ myMap zoz = ? foldr ? ? zoz, resp.
 myMap zoz = ? foldl ? ? zoz
 -}
 
-myMap f   = undefined
+--myMap f xs  = foldr (\x -> \rec -> (f x):rec) []  xs
+myMap f xs  = foldl (\acc -> \x -> acc ++ [f x] ) []  xs
 
 {- --------------------------------------------------------------------
  definujte myFilter pomocou foldr
 -}
 
-myFilter p = undefined
+myFilter p xs = foldr (\x -> \rec -> if p x then x:rec else rec) [] xs
 
 {- --------------------------------------------------------------------
   definujte funkciu priemer :: [Float] -> Float, ktora vypocita aritmeticky zoznamu [Float]
@@ -33,30 +37,52 @@ myFilter p = undefined
 -}
 
 -- toto bolo na prednaske...
+sucpoc :: [Float] -> (Float,Float)
+sucpoc  xs = foldr (\x -> \(sucet, pocet) -> (sucet+x, pocet+1)) 
+              (0,0) xs 
+
 priemer :: [Float] -> Float
-priemer  xs = uncurry (/) $ foldr (\x -> \(sum, count) -> (sum + x, count + 1))                                 (0, 0) xs
-priemer' :: [Float] -> Float
-priemer'  xs = uncurry (/) $ foldl (\(sum, count) -> \x -> (sum + x, count + 1))                                  (0, 0) xs
+priemer  xs = let (sucet, pocet) = sucpoc xs in  sucet/pocet
 
-jerastuca' :: [Int] -> Bool
-jerastuca' (x:xs) = snd $ foldl (\(pred, b) -> \x -> (x, (x > pred) && b))  (x, True) xs
-
-
-{-
-fold na matici
--}      
 priemerM :: [[Float]] -> Float
-priemerM = undefined
+priemerM xss = (fst res)/(snd res)
+            where res = foldr (\row -> \(sucet,pocet) -> s2 (sucpoc row) (sucet,pocet)
+                    ) (0,0) xss
+
+priemerM' :: [[Float]] -> Float
+priemerM' xss = uncurry (/) (foldr (\row -> \(sucet,pocet) -> s2 (sucpoc row) (sucet,pocet)
+                    ) (0,0) xss)
+
+
+
+s2 :: (Float,Float) -> (Float,Float) -> (Float,Float)
+s2 (a,b) (c,d) = (a+c,b+d)
+
+-- jeRastuca
+jeRastuca :: [Int] -> Bool
+jeRastuca [] = True
+jeRastuca xs = snd (
+                        foldr(\y -> \(predch, res) -> 
+                        (y,res && (y<predch))
+                        )
+                        (last xs,True)   
+                        (init xs)
+                     )
+
+jeRastuca' :: [Int] -> Bool
+jeRastuca' [] = True
+jeRastuca' (x:xs) = snd (
+                        foldl(\(predch, res) -> \y ->
+                        (y,res && (predch<y))
+                        )
+                        (x,True)   
+                        xs
+                     )
+
 
 -- rozdiel max a minimalneho prvku vo vektore/matici
 maxminRozdiel :: [Int] -> Int
 maxminRozdiel xs = undefined
-
-
--- jeRastuca
-jeRastuca :: [Int] -> Bool
-jeRastuca xs = undefined
-
 
 -- Premia Autologia1 alias PUMPY
 whereToStart :: [Float] -> [Float] -> [Int]
