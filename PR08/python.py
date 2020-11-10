@@ -20,6 +20,7 @@ print(reduce((lambda x, y: x - y), [1, 2, 3, 4]))
 #def compose(f, g):
 #    return lambda *a, **b: f(g(*a, **b))
 
+# f.g
 def compose(f, g):
     return lambda x: f(g(x))
 
@@ -35,7 +36,7 @@ print(composeMany(
             lambda x: x+1,
             lambda x: x+2,
             lambda x: x*3
-            )(10))
+            )(100))
 
 
 print(reduce(
