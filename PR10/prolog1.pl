@@ -124,6 +124,11 @@ sublst2(Xs,Ys):-sufix(W,Ys),prefix(Xs,W).
 subseq([X|Xs],[X|Ys]):-subseq(Xs,Ys).
 subseq(Xs,[_|Ys]) :- subseq(Xs,Ys).
 subseq([],_).
+
+subseq1([X|Xs],[X|Ys]):-subseq1(Xs,Ys).
+subseq1([X|Xs],[_|Ys]) :- subseq1([X|Xs],Ys).
+subseq1([],_).
+
 %--
 zoznamToInt([],0).
 zoznamToInt([X|Xs],C) :- zoznamToInt(Xs,C1), C is 10*C1+X.
