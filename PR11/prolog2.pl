@@ -313,6 +313,10 @@ comb(K,[X|Xs],[X|T]):-K1 is K-1,comb(K1,Xs,T).
 comb(K,[X|Xs],[_|T]):-comb(K,[X|Xs],T).
 
 
+combSO(0,[],_).
+combSO(K,[X|Xs],[X|T]):-K>0,K1 is K-1,combSO(K1,Xs,[X|T]).
+combSO(K,[X|Xs],[_|T]):-K>0,combSO(K,[X|Xs],T).
+
 
 %-- findMM
 
