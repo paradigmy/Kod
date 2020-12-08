@@ -89,10 +89,17 @@ umag(X):-cifra(C1),cifra(C2),cifra(C3),cifra(C4),cifra(C5),cifra(C6),
  		zoznamToInt2([C1,C2,C3,C4,C5,C6,C7,C8,C9],X).
  		
 
-umagic9(X):- length(X,9) -> zoznamToInt2(X,Y),write(Y),nl
+
+
+
+umagic9(X,Sol):- length(X,9) -> Sol = X %zoznamToInt2(X,Y),write(Y),nl
 		;
+        length(X,L), L < 9,
 		cifra(C),not(member(C,X)), 
-		append(X,[C],Y),magicke(Y),umagic9(Y).
+		append(X,[C],Y),magicke(Y),umagic9(Y,Sol).
+
+
+
 	
 umagic7(X):- length(X,7) -> zoznamToInt2(X,Y),write(Y),nl,fail
 		;
@@ -164,6 +171,12 @@ queens(N,Qs):-N==0->write(Qs),nl,fail
 			  q(Q),safe(Q,Q,Q,Qs),N1 is N-1,queens(N1,[Q|Qs]).
 
 q(X):-between(1,8,X).
+
+queeens(SIZE, Sol):-queeens(SIZE, SIZE,[],Sol). 
+queeens(SIZE, N,Qs,Sol):- N==0->Sol = Qs
+			  ;
+			  between(1,SIZE,Q),safe(Q,Q,Q,Qs),N1 is N-1,queeens(SIZE, N1,[Q|Qs],Sol).
+
 
 betwen(I,J,I):-I =< J.
 betwen(I,J,M):-I<J,I1 is I+1,betwen(I1,J,M).

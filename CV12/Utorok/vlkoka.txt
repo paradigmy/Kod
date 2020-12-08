@@ -1,0 +1,19 @@
+[
+state(left,1,1,1),
+state(right,1,0,1),
+state(left,1,0,1),
+state(right,1,0,0),
+state(left,1,1,0),
+state(right,0,1,0),
+state(left,0,1,0),
+state(right,0,0,0)]
+
+vl ko ka       vl ko ka
+1  1  1        0  0   0 
+1  0  1        0  1   0 
+1  0  0        0  1   1
+1  1  0        0  0   1
+0  1  0        1  0   1
+0  1  0        1  0   1
+0  0  0        1  1   1
+

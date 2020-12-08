@@ -7,42 +7,45 @@
 
 
 % naivne riesenie (ktore nedobehne), najdite ine...
-solve(Riesenie) :- Riesenie = [P0,P1,P2,P3,P4,P5,P6,P7,P8,P9],
-	between(0,9,P0), check([P0]),
-	between(0,9,P1), check([P0,P1]),
-	between(0,9,P2), check([P0,P1,P2]), 
-	between(0,9,P3), check([P0,P1,P2,P3]),
-	between(0,9,P4), check([P0,P1,P2,P3,P4]),
-	between(0,9,P5), check([P0,P1,P2,P3,P4,P5]),
-	between(0,9,P6), check([P0,P1,P2,P3,P4,P5,P6]),
-	between(0,9,P7), check([P0,P1,P2,P3,P4,P5,P6,P7]),
-	between(0,9,P8), check([P0,P1,P2,P3,P4,P5,P6,P7,P8]),
-	between(0,9,P9), check([P0,P1,P2,P3,P4,P5,P6,P7,P8,P9]),
-	count(0,Riesenie,P0),
-	count(1,Riesenie,P1),
-	count(2,Riesenie,P2),
-	count(3,Riesenie,P3),
-	count(4,Riesenie,P4),
-	count(5,Riesenie,P5),
-	count(6,Riesenie,P6),
-	count(7,Riesenie,P7),
-	count(8,Riesenie,P8),
-	count(9,Riesenie,P9).
+solve(Riesenie) :- Riesenie = [P0, P1, P2, P3, P4, P5, P6, P7, P8, P9],
+    between(0,9,P0),
+    between(0,9,P1), check([P0,P1]),
+    between(0,9,P2), check([P0,P1, P2]),
+    between(0,9,P3), check([P0,P1, P2, P3]),
+    between(0,9,P4), check([P0,P1, P2, P3, P4]),
+    between(0,9,P5), check([P0,P1, P2, P3, P4, P5]),
+    between(0,9,P6), check([P0,P1, P2, P3, P4, P5, P6]),
+    between(0,9,P7), check([P0,P1, P2, P3, P4, P5, P6, P7]),
+    between(0,9,P8), check([P0,P1, P2, P3, P4, P5, P6, P7, P8]),
+    between(0,9,P9), check([P0,P1, P2, P3, P4, P5, P6, P7, P8, P9]),
+    count(0, Riesenie, P0),
+    count(1, Riesenie, P1),
+    count(2, Riesenie, P2),
+    count(3, Riesenie, P3),
+    count(4, Riesenie, P4),
+    count(5, Riesenie, P5),
+    count(6, Riesenie, P6),
+    count(7, Riesenie, P7),
+    count(8, Riesenie, P8),
+    count(9, Riesenie, P9).
 
-count(_,[],0).
-count(X,[Y|Xs],N1):-X=Y->count(X,Xs,N),N1 is N+1;count(X,Xs,N1).
+check(R) :- check2(R, 0, 0).
 
-% doprogramujte check, ktory overi, ci z toho este moze byt riesenie
-check(L):-check2(L,0,0).
-
+% sum p(i) <= 10
 check1([], _).
-check1([H|T],C):-CC is C+H, CC=<10, check1(T, CC).
+check1([X|Xs], S) :- S1 is S+X, S1 =< 10, check1(Xs, S1).
 
+% sum i*p(i) <= 10
 check2([], _, _).
-check2([H|T],C,I):-I1 is I+1,CC is C+I*H,CC=<10,check2(T,CC,I1).
+check2([X|Xs], I, S) :- S1 is S+X*I, S1 =< 10, I1 is I+1, check2(Xs, I1, S1).
+
+
+count(_,[], 0).
+count(X, [Y|Ys], N) :- (X=Y) -> count(X,Ys,N1), N is N1+1 ; count(X,Ys,N).
+    
 
 /*
 vymyslite lepsi algoritmus, ktory najde riesenie...
-?- solve([6,2,1,0,0,0,1,0,0,0]).
+?- solve([6,2,1,0,0,0,1,0,0,0]so).
 Yes
 */

@@ -26,44 +26,58 @@ init(state([1,1,1],[1,1,1],l)).
 final(state([0,0,0],[0,0,0],r)).
 
 % jeden muz sa plavi z lava do prava
-next(state([1,M2,M3],[W1,W2,W3],l),state([0,M2,M3],[W1,W2,W3],r)).
-next(state([M1,1,M3],[W1,W2,W3],l),state([M1,0,M3],[W1,W2,W3],r)).
-next(state([M1,M2,1],[W1,W2,W3],l),state([M1,M2,0],[W1,W2,W3],r)).
-
-% dvaja muzi sa plavia z lava do prava
-next(state([1,1,M3],[W1,W2,W3],l),state([0,0,M3],[W1,W2,W3],r)).
-next(state([M1,1,1],[W1,W2,W3],l),state([M1,0,0],[W1,W2,W3],r)).
-next(state([1,M2,1],[W1,W2,W3],l),state([0,M2,0],[W1,W2,W3],r)).
+next(state([1,M2,M3],[W1,W2,W3],l), state([0,M2,M3],[W1,W2,W3],r)).
+next(state([M1,1,M3],[W1,W2,W3],l), state([M1,0,M3],[W1,W2,W3],r)).
+next(state([M1,M2,1],[W1,W2,W3],l), state([M1,M2,0],[W1,W2,W3],r)).
 
 % jedna zena sa plavi z lava do prava
-next(state([M1,M2,M3],[1,W2,W3],l),state([M1,M2,M3],[0,W2,W3],r)).
-next(state([M1,M2,M3],[W1,1,W3],l),state([M1,M2,M3],[W1,0,W3],r)).
-next(state([M1,M2,M3],[W1,W2,1],l),state([M1,M2,M3],[W1,W2,0],r)).
+next(state([M1,M2,M3],[1,W2,W3],l), state([M1,M2,M3],[0,W2,W3],r)).
+next(state([M1,M2,M3],[W1,1,W3],l), state([M1,M2,M3],[W1,0,W3],r)).
+next(state([M1,M2,M3],[W1,W2,1],l), state([M1,M2,M3],[W1,W2,0],r)).
+
+% dvaja muzi sa plavia z lava do prava
+next(state([1,1,M3],[W1,W2,W3],l), state([0,0,M3],[W1,W2,W3],r)).
+next(state([1,M2,1],[W1,W2,W3],l), state([0,M2,0],[W1,W2,W3],r)).
+next(state([M1,1,1],[W1,W2,W3],l), state([M1,0,0],[W1,W2,W3],r)).
 
 % dve zeny sa plavia z lava do prava
-next(state([M1,M2,M3],[1,1,W3],l),state([M1,M2,M3],[0,0,W3],r)).
-next(state([M1,M2,M3],[W1,1,1],l),state([M1,M2,M3],[W1,0,0],r)).
-next(state([M1,M2,M3],[1,W2,1],l),state([M1,M2,M3],[1,W2,0],r)).
+next(state([M1,M2,M3],[1,1,W3],l), state([M1,M2,M3],[0,0,W3],r)).
+next(state([M1,M2,M3],[1,W2,1],l), state([M1,M2,M3],[0,W2,0],r)).
+next(state([M1,M2,M3],[W1,1,1],l), state([M1,M2,M3],[W1,0,0],r)).
 
-% doprogramuj
-% muz a zena sa plavia na lodke spolu, ale musi to byt par, inak ...
-% asi to budu tri moznosti...
-%next(state(...,l),state(...,r)).
+% muz a jeho zena
+next(state([1,M2,M3],[1,W2,W3],l), state([0,M2,M3],[0,W2,W3],r)).
+next(state([M1,1,M3],[W1,1,W3],l), state([M1,0,M3],[W1,0,W3],r)).
+next(state([M1,M2,1],[W1,W2,1],l), state([M1,M2,0],[W1,W2,0],r)).
+
 
 % doprogramuj opacne, lodka sa plavi sprava do lava
-%next ..
+next(state(Ms,Ws,r), state(Ms1,Ws1,l) ) :- next(state(Ms1,Ws1,l), state(Ms,Ws,r) ).
+
 
 % doprogramuj, ze na lavom brehu sa nic zle nestane
 %bankOk/1
 %bankOk(state([Ms,Ws,_]):-
 
 % doprogramuj, rightBank, ktora pre lavy breh vypocita stav na pravom brehu
-%rightBank(state([M1,M2,M3],[W1,W2,W3],l),state([?,?,?],[?,?,?],r)):-
+%rightBank(state([M1,M2,M3],[W1,W2,W3],_),state([?,?,?],[?,?,?],r)):-
 
 % doprogramuj, ze na oboch breho sa nic zle nestane
 %banksOk/1
-%banksOk(state([Ms,Ws,_]):-
-                        
+
+bankOk(state([M1,M2,M3],[W1,W2,W3],_)):-M1=0,W1=1->0 is M2+M3;
+                                            (M2=0,W2=1->0 is M1+M3;
+                                                (M3=0,W3=1->0 is M1+M2;true
+                                                )
+                                            ).                        
+
+rightBank(state([M1,M2,M3],[W1,W2,W3],_),state([RM1,RM2,RM3],[RW1,RW2,RW3],_)):-
+          RM1 is 1-M1,RM2 is 1-M2,RM3 is 1-M3,
+          RW1 is 1-W1,RW2 is 1-W2,RW3 is 1-W3.
+                                            
+banksOk(Left):-bankOk(Left),
+               rightBank(Left,Right),
+               bankOk(Right).
 
 cesta(X,X,P,P).
 cesta(X,Y,Visited,P):- 

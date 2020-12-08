@@ -1,4 +1,7 @@
 /*
+
+https://www.youtube.com/watch?v=k4CRjLK_tio
+
 Alcuin (Alkuin, Alch-wine, angl. Ealtwine (priateľ chrámu)) 
 (* 735, Northumbria – † 19. máj 804, Tours) bol anglický filozof, 
 anglosaský mních, odchovanec yorkskej školy, učiteľ a radca Karola 
@@ -47,10 +50,10 @@ next(state(Ms,Ws,r),state(Ms1,Ws1,l)):-next(state(Ms1,Ws1,l),state(Ms,Ws,r)).
 
 test:-init(C),next(C,CC),write(CC),nl,fail.
 
-abankOk(state([0,M2,M3],[1,_,_],_)):-!,0 is M2+M3.
-abankOk(state([M1,0,M3],[_,1,_],_)):-!,0 is M1+M3.
-abankOk(state([M1,M2,0],[_,_,1],_)):-!,0 is M1+M2.
-abankOk(_).
+%abankOk(state([0,M2,M3],[1,_,_],_)):-!,0 is M2+M3.
+%abankOk(state([M1,0,M3],[_,1,_],_)):-!,0 is M1+M3.
+%abankOk(state([M1,M2,0],[_,_,1],_)):-!,0 is M1+M2.
+%abankOk(_).
 
 bankOk(state([M1,M2,M3],[W1,W2,W3],_)):-M1=0,W1=1->0 is M2+M3;
                                             (M2=0,W2=1->0 is M1+M3;

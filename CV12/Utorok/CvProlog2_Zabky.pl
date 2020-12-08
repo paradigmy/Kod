@@ -171,6 +171,9 @@ idea
 konfiguracia ziab je kodovana ako 7-prvkovy zoznam
 [z1,z2,z3,z4,z5,z6,z7], kde zi = -1, 0, 1,
 0 je medzera
+
+https://www.plastelina.net/game7.html
+
 */
 init([-1,-1,-1,0,1,1,1]).
 %final([1,1,1,0,-1,-1,-1]).
@@ -212,7 +215,7 @@ riesenie:
 %-----------------------------------------------------------------------------------------
 % co tak 4+4 zabky
 
-init8([-1-1,-1,-1,0,1,1,1,1]).
+init8([-1,-1,-1,-1,0,1,1,1,1]).
 final8(Xs):-init8(Ys),reverse(Ys,Xs).
 zabky8:- init8(I), final8(F), cesta(I,F,[I],P), length(P,L), write(L), nl, writeZabky(P).
 

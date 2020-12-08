@@ -31,7 +31,7 @@ solve(Riesenie) :- Riesenie = [P0,P1,P2,P3,P4,P5,P6,P7,P8,P9],
 count(_,[],0).
 count(X,[Y|Xs],N1):-X=Y->count(X,Xs,N),N1 is N+1;count(X,Xs,N1).
 
-check(L):-check2(L,0,0).
+check(L):-check1(L,0). % check2(L,0,0).
 
 check1([], _).
 check1([H|T],C):-CC is C+H, CC=<10, check1(T, CC).
