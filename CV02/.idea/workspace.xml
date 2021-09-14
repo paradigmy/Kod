@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b6f349fb-7dbd-4300-b7a7-1f3271e01f68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Utorok/Aritmetika/aritmetika.go" beforeDir="false" afterPath="$PROJECT_DIR$/Utorok/Aritmetika/aritmetika.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utorok/Cviko2.go" beforeDir="false" afterPath="$PROJECT_DIR$/Utorok/Cviko2.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV05/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CV05/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Concurrency/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Concurrency/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/PartitionsBig.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/PartitionsBig.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/fibPara.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Fibo/fibPara.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PR02/Prednaska1/Hello/hello.go" beforeDir="false" afterPath="$PROJECT_DIR$/../PR02/Prednaska1/Hello/hello.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +25,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -43,8 +42,8 @@
       <module name="CV02" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/Utorok/Cviko2.go" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Utorok/Cviko2.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
