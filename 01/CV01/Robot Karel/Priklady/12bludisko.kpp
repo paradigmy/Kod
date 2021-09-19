@@ -1,0 +1,138 @@
+{
+program prejde bludiskom a zastane v cieli,
+teda pri stplceku zo 4 tehiel.
+ak sa k cielu neda dostat, karol sa vrati na
+zaciatok.
+
+POUZITE:
+  vlastne prikazy
+  vlastne podmienky (aj vnorene)
+  podmienka tehla s parametrom (aj je tehla(4) tak...)
+  rekurzia
+  rychlo / pomaly
+  prikaz skonci
+  cakaj
+  pip
+}
+
+{KAROL SA OTOCI O 180 STUPNOV}
+prikaz celomvzad
+  vlavo
+  vlavo
+*prikaz
+
+{KAROL UROBI KROK DOZADU}
+prikaz krokvzad
+  celomvzad
+  krok
+  celomvzad
+*prikaz
+
+{
+*******************************************************
+**       podmienka vrati pravdu, ak je volno,        **
+**     nie su pred karolom znacky a ani dve tehly      **
+*******************************************************
+}
+podmienka mozno_ist
+
+    {
+    LOKALNA PODMIENKA, VRATI PRAVDU AK JE KROK
+    PRED KAROLOM ZNACKA
+    }
+    podmienka vpredu_znacka
+      krok
+      ak je znacka tak
+          pravda
+      inak
+          nepravda
+      *ak
+      krokvzad
+    *podmienka
+    
+// telo podmienky mozno ist
+nepravda
+ak je volno tak
+  ak nie je vpredu_znacka tak
+    ak je tehla(2) tak
+      nepravda
+    inak
+      pravda
+      ak je tehla(4) tak nepravda *ak
+    *ak
+  *ak
+*ak
+*podmienka
+
+{
+********************************************************
+**         VRATI PRAVDA, AK OKOLO KARLA JE CIEL       **
+**                (4 TEHLY NA SEBE)                   **
+********************************************************
+}
+podmienka ciel
+  nepravda
+  opakuj 4 krat
+    ak je tehla(4) tak
+      pravda
+    *ak
+    vlavo
+  *opakuj
+*podmienka
+
+{
+********************************************************
+** PRIKAZ, KTORY SA VOLA REKURZIVNE A PRECHADZA       **
+** POSTUPNE VSETKY CHODBY                             **
+********************************************************
+}
+
+prikaz prejdi_vetvu
+
+  // prehlada vsetky mozne cesticky...
+  oznac
+  opakuj 4 krat
+    vlavo
+    ak je mozno_ist tak
+        krok
+        rychlo
+        prejdi_vetvu
+        { zistim, ci som v cieli,
+        inak sa vratim  }
+        ak je ciel tak
+          { teraz karol pocka 2,5 sekundy,
+            pipne, natoci sa k cielu,
+            a potom ukonci program }
+          cakaj(2500);
+          pip;
+          kym nie je tehla(4) rob vlavo *kym
+          krok
+          pomaly
+          // skoncime
+          skonci // preddefinovany prikaz, ukonci beh programu
+        inak
+          // vratim sa
+          krokvzad
+          rychlo
+        *ak
+    *ak
+  *opakuj
+  
+
+*prikaz
+{
+********************************************************
+***************** TELO PROGRAMU ************************
+********************************************************
+}
+rychlo
+prejdi_vetvu
+{
+sem sa karol dostane, len ak sa k cielu
+neda dostat
+}
+opakuj 2 krat
+  pip
+  cakaj(2000)
+*opakuj
+

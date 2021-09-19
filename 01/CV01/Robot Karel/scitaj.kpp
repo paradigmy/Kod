@@ -1,0 +1,47 @@
+prikaz scitaj;
+ ak je tehla tak
+   zober;
+   scitaj;
+   poloz
+   vpravo
+   poloz
+   vlavo
+  inak
+    vlavo
+ *ak
+*prikaz;
+
+prikaz scitaj1;
+ ak je tehla tak
+   zober;
+   scitaj1;
+   poloz
+   vlavo
+   poloz
+   vpravo
+  inak
+    vpravo
+ *ak
+*prikaz;
+
+prikaz skopiruj;
+ ak je tehla tak
+   zober;
+   skopiruj;
+   poloz;
+   vlavo;
+   vlavo;
+   poloz;
+   vlavo;
+   vlavo;
+ *ak
+*prikaz;
+
+ scitaj;
+ vlavo;
+ scitaj1;
+ vlavo;
+ vlavo;
+ skopiruj;
+ 
+

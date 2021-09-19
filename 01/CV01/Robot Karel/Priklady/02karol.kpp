@@ -1,0 +1,14 @@
+{karol polozi
+ 9 tehiel.}
+opakuj 9{20} krat
+  krok
+  vlavo
+  poloz
+  vpravo
+  ak je {volno} stena tak
+    //celom vzad
+    vlavo
+    vlavo
+  *ak // koniec podmienky
+*opakuj
+{ koniec programu }

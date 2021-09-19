@@ -1,0 +1,17 @@
+prikaz vyznackuj_riadok
+  kym je volno rob
+    oznac
+    krok
+    krok
+  *kym
+*prikaz
+
+// natocenie na spravny smer
+kym nie je juh rob vlavo *kym
+
+opakuj 3 krat
+  vyznackuj_riadok
+  vlavo; krok; vlavo;
+  vyznackuj_riadok
+  vpravo; krok; vpravo;
+*opakuj

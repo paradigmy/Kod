@@ -1,0 +1,35 @@
+prikaz zastavaj_cele
+  prikaz jedna_stena
+    opakuj 5 krat
+      krok
+      vlavo vlavo
+      poloz
+      krok
+      vlavo vlavo
+      kym je volno rob
+        poloz
+        krok
+      *kym
+      vlavo
+      vlavo
+    *opakuj
+  *prikaz
+  // TELO PRIKAZu
+
+  opakuj 5 krat
+    jedna_stena
+    vlavo
+    krok
+    vpravo
+
+    jedna_stena
+    vpravo
+    krok
+    vlavo
+  *opakuj
+  
+*prikaz
+
+  vlavo
+  zastavaj_cele
+  vlavo; kym je volno rob krok *kym

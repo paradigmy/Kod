@@ -1,0 +1,18 @@
+{ lahka uloha: stoji pred kopou tehal a ma ju prelozit za seba a zostat stat orientovany na nu }
+
+prikaz celomVzad
+    vlavo
+    vlavo
+*prikaz
+
+kym je tehla rob
+    zober
+    celomVzad
+    poloz
+    celomVzad
+*kym
+celomVzad
+
+
+
+

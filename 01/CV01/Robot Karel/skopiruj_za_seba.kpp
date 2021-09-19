@@ -1,0 +1,17 @@
+{ podobne ako prenes za seba, ale povodna kopa sa
+  nezmeni, preto za sebou vytvori rovnako velku kopu ako ma pred sebou }
+
+prikaz skopiruj;
+ ak je tehla tak
+   zober;
+   skopiruj;
+   poloz;
+   vlavo;
+   vlavo;
+   poloz;
+   vlavo;
+   vlavo;
+ *ak
+*prikaz;
+
+ skopiruj;

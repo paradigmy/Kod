@@ -1,0 +1,24 @@
+{ naivny utek z vezenia, pravou rukou po stene }
+prikaz escape
+   kym nie je stena rob
+     vpravo
+     ak je tehla tak
+       vlavo
+    *ak
+    kym je tehla rob
+      vlavo
+    *kym
+    krok
+   *kym
+*prikaz
+
+escape
+
+prikaz AlCapone
+  kym nie je stena rob
+    kym je tehla rob zober *kym
+    krok
+  *kym
+*prikaz
+
+//AlCapone

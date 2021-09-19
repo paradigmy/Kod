@@ -1,0 +1,45 @@
+
+{ nasobi co ma pred, a vpravo, vysledok da za seba }
+
+prikaz vycisti
+  kym je tehla rob zober *kym
+
+*prikaz
+
+prikaz celomVzad
+   opakuj 2 krat  vlavo *opakuj
+*prikaz
+
+{ pricita co ma pred sebou k tomu co ma po pravej ruke }
+prikaz pricitaj
+  ak je tehla tak
+     zober
+     vpravo
+     poloz
+     vlavo
+     pricitaj
+     poloz
+   *ak
+*prikaz
+
+{ nasobi, co ma pred sebou a po pravej ruke, vysledok pripocita k tomu, co ma za sebou }
+prikaz nasob
+   ak je tehla tak
+      zober
+      vpravo
+      pricitaj
+      vlavo
+      nasob
+      poloz
+   *ak
+*prikaz
+
+prikaz vynasob
+  celomVzad
+  vycisti
+  celomVzad
+  nasob
+*prikaz
+
+vynasob
+

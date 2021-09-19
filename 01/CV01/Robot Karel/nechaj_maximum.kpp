@@ -1,0 +1,26 @@
+{ Robot Karel ma pred sebou a po pravej ruke
+dve kopy tehal a ma zostat stat natoceny k vacsej z nich,
+pricom mensia zmizne
+
+v rekurzii si pamata minimum dvoch kop, a ked
+sa jedna minie, spravne sa natoci a vystackuje
+z rekurzie a poklada min kop tehal }
+
+prikaz maximum
+  ak je tehla tak
+    vpravo
+    ak je tehla tak
+      zober
+      vlavo
+      zober
+      maximum
+      poloz
+    inak
+      vlavo
+    *ak
+  inak
+    vpravo
+  *ak
+*prikaz
+
+maximum
