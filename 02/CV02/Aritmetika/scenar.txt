@@ -1,0 +1,33 @@
+mate k dispozicii jednu globalnu premennu, do ktorej viete nacitat cislo zo vstupu
+
+--- python:
+a = 0  # toto je ta globalna premenna, na to aby sme ju videli v lokalnom scope, musime napisat 'global a' 
+     a = int(input('zadaj cislo:'))
+
+--- go:
+var a int = 0		// toto je ta globalna premenna
+
+// toto nemeniť, len použiť
+func input(prompt string) {
+	var i string
+	fmt.Println(prompt)
+	fmt.Scan(&i)
+	a, _ = strconv.Atoi(i)
+}
+
+--- javascript:
+var a = 0;  // jedina globalna premenna
+
+function input(str) {  // funkcia, ktora vypromptuje celociselnu hodnotu 
+	a = Number(prompt(str));
+}
+
+Zadanie:
+definujete len rekurzivne metody bez parametrov, bez vystupnej hodnoty (teda funkcia nie je dovolena).
+
+Ulohy:
+- sucet dvoch prirodzenych cisel s jednou globalnou premennou
+- sucet dvoch celych cisel s jednou globalnou premennou 
+- sucet troch celych cisel s jednou globalnou premennou 
+- maximum dvoch prirodzenych cisel s jednou globalnou premennou 
+- dalsie su na domacu ulohu
