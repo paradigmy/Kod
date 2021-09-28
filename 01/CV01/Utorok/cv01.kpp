@@ -1,0 +1,54 @@
+{Hej Karel, otoc sa vzad!}
+prikaz vzad
+       vlavo
+       vlavo
+*prikaz
+
+prikaz presun
+kym je tehla rob
+    zober vzad
+    poloz vzad
+*kym
+*prikaz
+
+{Karel, skopiruj prosim kopu za seba}
+prikaz kopiruj
+        kym je tehla rob
+            zober vlavo poloz
+            vlavo poloz vzad
+        *kym
+        vlavo
+        kym je tehla rob
+        zober vpravo poloz vlavo
+        *kym
+*prikaz
+
+{Karel, skus teraz skopirovat kopu rekurzivne}
+prikaz kopiruj2
+       ak je tehla tak
+          zober vzad poloz vzad kopiruj2
+       inak
+           poloz
+       *ak
+*prikaz
+
+prikaz kopiruj3
+       zober vzad poloz vzad
+       ak je tehla tak
+          kopiruj3
+       *ak
+       poloz
+*prikaz
+
+
+{Karel, vydel pocet tehliciek pred sebou cislom 2 a postav tam dolnu celu cast}
+prikaz predelRek
+       zober
+       ak je tehla tak
+        zober
+        predelRek
+        poloz
+       *ak
+*prikaz
+
+
