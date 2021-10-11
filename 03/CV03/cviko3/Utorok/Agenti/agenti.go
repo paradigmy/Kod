@@ -128,7 +128,7 @@ func splitter(ch chan int) (ch1 chan int, ch2 chan int) {
 	ch1 = make(chan int)
 	ch2 = make(chan int)
 
-	
+
 	return ch1, ch2
 }
 
