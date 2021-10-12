@@ -72,6 +72,8 @@ func cmergesort(low, high int, wg *sync.WaitGroup) {
 			mergesort(middle+1, high)
 			merge(low, middle, high)
 		} else {
+			// tu pouzi sync.WaitGroup
+
 		}
 	}
 }

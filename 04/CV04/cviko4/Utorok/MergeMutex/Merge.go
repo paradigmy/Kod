@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"runtime"
+	"sync"
 	"time"
 )
 
@@ -11,8 +12,8 @@ import (
 type Pole []int
 
 var (
-	numbers Pole // globalna premenna ako triedene pole
-	temp    Pole //pomocne pole pre mergesort, kedze merge in-situ je tazky
+	numbers Pole
+	temp    Pole //pomocne pole pre mergesort, kedze merge in situ je tazky
 )
 
 func SeqMergesort(values Pole) Pole {
@@ -31,9 +32,9 @@ func mergesort(low, high int) {
 	}
 }
 
-func merge(low, middle, high int) { // zlepi dve casti pola low..middle, middle+1..high cez pole temp
+func merge(low, middle, high int) { // zlepi dve casti pola low..middle, middle..high cez pole temp
 	for i := low; i <= high; i++ {
-		temp[i] = numbers[i] // prekopiruje do pomocneho pola
+		temp[i] = numbers[i]
 	}
 	i := low
 	j := middle + 1
@@ -62,27 +63,41 @@ var (
 	goroutines  = 0 // pocet vytvorenych gorutin
 )
 
-
-// kanal ch sa pouziva na synchronizaciu, kedy je pole utriedene
-func cmergesort(low, high int, ch chan bool) {
+// synchronizacia pomocou mutexu
+func cmergesort(low, high int, wg *sync.WaitGroup) {
 	if low < high {
-		//middle := low + (high-low)/2
-		if high-low < granularity { // granularita, utried sekvencne
-			// ... tu dopis
+		middle := low + (high-low)/2
+		if high-low < granularity { // granularita
+			mergesort(low, middle)
+			mergesort(middle+1, high)
+			merge(low, middle, high)
 		} else {
-			// ... tu dopis
+			// tu pouzi sync.WaitGroup
+			wg := new(sync.WaitGroup)
+			wg.Add(2)
+			go cmergesort(low, middle,wg)
+			go cmergesort(middle+1, high,wg)
+			goroutines += 2
+			wg.Wait()
+			merge(low, middle, high)
 		}
 	}
+	wg.Done()
 }
 
 func ConcMergesort(values Pole) Pole {
 	numbers = values
 	goroutines = 0
 	temp = make(Pole, len(values))
-	ch := make(chan bool)  // tu je vzor
-	go cmergesort(0, len(values)-1, ch)
+	wg := new(sync.WaitGroup)
+	wg.Add(1) // toto treba, lebo inak padne wg.Done na negative counter
 	goroutines++
-	<-ch
+
+	cmergesort(0, len(values)-1, wg)
+
+	// alebo:
+	//go cmergesort(0, len(values)-1, wg)
+	wg.Wait() // toto asi netreba...
 	return numbers
 }
 
@@ -99,7 +114,6 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 
 	N := 10000000 // velkost triedeneho pola
-	//N := 100000000 // velkost triedeneho pola
 
 	for granularity = N; granularity > 0; granularity = granularity / 2 {
 		ss := make(Pole, N)
@@ -107,8 +121,8 @@ func main() {
 			ss[idx] = rand.Intn(N)
 		}
 		start := time.Now()
-		_ = SeqMergesort(ss) // sekvencna verzia
-		//_ = ConcMergesort(ss) // konkurentna verzia
+		//_ = SeqMergesort(ss) // sekvencna verzia
+		_ = ConcMergesort(ss) // konkurentna verzia
 		elapsed := time.Since(start)
 		fmt.Printf("MERGESORT: size=%v, granula=%d\tgoroutines=%d\telapsed time %v\n",
 			N, granularity, goroutines, elapsed)

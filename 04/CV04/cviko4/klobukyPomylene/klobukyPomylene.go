@@ -15,7 +15,8 @@ type Agent struct {	 // agent definovany ako objekt
 	ch chan bool	 // kanal, na ktorom pocuva, hovorit sa mozu len farby, true/false
 }
 func newAgent(id int) *Agent { // nahodne vygeneruje farbu klobuka a pripoji agenta k existujucim
-    agent := &Agent{len(agenti), rand.Intn(2) > 0, make(chan bool)}
+    agent := &Agent{len(agenti),
+    	rand.Intn(2) > 0, make(chan bool)}
 	agenti = append(agenti, agent)
 	return agent
 }

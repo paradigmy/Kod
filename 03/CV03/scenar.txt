@@ -1,15 +1,27 @@
-- faktorial z predosleho cvicenia
-  ako pocitat sucin 1. ... .n, resp. sucin cisel intevalu [a,b]
-  aka je zlozitost nasobenia dvoch cisel a*b
-  dobry odhad je |a| + |b|, || je pocet bitov
-  vysvetli funkcionalne "spusti"
-  
-- agenti 
-  
-- quicksort, dostihy z prednasky
 
-- urob concurrent merge cez kanaly
 
-- urob concurrent merge s mutexom
+na cvičení budú 3 témy:
 
-- klobuky, zopakovanie temy
+SORTY:
+
+Na prednáške sme skúšali urobiť konkurentnú verziu z Quicksortu, tak to skúsime na MergeSort a synchronizáciu poriešime pomocou
+
+    operácií read/write na kanáli
+    waitGroup
+
+AGENTI: gameska2 končila jasným rozuzlením, že funkcia, ktorú agent má počítať je xor z hodnôt poľa, čo počul a čo vidí, viac tu
+
+cieľom tejto časti je naprogramovať agentov, takto počítali, správali sa ako nezávislé go rutiny. Je to trochu nápoveda k úlohe o 3 agentoch a 5 (2+3) klobúkoch, ktorá bola načrtnutá na prednáške, a bude na DU.
+
+    pomylene klobuky, úloha z prémie Klobúky v rade
+    rozcvčka je o malej modifikácii tejto úlohy
+
+WORKERS: Na prednáške sme prezentovali koncept worker poolu, teda množina taskov a množina workerov, ktorý tasky realizuju. Na cvicení ideme postupne rozobrať jednu domácu úlohu, kde budete násobiť obrovské matice
+
+    skal.sucin (doprogramuj Utorok/warmup)
+    podmatica (Utorok/warmup)
+    mutex, waitgroup, slide 25
+    robotnici (mala/velka nasobilka)
+    skalarny server
+
+a možno bude aj gameska...

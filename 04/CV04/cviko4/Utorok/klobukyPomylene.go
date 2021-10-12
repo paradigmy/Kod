@@ -49,25 +49,20 @@ func xorPola(pole []bool) bool {   // pomocny stuff, xor prvkov pola, resp. poce
 // zivot agenta
 func (agent Agent) run()  {
 	go func() {
-		odpoved := false
-		vidim := agent.vidim()
-		if (agent.id == 0) {
-			odpoved = xorPola(vidim)
-		} else {
-			coSomPocul := make([]bool, 0)
-			for {
-				pocujem := <-agent.ch
-				coSomPocul = append(coSomPocul, pocujem)
-				if (len(coSomPocul) == agent.id) {
-					break
-				}
+	// tu dopis zivot agenta
+		var vysledok bool
+		if agent.id == 0 {
+			vysledok = xorPola(agent.vidim())
+		}else {
+			var odpoved = false
+			for i := 0; i<agent.id; i++ {
+				odpoved = xor(<- agent.ch,odpoved)
 			}
-			odpoved = xor(xorPola(vidim),xorPola(coSomPocul))
+			vysledok = xor(odpoved,xorPola(agent.vidim()))
 		}
-		fmt.Printf("agent %v tvrdi, ze ma %v a ma pravdu %v \n", agent.id, odpoved, agent.maPravdu(odpoved))
-		// posli odpoved dalsim agentom v rade
-		for i:=agent.id+1; i< len(agenti); i++ {
-			agenti[i].ch <- odpoved
+		fmt.Println("agent ",agent.id, " tvrdi ze ma farbu ",vysledok)
+		for i := agent.id+1; i<len(agenti); i++ {
+			agenti[i].ch <- vysledok
 		}
 	}()
 }

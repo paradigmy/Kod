@@ -66,13 +66,22 @@ var (
 // kanal ch sa pouziva na synchronizaciu, kedy je pole utriedene
 func cmergesort(low, high int, ch chan bool) {
 	if low < high {
-		//middle := low + (high-low)/2
+		middle := low + (high-low)/2
 		if high-low < granularity { // granularita, utried sekvencne
-			// ... tu dopis
+			mergesort(low,high)
 		} else {
-			// ... tu dopis
+			ch1 := make(chan bool)
+			ch2 := make(chan bool)
+			go cmergesort(low, middle,ch1)
+			go cmergesort(middle+1, high,ch2)
+			goroutines += 2
+			<-ch1
+			<-ch2
+			merge(low, middle, high)
+
 		}
 	}
+	ch <- true
 }
 
 func ConcMergesort(values Pole) Pole {
@@ -107,8 +116,8 @@ func main() {
 			ss[idx] = rand.Intn(N)
 		}
 		start := time.Now()
-		_ = SeqMergesort(ss) // sekvencna verzia
-		//_ = ConcMergesort(ss) // konkurentna verzia
+		//_ = SeqMergesort(ss) // sekvencna verzia
+		_ = ConcMergesort(ss) // konkurentna verzia
 		elapsed := time.Since(start)
 		fmt.Printf("MERGESORT: size=%v, granula=%d\tgoroutines=%d\telapsed time %v\n",
 			N, granularity, goroutines, elapsed)
