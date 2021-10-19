@@ -123,7 +123,7 @@ func main() {
 
 	// navštivi viackrat stranky
 
-	Crawl71(url, depth)
+	//Crawl71(url, depth)
 
 	// http://dai.fmph.uniba.sk/courses/JAVA
 	// size: 1097
@@ -143,7 +143,7 @@ func main() {
 	//---------------------------------------------------------------------
 	// rekurzivy jemne zoprimalizovany crawler, pamata si navstivene stranky
 
-	//CrawlR(url, 0, depth)
+	CrawlR(url, 0, depth)
 
 	// http://dai.fmph.uniba.sk/courses/JAVA
 	// size: 1097
