@@ -195,7 +195,7 @@ digits = 1
 --            print(a, b, "|", x//b, 10^digits + 1 - a)
 
 res = [ ((a, b), (x `div` b, 10^digits + 1 - a)) |
-          a <- [10^(digits-1)..10^digits - 10^(digits - 1) + 2],
+          a <- [10^(digits-1)..10^digits - 10^(digits - 1) + 1],
           let x = (10^digits + 1)*a - a^2,
           b <- divisors x,
           10^(digits - 1) <= b, b < 10^digits,
