@@ -1,3 +1,6 @@
+% :- use_module(library(lists)).
+
+
 reverse([], []).
 reverse([X|Xs], Y) :- reverse(Xs, Ys), append(Ys, [X], Y).
 

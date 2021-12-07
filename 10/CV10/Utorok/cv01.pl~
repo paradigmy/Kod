@@ -1,0 +1,8 @@
+% pozrite si kniznicu lists pre swi-Prolog, kopec uzitocnych predikatov na pracu so zoznamami
+% tie mozete pouzivat
+% https://www.swi-prolog.org/pldoc/man?section=lists
+:- use_module(library(lists)).   % toto je import library(lists)
+
+myapp([],Ys,Ys).
+myapp([X|Xs],Ys,[X|Zs]):-myapp(Xs,Ys,Zs).
+
