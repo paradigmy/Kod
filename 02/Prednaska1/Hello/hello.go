@@ -2,6 +2,9 @@ package main
 import ("fmt")
 
 func main() {
+	var xx = 89
+	yy := float64(xx)
+	fmt.Println(yy)
 	fmt.Println("Hello " + "world !")
 
 	var imaginarnaJednotka = 1i // imaginarna jednotka

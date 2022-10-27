@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"runtime"
+	"sync"
 	"time"
 )
 
@@ -11,6 +12,7 @@ var (
 	size        = 50000000
 	granularity = 50000000
 	goroutines  = 0 // pocet vytvorenych gorutin
+	mutex = &sync.Mutex{}
 )
 
 func pivot(pole []int) int {
@@ -33,7 +35,7 @@ func pivot(pole []int) int {
 func quickSort(pole []int) {
 	if len(pole) > granularity {
 		done := make(chan bool)
-		goroutines++
+		mutex.Lock(); goroutines++; mutex.Unlock()
 		go cquickSort(pole, done)
 		<-done
 	} else {
@@ -50,9 +52,9 @@ func cquickSort(pole []int, done chan bool) {
 	} else {
 		index := pivot(pole)
 		left, right := make(chan bool), make(chan bool)
-		goroutines++
+		mutex.Lock(); goroutines++; mutex.Unlock()
 		go cquickSort(pole[:(index-1)], left)
-		goroutines++
+		mutex.Lock(); goroutines++; mutex.Unlock()
 		go cquickSort(pole[index:], right)
 		done <- (<-left && <-right)
 	}

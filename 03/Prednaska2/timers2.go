@@ -12,17 +12,17 @@ var mutex2 = &sync.Mutex{}
 
 func timer2(d time.Duration, ch chan int) {
 	go func() {
-		//mutex2.Lock()
+		mutex2.Lock()
 		goroutinesCount2++;
 		if goroutinesCount2 > goroutinesMax2 {
 			goroutinesMax2 = goroutinesCount2
 		}
-		//mutex2.Unlock()
+		mutex2.Unlock()
 		time.Sleep( d)   // 0
 		ch <- 1
-		//mutex2.Lock()
+		mutex2.Lock()
 		goroutinesCount2--;
-		//mutex2.Lock()
+		mutex2.Lock()
 	}()
 }
 

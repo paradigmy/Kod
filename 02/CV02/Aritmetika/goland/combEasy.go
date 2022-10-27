@@ -8,7 +8,7 @@ func combRec(n int64, k int64) int64 {
 	if n == k || k == 0 {
 		return 1
 	} else {
-		return comb(n-1, k-1) + comb(n-1, k)
+		return combRec(n-1, k-1) + combRec(n-1, k)
 	}
 }
 func sucin2(a int64, b int64) int64 {

@@ -12,10 +12,10 @@ func handleConnection(conn net.Conn) {
 	r := bufio.NewReader(conn)
 	for {
 		line, _, err := r.ReadLine()
+		fmt.Printf("%s\n", line)
 		if err == io.EOF {
 			break
 		}
-		fmt.Printf("%s\n", line)
 	}
 }
 

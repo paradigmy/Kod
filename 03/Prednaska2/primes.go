@@ -17,7 +17,7 @@ func main() {
 			first <- i
 		}
 	}()
-	//go func() {
+	go func() {
 		for i := 0; i < limit; i++ {
 			prime := <-prev
 			//fmt.Printf("%d, ", prime)
@@ -34,7 +34,7 @@ func main() {
 			}(prime, prev, next)
 			prev = next
 		}
-	//}()
+	}()
 	//for res := range prev {
 	//	fmt.Print(res)
 	//}

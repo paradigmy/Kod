@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 )
-//var WORKERS	=  10  					// optimista...
+//var WORKERS	=  12  					// optimista...
 var WORKERS	=  runtime.NumCPU();  	// pocet jadier
 var TASKS = 100;
 var SALARY = make([]int, WORKERS)

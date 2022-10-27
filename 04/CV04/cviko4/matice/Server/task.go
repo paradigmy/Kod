@@ -29,7 +29,7 @@ func (t *Task) toBuffer() []byte {
 
 func buffer2Task(buffer []byte) Task {
 	var tsk = Task{}
-	fmt.Println("%s", buffer)
+	//fmt.Println("%s", buffer)
 	err2 := json.Unmarshal(buffer, &tsk)
 	if err2 != nil {
 		fmt.Printf("json decode error: %v\n", err2)

@@ -88,7 +88,7 @@ func main() { // task.exe n port1, port2, ....
 		go wp.mainLoop(chanRes)
 		for ww := 0; ww < len(m1)*len(m2); ww++ {
 			result := <-chanRes
-			fmt.Printf("prisiel vysledok %v\n", result)
+			fmt.Printf("prisiel %v.ty vysledok  %v\n", ww, result)
 			res[result.I1][result.I2] = result.Skalar
 		}
 

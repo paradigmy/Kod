@@ -5,6 +5,9 @@ import (
 	"strconv"
 )
 
+func main() {
+	sum2Nat()
+}
 /*
 #####################################################################
 
@@ -213,10 +216,11 @@ func log6() {
 //    maximum dvoch prirodzených čísel s jednou globálnou premennou
 func max2Nat() {
 	input("zadaj prve cele cislo:")
-	max2NatX1()
+
+	//max2NatX1()
 	// v premennej a je 2^prve*3^druhe
 	// ... ideme logaritmovat
 	// fmt.Printf((a)
-	log6()
+	//log6()
 	fmt.Printf("ich maximum je: %d", a)
 }

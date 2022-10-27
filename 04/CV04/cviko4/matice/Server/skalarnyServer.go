@@ -3,10 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"net"
 	"os"
 	"time"
-	"io"
 )
 
 //type Cislo float64 // toto si nechame na realne testovanie, zataz

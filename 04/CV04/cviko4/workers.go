@@ -58,7 +58,10 @@ func main() {
 	go pool(&wg)			// spusti sa simulacia worker poolu
 	wg.Wait()				// caka sa, kym kazdy worker dopracuje
 	fmt.Println("Podklady pre fakturaciu workerov:")
+	total := 0
 	for id:=0; id<WORKERS; id++ {
+		total += SALARY[id]
 		fmt.Printf("$%d\tBits %d\n", SALARY[id], LOGS[id])
 	}
+	fmt.Printf("total: $%d\n", total)
 }

@@ -96,7 +96,8 @@ func main() {
 		//for {
 		//	fmt.Print(<-ch)
 		//}
-		//
+
+
 		//ch := multiplexorSelect(ch1, ch2)
 		//for {
 		//	fmt.Print(<-ch)
