@@ -93,7 +93,7 @@ type RiesenieDam = [Int]
 
 -- najdi vsetky riesenia
 velkostSachovnice  :: Int
-velkostSachovnice   = 8
+velkostSachovnice   = 9
 
 damyBacktrack    :: Int -> [RiesenieDam]
 damyBacktrack 0   = [[]]
