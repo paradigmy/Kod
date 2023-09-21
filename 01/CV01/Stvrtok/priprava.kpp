@@ -87,3 +87,23 @@ prikaz scitaj
 
 scitaj
 
+podmienka parne
+  ak nie je tehla tak
+     pravda
+  inak
+     ak je tehla(2) tak
+       zober
+       zober
+       ak je parne tak pravda inak nepravda *ak
+       poloz
+       poloz
+     inak
+       nepravda
+     *ak
+  *ak
+
+*podmienka
+
+{ak je tehla(2) tak vlavo inak vpravo *ak}
+ak je parne tak vlavo inak vpravo *ak
+

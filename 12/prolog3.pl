@@ -305,7 +305,7 @@ cesta(X,Y,Visited,P):-
 	not(member(Z,Visited)), 
 	cesta(Z,Y,[Z|Visited],P).
 
-misio :- init(I), final(F), cesta(I,F,[],P), write(P).
+misio :- init(I), final(F), cesta(I,F,[I],P), write(P).
 
 %[state(0, 0, r), state(1, 1, l), state(0, 1, r), state(0, 3, l), 
 %state(0, 2, r), state(2, 2, l), state(1, 1, r), state(3, 1, l), 

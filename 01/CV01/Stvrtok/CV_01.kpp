@@ -1,99 +1,130 @@
+{cvicenie 01/23}
 prikaz celomVzad
-  vlavo
-  vlavo
+   vlavo
+   vlavo
 *prikaz
 
-prikaz zaSeba2
-  ak je tehla tak
-    zober
-    celomVzad
-    poloz
-    celomVzad
-    zaSeba2
-  *ak
-*prikaz
-
-prikaz zaSeba3
-  kym je tehla rob
-    zober
-    celomVzad
-    poloz
-    celomVzad
-  *kym
-*prikaz
-
-{zacne smerom k tehlam
- na konci ostane otoceny k polozenym tehlickam}
-prikaz zaSeba4
-  ak je tehla tak
-    zober
-    zaSeba4
-    poloz
-  inak
-    celomVzad
-  *ak
-*prikaz
-
-
-{ zaSeba4 }
-
-{zacne smerom k povodnym tehlam
- na konci ostane otoceny k nakopirovanym tehlickam}
-{ rekurzia }
-prikaz priradZaSeba
- {vynulovat za sebou}
-  ak je tehla tak
-    zober
-    priradZaSeba
-    poloz
-    celomVzad
-    poloz
-    celomVzad
-  inak
-    celomVzad
-  *ak
-*prikaz
-
-{ priradZaSeba }
-
-{zacne smerom k povodnym tehlam
- na konci ostane otoceny k nakopirovanym tehlickam}
-prikaz copy
-  {vynulovat za sebou}
-  kym je tehla rob
-    zober
-    vpravo
-    poloz
-    vlavo
-  *kym
-  vpravo
-  kym je tehla rob
-    zober
-    vlavo
-    poloz
-    celomVzad
-    poloz
-    vlavo
-  *kym
-  vpravo
-*prikaz
-
-{ copy }
-
-prikaz del2
-  ak je tehla tak
-    zober
-    ak je tehla tak
+prikaz zaSeba
+   kym je tehla    rob
       zober
-      del2
       celomVzad
       poloz
       celomVzad
-    *ak
-  *ak
+   *kym
+
+*prikaz
+
+prikaz duplikuj
+   kym je tehla    rob
+      zober
+      vpravo
+      poloz
+      vpravo
+      poloz
+      celomVzad
+   *kym
+   vpravo
+   kym je tehla rob
+      zober
+      vlavo
+      poloz
+      vpravo
+   *kym
+     vlavo
+*prikaz
+
+prikaz zaSeba2
+   ak je tehla tak
+      zober
+      celomVzad
+      poloz
+      celomVzad
+      duplikuj2
+   
+   *ak
+*prikaz
+
+prikaz duplikuj2
+   ak je tehla tak
+      zober
+      duplikuj2
+      poloz
+      celomVzad
+      poloz
+      celomVzad
+   
+   *ak
+*prikaz
+
+prikaz duplikuj3
+   ak je tehla tak
+      zober
+      duplikuj3
+      poloz
+      vpravo
+      poloz
+      vlavo
+
+   *ak
+*prikaz
+
+prikaz scitaj
+   duplikuj2
+   vpravo
+   duplikuj3
+   vlavo
+   
+*prikaz
+
+prikaz del2
+   ak je tehla tak
+      zober
+      ak je tehla tak
+         zober
+         del2
+         poloz
+      *ak
+   *ak
 *prikaz
 
 
-{del2}
+{ podmienka meno ... *podmienka
+  pravda/nepravda
+  ak je tehla tak ... inak ... *ak
+  kym je tehla rob ... *kym
+  opakuj 5 krat ... *opauj
+  poloz/zober
+  oznac/odznac
+  pomaly/rychlo
+  [nie] je volno
+  [nie] je tehla
+  [nie je podmienka
+}
+
+
+
+
+podmienka delitelne2
+   ak je tehla tak
+      zober
+      ak je tehla tak
+         zober
+         ak je delitelne2 tak pravda inak nepravda *ak
+         poloz
+         poloz
+      inak
+        poloz
+        nepravda
+      *ak
+   inak
+      pravda
+   *ak
+*podmienka
+
+ak je delitelne2 tak
+   vpravo
+inak
+    vlavo
+*ak
 
 
