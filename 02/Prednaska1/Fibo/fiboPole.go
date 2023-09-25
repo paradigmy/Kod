@@ -11,12 +11,6 @@ func FibPole(n int) int {
 	return tabulka[n]
 }
 
-func FibPoleInit(n int) {
-	tabulka = make([]int, n) // array[0..n-1] of int
-	tabulka[0] = 1
-	tabulka[1] = 1
-}
-
 func main() {
 	var n int
 	fmt.Print("zadaj N: ")

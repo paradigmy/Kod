@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e341aa9a-4b25-4437-8fd5-8f06bd70849e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CV02/Aritmetika/aritmetika.go" beforeDir="false" afterPath="$PROJECT_DIR$/../CV02/Aritmetika/aritmetika.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Aritmetika/goland/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CV02/Aritmetika/goland/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Aritmetika/goland/aritmetika.go" beforeDir="false" afterPath="$PROJECT_DIR$/../CV02/Aritmetika/goland/aritmetika.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Aritmetika/goland/combEasy.go" beforeDir="false" afterPath="$PROJECT_DIR$/../CV02/Aritmetika/goland/combEasy.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Aritmetika/goland/factorial.go" beforeDir="false" afterPath="$PROJECT_DIR$/../CV02/Aritmetika/goland/factorial.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Utorok/Aritmetika/aritmetika.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Utorok/Aritmetika/aritmetika.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CV02/Utorok/Aritmetika/aritmetika.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hello/hello.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Hello/hello.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hello/hello.go" beforeDir="false" afterPath="$PROJECT_DIR$/Hello/hello.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Variables/hello1.go" beforeDir="false" afterPath="$PROJECT_DIR$/Variables/hello1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../03/Prednaska2/channels.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../03/Prednaska2/channels.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../03/Prednaska2/concurrent3.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../03/Prednaska2/concurrent3.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../03/Prednaska2/timers2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../03/Prednaska2/timers2.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fibo/fiboPole.go" beforeDir="false" afterPath="$PROJECT_DIR$/Fibo/fiboPole.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hello/hello.exe" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +147,7 @@
       <recent name="C:\borovan\PARA\GOLANG\src\Prednaska1\Hello" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build fibParaMutex.go">
+  <component name="RunManager" selected="Go Build.go build fibLogPara.go">
     <configuration name="go build fibBig.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="Prednaska1" />
       <working_directory value="$PROJECT_DIR$" />
@@ -176,12 +164,12 @@
       <filePath value="$PROJECT_DIR$/Fibo/fibLogBig.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build fibParaMutex.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build fibLogPara.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="Prednaska1" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/Fibo/fibParaMutex.go" />
+      <filePath value="$PROJECT_DIR$/Fibo/fibLogPara.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build fibPara.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -203,13 +191,13 @@
     <list>
       <item itemvalue="Go Build.go build fibBig.go" />
       <item itemvalue="Go Build.go build fibLogBig.go" />
-      <item itemvalue="Go Build.go build fibPara.go" />
       <item itemvalue="Go Build.go build main.go" />
-      <item itemvalue="Go Build.go build fibParaMutex.go" />
+      <item itemvalue="Go Build.go build fibPara.go" />
+      <item itemvalue="Go Build.go build fibLogPara.go" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build fibParaMutex.go" />
+        <item itemvalue="Go Build.go build fibLogPara.go" />
         <item itemvalue="Go Build.go build fibPara.go" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build fibLogBig.go" />
