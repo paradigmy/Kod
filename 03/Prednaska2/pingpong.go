@@ -22,7 +22,7 @@ func main() {
 func player(id int, table chan int) {
 	for {
 		ball := <-table
-		fmt.Printf("player %d chytil %d\n", id, ball)
+		//fmt.Printf("player %d chytil %d\n", id, ball)
 		ball++
 		time.Sleep(100 * time.Millisecond)
 		table <- ball

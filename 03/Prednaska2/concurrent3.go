@@ -74,7 +74,7 @@ func main() {
 	//fmt.Println("main stop")
 
 
-		////for {
+		//for {
 		//go func() {
 		//	for {
 		//		fmt.Print(<-ch1)
@@ -85,7 +85,7 @@ func main() {
 		//		fmt.Print(<-ch2)
 		//	}
 		//}()
-		////}
+		//}
 		//var input string   // toto čaká na input, v opačnom
 		//fmt.Scanln(&input) // prípade, keď umrie hlavné
 		//fmt.Println("main stop")

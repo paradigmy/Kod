@@ -45,85 +45,34 @@ func input(prompt string) {
 	fmt.Println(prompt)
 	fmt.Scan(&i)
 	a, _ = strconv.Atoi(i)
+	//fmt.Println(a)
 }
 
 // súčet dvoch prirodzených čísel s jednou globalnou premennou
 func sum2Nat() {
-	if a > 0 {
+	if a==0 {
+		input("druhe")
+	}else{
 		a--
 		sum2Nat()
 		a++
-	} else {
-		input("druhe")
 	}
 }
 
 // súčet dvoch celych čísel s jednou globalnou premennou
 func sum2Int() {
-	if a > 0 {
-		a--
-		sum2Int()
-		a++
-	} else if a < 0 {
-		a++
-		sum2Int()
-		a--
-	} else {
-		input("druhe")
-	}
 }
 
 // súčet troch celych čísel s jednou globalnou premennou
 func sum3Int() {
-	sum2Int()
-	sum2Int()
 }
 
 // maximum dvoch prirodzenych čísel s jednou globalnou premennou
-func dvaA() {
-	if a == 0 {
-		input("druhe")
-		triB()
-	} else {
-		a--
-		dvaA()
-		a*=2
-	}
-}
-
-func triB() {
-	if a == 0 {
-		a = 1
-	} else {
-		a--
-		triB()
-		a*=3
-	}
-}
-
-func min() {
-	if a % 6 != 0 {
-		a = 0
-	} else {
-		a /= 6
-		min()
-		a++
-	}
+func max() {
 }
 
 func main() {
-	input("prve")
-	dvaA()
-	min()
-	fmt.Printf("ich min je: %d\n", a)
-
-}
-
-
-func comb(n, k int64) int64 {
-	if k == 0 || n == k {
-		return 1
-	} else {
-		return comb(n-1, k-1) + comb(n-1, k)
-	}
+	input("prve.. ")
+	sum2Nat()
+	fmt.Println("Ich sucet je: %d\n", a)
 }

@@ -18,7 +18,7 @@ type Worker struct {
 func NewWorker(host string, port string) *Worker {
 	conn, err := net.Dial("tcp", host+":"+ port)
 	if err != nil {
-		fmt.Printf("worker %d zlyhal\n", port)
+		fmt.Printf("worker %s zlyhal\n", port)
 	}
 	return &Worker{host, port, conn, false,
 		bufio.NewReader(conn), bufio.NewWriter(conn)}

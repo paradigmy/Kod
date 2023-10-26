@@ -11,7 +11,8 @@ func FibPair(Fj int, Fj1 int) (int, int) {
 func FibLog(n int) (int, int) {
 	if n < 2 {
 		return 0, 1
-	} else if n%2 == 1 {
+	} else
+	if n%2 == 1 {
 		fj, fj1 := FibLog(n / 2)
 		x, y := FibPair(fj, fj1)
 		return y, y + x

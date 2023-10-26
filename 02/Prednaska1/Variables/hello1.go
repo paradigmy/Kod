@@ -12,6 +12,8 @@ func main() {
 	var hello string = "Hello"
 	i := 9
 	world := "world" + strconv.Itoa(i)
+	var n = 0
+	fmt.Println(n)
 	var count = 0
 	fmt.Println(count)
 	const dots = `...`
