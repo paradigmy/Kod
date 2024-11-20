@@ -1,0 +1,101 @@
+prikaz celomvzad
+       vlavo
+       vlavo
+*prikaz
+
+
+
+prikaz vycisti
+       kym je tehla rob
+           zober
+       *kym
+*prikaz
+
+
+
+prikaz vycisti_1
+       ak je tehla tak
+          zober
+          vycisti_1
+       *ak
+*prikaz
+
+
+prikaz zaseba
+       ak je tehla tak
+          zober
+          celomvzad
+          poloz
+          celomvzad
+          zaseba
+       *ak
+*prikaz
+
+prikaz zaseba_1
+       ak je tehla tak
+          zober
+          zaseba_1
+          celomvzad
+          poloz
+          celomvzad
+       *ak
+       celomvzad
+*prikaz
+
+prikaz zaseba_2
+       ak je tehla tak
+          zober
+          zaseba_2
+          celomvzad
+          poloz
+          celomvzad
+       *ak
+*prikaz
+
+// zaseba_2
+
+prikaz kopiruj
+       ak je tehla tak
+          zober
+          kopiruj
+          celomvzad
+          poloz
+          celomvzad
+          poloz
+       *ak
+
+*prikaz
+
+// kopiruj
+
+
+prikaz del2
+       ak je tehla tak
+          zober
+          zober
+          del2
+          poloz
+       *ak
+*prikaz
+
+// del2
+
+
+podmienka parne
+          ak je tehla(2) tak
+             zober
+             zober
+             parne
+             poloz
+             poloz
+          inak ak je tehla tak
+                 nepravda
+              inak
+                 pravda
+              *ak
+          *ak
+*podmienka
+
+ak je parne tak vlavo inak vpravo *ak
+
+

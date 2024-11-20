@@ -1,0 +1,109 @@
+{ komentar }
+prikaz celomvzad
+  vlavo
+  vlavo
+*prikaz
+
+{ostane chrbtom}
+prikaz zaSeba
+  kym je tehla rob
+      zober
+      celomvzad
+      poloz
+      celomvzad
+  *kym
+*prikaz
+
+{ostane celom}
+prikaz zaSeba1
+  ak je tehla tak
+      zober
+      zaSeba1
+      poloz
+   inak
+      celomvzad
+  *ak
+*prikaz
+
+prikaz skopiruj
+  ak je tehla tak
+      zober
+      skopiruj
+      poloz
+      celomvzad
+      poloz
+      celomvzad
+  *ak
+*prikaz
+
+
+prikaz del2
+  ak je tehla tak
+    zober
+    zober
+    del2
+    poloz
+  inak
+
+  *ak
+*prikaz
+
+prikaz polcesta
+  ak je stena tak
+    celomvzad
+  inak
+    krok
+    krok
+    polcesta
+    krok
+  *ak
+*prikaz
+
+
+
+prikaz skopiruj1
+  ak je tehla tak
+      zober
+      skopiruj1
+      poloz
+      vpravo
+      poloz
+      vlavo
+  *ak
+*prikaz
+
+
+
+prikaz scitaj
+  celomvzad
+  kym je tehla rob
+    zober
+  *kym
+  celomvzad
+  skopiruj
+  vpravo
+  skopiruj1
+*prikaz
+
+{scitaj}
+
+podmienka parne
+  ak nie je tehla tak
+     pravda
+  inak
+     ak je tehla(2) tak
+       zober
+       zober
+       ak je parne tak pravda inak nepravda *ak
+       poloz
+       poloz
+     inak
+       nepravda
+     *ak
+  *ak
+
+*podmienka
+
+{ak je tehla(2) tak vlavo inak vpravo *ak}
+ak je parne tak vlavo inak vpravo *ak
+
