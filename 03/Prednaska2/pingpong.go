@@ -14,7 +14,7 @@ func main() {
 	go player(3, table)
 
 	table <- Ball
-	time.Sleep(5 * time.Second)
+	time.Sleep(15 * time.Second)
 	finito := <-table
 	fmt.Printf("main chytil %d\n", finito)
 }

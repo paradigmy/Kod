@@ -79,10 +79,10 @@ queens(Board) :-
 	
 %-----------------------------------------------------------
 
-queens2:-queens2(8,[]). 
+queens2:-queens2(12,[]). 
 queens2(N,Qs):-N==0->labeling(Qs),writeln(Qs),fail
 	       ;
-	       Q::1..8, safe(1,Q,Qs),N1 is N-1,queens2(N1,[Q|Qs]).
+	       Q::1..12, safe(1,Q,Qs),N1 is N-1,queens2(N1,[Q|Qs]).
 
 safe(_,_,[]). 
 safe(I,B,[A|Qs]):-I1 is I+1,
