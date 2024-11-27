@@ -1,3 +1,5 @@
+import Data.List
+
 --ack 0 n         = n+1
 --ack (m+1) 0     = ack m 1
 --ack (m+1) (n+1) = ack m (ack (m+1) n)
@@ -133,11 +135,11 @@ m3 = [[1,1,1],[1,1,1],[1,1,1]]
                
 -- transponuj maticu
 
-transpose                :: [[a]] -> [[a]]
-transpose []             = []
-transpose ([]     : xss) = transpose xss
-transpose ((x:xs) : xss) = (x : [h | (h:t) <- xss]) : 
-                           transpose (xs : [t | (h:t) <- xss])
+transpose'                :: [[a]] -> [[a]]
+transpose' []             = []
+transpose' ([]     : xss) = transpose' xss
+transpose' ((x:xs) : xss) = (x : [h | (h:t) <- xss]) : 
+                           transpose' (xs : [t | (h:t) <- xss])
                            
 transponuj         :: Matica -> Matica
 transponuj  []      = []
@@ -149,6 +151,14 @@ transponuj'         :: Matica -> Matica
 transponuj'  []      = []
 transponuj'  ([]:xss)   = transponuj' xss
 transponuj'  ((x:xs):xss)= (x:(map head xss)):(transponuj' $ xs:(map tail xss))
+
+
+transpose''                :: [[a]] -> [[a]]
+transpose'' []             = []
+transpose'' ([]     : xss) = transpose'' xss
+transpose'' (xs : []) = [[x] | x <- xs] 
+transpose'' ((x:xs) : xss) = (x : map head xss) : 
+                           zipWith (:) xs (tail (transpose'' xss))
                            
 ------------------------------------
 
@@ -162,10 +172,19 @@ pyth n = [(a,b,c)|
 kombinacie 0    = [[]]
 kombinacie n  = [ 0:k | k <- kombinacie (n-1)] ++ [ 1:k | k <- kombinacie (n-1)]
 
+variacie 0 = [[]]
+variacie n = let var = variacie (n-1) in [0:v | v<-var] ++ [1:v | v <- var]
+
+
 -- prermutacie
 perms [] = [[]]
 perms x  = [ a:y | a <- x, y <- perms (diff x [a]) ]
 diff x y = [ z | z <- x, notElem z y]
+
+perms' :: [a] -> [[a]]
+perms' [] = [[]]
+perms' (x:xs)  = [ take i xs ++ [x] ++ drop i xs | p <- perms' xs, i <- [0..length xs]]
+
 
 -- delitele
 factors n = [ i | i <- [1..n], n `mod` i == 0 ] 
@@ -300,9 +319,9 @@ find_tree     :: Eq t => t->(Tree t)->Bool
 
 find_tree a (Node b f)   = (a==b) || (find_forest a f)
 
-find a []   = False
-find a ((Node b sons):broths)   =   (a==b) || 
-            (find a sons) || 
-            (find a broths)
+finds a []   = False
+finds a ((Node b sons):broths)   =   (a==b) || 
+            (finds a sons) || 
+            (finds a broths)
 
 
