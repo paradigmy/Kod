@@ -6,7 +6,7 @@ import (
 )
 
 func producer(id int, cs chan int, delay time.Duration) {
-	for i := 1; i <= 3; i++ {
+	for i := 1; i <= 30; i++ {
 		cs <- i
 		fmt.Printf("producer %d item %d: \n", id, i)
 		time.Sleep(delay)
