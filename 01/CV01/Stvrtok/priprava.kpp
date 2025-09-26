@@ -36,6 +36,7 @@ prikaz skopiruj
   *ak
 *prikaz
 
+
 prikaz del2
   ak je tehla tak
     zober
@@ -46,7 +47,6 @@ prikaz del2
 
   *ak
 *prikaz
-
 
 prikaz polcesta
   ak je stena tak
@@ -85,13 +85,47 @@ prikaz scitaj
   skopiruj1
 *prikaz
 
-scitaj
+{scitaj}
+
+prikaz nasob
+   kym je tehla rob
+      zober
+      vpravo
+      skopiruj
+      vpravo
+   *kym
+*prikaz
+
+prikaz nasob1
+   ak je tehla tak
+      zober
+      vpravo
+      skopiruj
+      vpravo
+      nasob1
+      poloz
+   *ak
+*prikaz
+
+podmienka asponDve
+  ak je tehla tak
+    zober
+    ak je tehla tak
+      pravda
+    inak
+      nepravda
+    *ak
+    poloz
+  inak
+    nepravda
+  *ak
+*podmienka
 
 podmienka parne
   ak nie je tehla tak
      pravda
   inak
-     ak je tehla(2) tak
+     ak je asponDve tak
        zober
        zober
        ak je parne tak pravda inak nepravda *ak
@@ -101,7 +135,6 @@ podmienka parne
        nepravda
      *ak
   *ak
-
 *podmienka
 
 {ak je tehla(2) tak vlavo inak vpravo *ak}
