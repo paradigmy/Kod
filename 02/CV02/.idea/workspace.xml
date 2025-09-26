@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6f349fb-7dbd-4300-b7a7-1f3271e01f68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b6f349fb-7dbd-4300-b7a7-1f3271e01f68" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +12,7 @@
   </component>
   <component name="GOROOT" path="C:/Program Files (x86)/Go" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1iBVz2w1CQ6JjwmRfWFSdwLC3Pg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -37,7 +35,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build aritmetika.go">
     <configuration name="go build Cviko2.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="CV02" />
       <working_directory value="$PROJECT_DIR$" />
@@ -46,8 +44,44 @@
       <filePath value="$PROJECT_DIR$/Utorok/Cviko2.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build aritmetika.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="CV02" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Streda/Aritmetika/aritmetika.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build combEasy.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="CV02" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Aritmetika/goland/combEasy.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build comb.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="CV02" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Aritmetika/goland/comb.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build factorial.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="CV02" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/Aritmetika/goland/factorial.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build aritmetika.go" />
+        <item itemvalue="Go Build.go build comb.go" />
+        <item itemvalue="Go Build.go build combEasy.go" />
+        <item itemvalue="Go Build.go build factorial.go" />
         <item itemvalue="Go Build.go build Cviko2.go" />
       </list>
     </recent_temporary>
@@ -55,27 +89,5 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="978" height="230" key="GridCell.Tab.0.bottom" timestamp="1601541832546">
-      <screen x="-1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="981" height="230" key="GridCell.Tab.0.bottom/0.0.1024.738@0.0.1024.738" timestamp="1601395198585" />
-    <state width="978" height="230" key="GridCell.Tab.0.bottom/0.0.1680.1020/-3840.0.1920.1050/-1920.0.1920.1050@-1920.0.1920.1050" timestamp="1601541832545" />
-    <state width="978" height="230" key="GridCell.Tab.0.center" timestamp="1601541832545">
-      <screen x="-1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="981" height="230" key="GridCell.Tab.0.center/0.0.1024.738@0.0.1024.738" timestamp="1601395198585" />
-    <state width="978" height="230" key="GridCell.Tab.0.center/0.0.1680.1020/-3840.0.1920.1050/-1920.0.1920.1050@-1920.0.1920.1050" timestamp="1601541832545" />
-    <state width="978" height="230" key="GridCell.Tab.0.left" timestamp="1601541832545">
-      <screen x="-1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="981" height="230" key="GridCell.Tab.0.left/0.0.1024.738@0.0.1024.738" timestamp="1601395198585" />
-    <state width="978" height="230" key="GridCell.Tab.0.left/0.0.1680.1020/-3840.0.1920.1050/-1920.0.1920.1050@-1920.0.1920.1050" timestamp="1601541832545" />
-    <state width="978" height="230" key="GridCell.Tab.0.right" timestamp="1601541832545">
-      <screen x="-1920" y="0" width="1920" height="1050" />
-    </state>
-    <state width="981" height="230" key="GridCell.Tab.0.right/0.0.1024.738@0.0.1024.738" timestamp="1601395198585" />
-    <state width="978" height="230" key="GridCell.Tab.0.right/0.0.1680.1020/-3840.0.1920.1050/-1920.0.1920.1050@-1920.0.1920.1050" timestamp="1601541832545" />
   </component>
 </project>

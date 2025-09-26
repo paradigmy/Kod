@@ -12,6 +12,7 @@ type Fetcher interface {
 }
 
 var fetcher Fetcher
+//var mutex = &sync.Mutex{}
 
 // Crawl uses fetcher to recursively crawl
 // pages starting with url, to a maximum of depth.
@@ -22,7 +23,9 @@ func Crawl71(url string, depth int) {
 	if depth < 0 {
 		return
 	}
+	//mutex.Lock()
 	visited[url] = true
+	//mutex.Unlock()
 	body, urls, err := fetcher.Fetch(url)
 	if err != nil {
 		fmt.Println(err)
@@ -62,7 +65,9 @@ func crawlPageR(url string, depth int) *Urls {
 func CrawlR(url string, depth int, maxDepth int) {
 	//fmt.Print(len(visited))
 	if depth <= maxDepth {
+		//mutex.Lock()
 		visited[url] = true
+		//mutex.Unlock()
 		suburls := crawlPageR(url, depth)
 		if depth < maxDepth {
 			for _, url := range suburls.suburls {
@@ -88,7 +93,9 @@ func crawlPage(url string, depth int) {
 
 func Crawl(url string, depth int) {
 	totalRuns++
+	//mutex.Lock()
 	visited[url] = true
+	//mutex.Unlock()
 	go crawlPage(url, 0)
 	for totalRuns > 0 {
 		totalRuns--
@@ -97,10 +104,16 @@ func Crawl(url string, depth int) {
 			continue
 		}
 		for _, url := range next.suburls {
-			if _, seen := visited[url]; seen {
+			//mutex.Lock()
+			seen := visited[url]
+			//mutex.Unlock()
+			//if _, seen := visited[url]; seen {
+			if seen {
 				continue
 			}
+			//mutex.Lock()
 			visited[url] = true
+			//mutex.Unlock()
 			if next.depth < depth {
 				totalRuns++
 				go crawlPage(url, next.depth)
@@ -113,8 +126,8 @@ func main() {
 	//fetcher = fakefetcher // tento ide do vlastnej pidi datovej struktury
 	fetcher = realfetcher // tento ide na web
 
-	url := "http://dai.fmph.uniba.sk/courses/JAVA"
-	//url := "http://dai.fmph.uniba.sk/courses/PARA"
+	//url := "http://dai.fmph.uniba.sk/courses/JAVA"
+	url := "http://dai.fmph.uniba.sk/courses/PARA"
 	//url := "http://golang.org/"
 	//url := "http://dai.fmph.uniba.sk/"
 	depth := 2
@@ -179,7 +192,7 @@ func main() {
 	// 4.7803725s
 	//---------------------------------------------------------------------
 	//-------------------------
-	fmt.Printf("visited: %v\n", visited)
+	//fmt.Printf("visited: %v\n", visited)
 	fmt.Printf("size: %d\n", len(visited))
 	fmt.Println(time.Since(start))
 }

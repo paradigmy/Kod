@@ -34,9 +34,10 @@ func runAgent(agent int, channels []chan Message) {
 					i++
 					for index, ch := range channels { // povedz kazdemu
 						if index != agent {		// okrem seba
-							go func(cha chan Message) { // pozor, tu musi byt premenna cyklu ako explicitny argument
-								cha <- msg
-							}(ch)
+							//go func(cha chan Message) { // po
+							go func() { // pozor, tu musi byt premenna cyklu ako explicitny argument
+								ch <- msg
+							}()
 						}
 					}
 			}
