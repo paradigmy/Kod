@@ -4,10 +4,16 @@ import (
 	"fmt"
 	"strconv"
 )
+
 func main() {
-	sum2Int()
+	input("zadaj prve.. ")
+	dveNa()
+	div6()
+
+	//sum3Int_1()
 	//compare2Nat()
 	//maximum()
+	fmt.Printf("vysledok je: %d\n", a)
 }
 
 /*
@@ -54,17 +60,30 @@ func input(prompt string) {
 
 // súčet dvoch prirodzených čísel s jednou globalnou premennou
 func sum2Nat() {
-	input("zadaj prve cislo:")
-	// ???
-	fmt.Printf("ich sucet je: %d\n", a)
+	if a == 0 {
+		input("druhe ")
+	} else {
+		a--
+		sum2Nat()
+		a++
+	}
 }
-
 
 // súčet dvoch prirodzených čísel s jednou globalnou premennou
 func sum2Int() {
-	input("zadaj prve cislo:")
-	// ???
-	fmt.Printf("ich sucet je: %d\n", a)
+	if a == 0 {
+		input("druhe ")
+	} else {
+		if a > 0 {
+			a--
+			sum2Int()
+			a++
+		} else {
+			a++
+			sum2Int()
+			a--
+		}
+	}
 }
 
 //#############################################################
@@ -75,11 +94,43 @@ func sum2Int() {
 //# premennú "a" a procedúry/funkcie bez argumentov.
 //# Program musí fungovať správne aj pre záporné hodnoty.
 
-//    súčet troch celých čísel s jednou globalnou premennou
+func sum3Int_1() {
+	if a == 0 {
+		input("druhe ")
+		sum3Int_2()
+	} else {
+		if a > 0 {
+			a--
+			sum3Int_1()
+			a++
+		} else {
+			a++
+			sum3Int_1()
+			a--
+		}
+	}
+}
+
+func sum3Int_2() {
+	if a == 0 {
+		input("tretie ")
+	} else {
+		if a > 0 {
+			a--
+			sum3Int_2()
+			a++
+		} else {
+			a++
+			sum3Int_2()
+			a--
+		}
+	}
+}
+
+// súčet troch celých čísel s jednou globalnou premennou
 func sum3Int() {
-	input("zadaj prve cele cislo:")
-	// ???
-	fmt.Printf("ich sucet je: %d", a)
+	sum2Int()
+	sum2Int()
 }
 
 // ##########################################################
@@ -91,26 +142,62 @@ func sum3Int() {
 // # V programe môžete použiť iba jednu globlnu celoeselnú premennú "a" a
 // # procedúry bez argumentov.
 
-//    maximum dvoch prirodzených čísel s jednou globálnou premennou
+// maximum dvoch prirodzených čísel s jednou globálnou premennou
 func max2Nat() {
-	input("zadaj prve cele cislo:")
-	// ???
-	fmt.Printf("ich maximum je: %d", a)
+	if a == 0 {
+		input("druhe")
+	} else {
+		a--
+		max2Nat()
+		a--
+	}
 }
 
+func dveNa() {
+	if a == 0 {
+		input("druhe")
+		triNa()
+	} else {
+		a--
+		dveNa()
+		a *= 2
+	}
+}
+
+func triNa() {
+	if a == 0 {
+		a = 1
+	} else {
+		a--
+		triNa()
+		a *= 3
+	}
+}
+
+func div6() {
+	if a%6 == 0 {
+		a /= 6
+		div6()
+		a++
+	} else if a%3 == 0 {
+		a /= 3
+		div6()
+		a++
+	} else if a%2 == 0 {
+		a /= 2
+		div6()
+		a++
+	} else { // a==1
+		a = 0
+	}
+}
 
 // rozdiel dvoch celych čísel s jednou globalnou premennou
 func diff2Nat() {
-	input("zadaj prve cele cislo:")
-	// ???
-	fmt.Printf("ich absolutna hodnota rozdielu je: %d\n", a)
+
 }
 
 // porovna dve cele cisla a,b a vrati -1 (a<b), 0 (a==b), 1 (a>b)
 func compare2Nat() {
-	input("zadaj prve cele cislo:")
-	// ??
-	fmt.Printf("ich compare je: %d\n", a)
+
 }
-
-

@@ -89,24 +89,24 @@ func main() {
 	//fmt.Scanln(&input) // prípade, keď umrie hlavné
 	//fmt.Println("main stop")
 
-	//ch := multiplexor(ch1, ch2)
-	//for {
-	//	fmt.Print(<-ch)
-	//}
+	ch := multiplexor(ch1, ch2)
+	for {
+		fmt.Print(<-ch)
+	}
 
 	//ch := multiplexorSelect(ch1, ch2)
 	//for {
 	//	fmt.Print(<-ch)
 	//}
 
-	ch := multiplexorSelect(ch1, ch2)
-	for {
-		val, opened := <-ch
-		if !opened {
-			break
-		}
-		fmt.Print(val)
-	}
+	//ch := multiplexorSelect(ch1, ch2)
+	//for {
+	//	val, opened := <-ch
+	//	if !opened {
+	//		break
+	//	}
+	//	fmt.Print(val)
+	//}
 
 	/* */
 	//fmt.Println("main stop")

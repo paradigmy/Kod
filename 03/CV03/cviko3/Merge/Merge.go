@@ -62,37 +62,33 @@ var (
 	goroutines  = 0 // pocet vytvorenych gorutin
 )
 
-
-// kanal ch sa pouziva na synchronizaciu, kedy je pole utriedene
 func cmergesort(low, high int, ch chan bool) {
 	if low < high {
 		middle := low + (high-low)/2
 		if high-low < granularity { // granularita, utried sekvencne
-			mergesort(low, high)
-			ch <- true
-		} else {
-			left := make(chan bool)
-			go cmergesort(low, middle, left)
-			goroutines++
-			right := make(chan bool)
-			go cmergesort(middle+1, high, right)
-			goroutines++
-			<-left
-			<-right
+			mergesort(low, middle)
+			mergesort(middle+1, high)
 			merge(low, middle, high)
-			ch <- true
+		} else {
+			ch1 := make(chan bool)
+			goroutines++
+			go cmergesort(low, middle, ch1)
+			ch2 := make(chan bool)
+			goroutines++
+			go cmergesort(middle+1, high, ch2)
+			<-ch1
+			<-ch2
+			merge(low, middle, high)
 		}
-	} else {
-		fmt.Println("cokolvek")
-		ch <- true
 	}
+	ch <- true
 }
 
 func ConcMergesort(values Pole) Pole {
 	numbers = values
 	goroutines = 0
 	temp = make(Pole, len(values))
-	ch := make(chan bool)  // tu je vzor
+	ch := make(chan bool)
 	go cmergesort(0, len(values)-1, ch)
 	goroutines++
 	<-ch
@@ -111,7 +107,7 @@ func main() {
 	fmt.Println(runtime.NumCPU())
 	rand.Seed(time.Now().UnixNano())
 
-	N := 10000000 // velkost triedeneho pola
+	N := 50000000 // velkost triedeneho pola
 	//N := 100000000 // velkost triedeneho pola
 
 	for granularity = N; granularity > 0; granularity = granularity / 2 {
@@ -120,7 +116,7 @@ func main() {
 			ss[idx] = rand.Intn(N)
 		}
 		start := time.Now()
-		//_ = SeqMergesort(ss) // sekvencna verzia
+		// _ = SeqMergesort(ss) // sekvencna verzia
 		_ = ConcMergesort(ss) // konkurentna verzia
 		elapsed := time.Since(start)
 		fmt.Printf("MERGESORT: size=%v, granula=%d\tgoroutines=%d\telapsed time %v\n",

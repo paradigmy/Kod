@@ -25,10 +25,10 @@ func main() {
 	fmt.Println("zapisane 3")
 	ch <- 4
 	fmt.Println("zapisane 4")
-	//ch <- 5
-	//fmt.Println("zapisane 5")
-	//ch <- 6
-	//fmt.Println("zapisane 6")
+	ch <- 5
+	fmt.Println("zapisane 5")
+	ch <- 6
+	fmt.Println("zapisane 6")
 
 	//var input string   // toto čaká na input, v opačnom
 	//fmt.Scanln(&input) // prípade, keď umrie hlavné
