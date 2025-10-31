@@ -7,7 +7,7 @@ import (
 	"net"
 )
 
-//--------------------------
+// --------------------------
 type ChatClient struct {
 	clientID int
 	reader   *bufio.Reader
@@ -22,7 +22,7 @@ func NewChatClient(clientID int, conn net.Conn) *ChatClient {
 	}
 }
 
-//---------------------------
+// ---------------------------
 type ChatRoom struct {
 	clients []*ChatClient
 }
@@ -49,16 +49,22 @@ func (chr *ChatRoom) handleConnection(conn net.Conn) {
 	chr.clients = append(chr.clients, chatclient)
 	for {
 		line, _, err := chatclient.reader.ReadLine()
+
+		msg := ""
 		if err == io.EOF {
-			break
+			msg = fmt.Sprintf("%d>say bye, bye\r\n", chatclient.clientID)
+		} else {
+			msg = fmt.Sprintf("%d>%s\r\n", chatclient.clientID, line)
 		}
-		msg := fmt.Sprintf("%d>%s\r\n", chatclient.clientID, line)
 		fmt.Print(msg) // vypis na konzolu chatroomu
 		for _, client := range chr.clients {
 			if client.clientID != chatclient.clientID {
 				client.writer.WriteString(msg)
 				client.writer.Flush()
 			}
+		}
+		if err == io.EOF {
+			break
 		}
 	}
 }

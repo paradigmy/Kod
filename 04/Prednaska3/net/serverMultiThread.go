@@ -9,6 +9,7 @@ import (
 )
 
 var nofclients = 0
+
 func handleConnectionTime1(conn net.Conn) {
 	nofclients++
 	fmt.Printf("accepted connection from a client %d\n", nofclients)
@@ -25,11 +26,12 @@ func handleConnection1(conn net.Conn) {
 	w := bufio.NewWriter(conn)
 	w.WriteString(time.Now().String() + "\r\n")
 	w.Flush()
-	
+
 	r := bufio.NewReader(conn)
 	for {
 		line, _, err := r.ReadLine()
 		if err == io.EOF {
+			fmt.Println("closed connection")
 			break
 		}
 		fmt.Printf("%s\n", line)

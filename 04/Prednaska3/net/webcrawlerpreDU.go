@@ -12,6 +12,7 @@ type Fetcher interface {
 }
 
 var fetcher Fetcher
+
 //var mutex = &sync.Mutex{}
 
 // Crawl uses fetcher to recursively crawl
@@ -80,7 +81,7 @@ func CrawlR(url string, depth int, maxDepth int) {
 	}
 }
 
-//--------------------
+// --------------------
 func crawlPage(url string, depth int) {
 	body, urls, err := fetcher.Fetch(url)
 	if err != nil {
@@ -136,7 +137,7 @@ func main() {
 
 	// navštivi viackrat stranky
 
-	//Crawl71(url, depth)
+	Crawl71(url, depth)
 
 	// http://dai.fmph.uniba.sk/courses/JAVA
 	// size: 1097
@@ -156,7 +157,7 @@ func main() {
 	//---------------------------------------------------------------------
 	// rekurzivy jemne zoprimalizovany crawler, pamata si navstivene stranky
 
-	CrawlR(url, 0, depth)
+	//CrawlR(url, 0, depth)
 
 	// http://dai.fmph.uniba.sk/courses/JAVA
 	// size: 1097
@@ -173,7 +174,7 @@ func main() {
 	//---------------------------------------------------------------------
 	// konkurentny crawler
 
-	 //Crawl(url, depth)
+	//Crawl(url, depth)
 
 	// http://dai.fmph.uniba.sk/courses/JAVA
 	// size: 1097
